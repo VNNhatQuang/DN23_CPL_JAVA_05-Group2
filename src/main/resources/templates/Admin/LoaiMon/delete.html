@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/admin/loaimon">Quay lại</a>
+	<br>
+	<label>Mã Loại món:</label><p th:text="${lm.IDLoai}"></p>
+	<label>Tên loại món:</label><p th:text="${lm.TenLoai}"></p><br>
+	<label>Giảm giá:</label><p th:text="${lm.GiamGia}"></p>
+	<br>
+	<a th:href="@{'/admin/loaimon/delete/confirm/' + ${lm.IDLoai}}">Xóa</a>
+</body>
+</html>
