@@ -1,11 +1,11 @@
-package model;
+package com.DiamondCafe.DiamondCafe.model;
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @CREATED 04/05/2023 - 9:23 AM
@@ -17,7 +17,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Nhanvien {
-    private int MaTK;
+    private String MaTK;
     private String Matkhau;
     private String TenNV;
     private Date NgaySinh;

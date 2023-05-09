@@ -1,12 +1,13 @@
-package api;
+package com.DiamondCafe.DiamondCafe.api;
 
 import com.DiamondCafe.DiamondCafe.model.Nhanvien;
+import com.DiamondCafe.DiamondCafe.model.ServiceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import com.DiamondCafe.DiamondCafe.service.INhanvienService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/nhanvien")
+@RequestMapping("/api/admin/nhanvien")
 public class NhanvienAPI {
     @Autowired
     private INhanvienService iNhanvienService;
@@ -26,6 +27,42 @@ public class NhanvienAPI {
     @GetMapping("/")
     public ResponseEntity<List<Nhanvien>> getlistNhanvien(){
         var result = iNhanvienService.getlistNV();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<ServiceResponse> addNewNhanvien(@RequestBody Nhanvien nv){
+        ServiceResponse serviceResponse = new ServiceResponse();
+        int result = iNhanvienService.save(nv);
+        if (result == 1 ) {
+            serviceResponse.setMessage("Employee Information has been save");
+        }
+        return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<ServiceResponse> delete(@PathVariable(name = "id") String MaNV){
+        ServiceResponse serviceResponse = new ServiceResponse();
+        int result = iNhanvienService.delete(MaNV);
+        if (result == 1 ) {
+            serviceResponse.setMessage("Employee Information has been save");
+        }
+        return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<ServiceResponse> update(@RequestBody Nhanvien nv){
+        ServiceResponse serviceResponse = new ServiceResponse();
+        int result = iNhanvienService.update(nv);
+        if (result == 1 ) {
+            serviceResponse.setMessage("Employee Information has been save");
+        }
+        return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/nv/{id}")
+    public ResponseEntity<Nhanvien> getNhanvien(@PathVariable(name = "id") String MaNV){
+        var result = iNhanvienService.getNhanvienbyID(MaNV);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

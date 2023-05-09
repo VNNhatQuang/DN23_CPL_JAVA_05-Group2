@@ -1,9 +1,9 @@
-package service;
+package com.DiamondCafe.DiamondCafe.service;
 
-import model.Nhanvien;
+import com.DiamondCafe.DiamondCafe.model.Nhanvien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.INhanvienRepository;
+import com.DiamondCafe.DiamondCafe.repository.INhanvienRepository;
 
 import java.util.List;
 
@@ -32,12 +32,12 @@ public class NhanvienServiceImpl implements INhanvienService{
     }
 
     @Override
-    public int delete(int id) {
+    public int delete(String id) {
         return iNhanvienRepository.delete(id);
     }
 
     @Override
-    public Nhanvien getNhanvienbyID(int id) {
+    public Nhanvien getNhanvienbyID(String id) {
         return iNhanvienRepository.getNhanvienbyID(id);
     }
 }

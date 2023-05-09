@@ -1,12 +1,12 @@
-package controller;
+package com.DiamondCafe.DiamondCafe.controller;
 
-import model.Nhanvien;
+import com.DiamondCafe.DiamondCafe.model.Nhanvien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import service.INhanvienService;
+import com.DiamondCafe.DiamondCafe.service.INhanvienService;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @AUTHOR Kiel
  */
 @Controller
-@RequestMapping("/nhanvien")
+@RequestMapping("admin/nhanvien")
 public class NhanvienController {
     @Autowired
     private INhanvienService iNhanvienService;
@@ -44,13 +44,13 @@ public class NhanvienController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam(name = "id") int MaNV){
+    public String delete(@RequestParam(name = "id") String MaNV){
         iNhanvienService.delete(MaNV);
         return "redirect:/nhanvien/list";
     }
 
     @RequestMapping("/update/{id}")
-    public String update(Model model, @RequestParam(name = "id") int MaNV){
+    public String update(Model model, @RequestParam(name = "id") String MaNV){
         Nhanvien nv = iNhanvienService.getNhanvienbyID(MaNV);
         model.addAttribute("NhanvienForm", nv);
         return "/nhanvien/new";

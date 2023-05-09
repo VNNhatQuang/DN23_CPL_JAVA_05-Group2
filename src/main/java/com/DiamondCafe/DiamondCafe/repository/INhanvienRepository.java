@@ -1,6 +1,6 @@
-package repository;
+package com.DiamondCafe.DiamondCafe.repository;
 
-import model.Nhanvien;
+import com.DiamondCafe.DiamondCafe.model.Nhanvien;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface INhanvienRepository {
     public List<Nhanvien> getlistNhanvien();
     public int save(Nhanvien nv);
     public int update(Nhanvien nv);
-    public int delete(int id);
-    public Nhanvien getNhanvienbyID(int id);
+    public int delete(String id);
+    public Nhanvien getNhanvienbyID(String id);
 
 }
