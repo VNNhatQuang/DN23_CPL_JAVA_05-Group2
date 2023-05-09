@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert title here</title>
+</head>
+<body>
+	<form action="#">
+			<div class="form-group" >
+              <label for="exampleInputEmail1">Họ tên: </label>
+              <input type="text" th:value="${Account.TenNV}" class="form-control" id="exampleInputEmail1" placeholder="Nhập Họ tên">
+            </div>
+
+            <div class="form-group" >
+              <label for="exampleInputPassword1">Ngày sinh:</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập Ngày sinh">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Địa chỉ: </label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Địa chỉ">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Số điện thoại: </label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Nhập Số điện thoại">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">CMT: </label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Nhập CMT">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Chức vụ: </label>
+              <input type="text" value="Thu ngân" class="form-control" id="exampleInputEmail1" readonly>
+            </div>
+	</form>
+</body>
+</html>

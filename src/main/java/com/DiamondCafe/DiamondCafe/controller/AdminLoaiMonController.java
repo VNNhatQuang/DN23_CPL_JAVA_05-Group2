@@ -47,7 +47,7 @@ public class AdminLoaiMonController {
 		lmService.Add(loaimon);
 		return "redirect:/admin/loaimon";
 	}
-	
+	 
 	@GetMapping("edit/{id}")
 	public String showFormEdit(HttpServletRequest request, @PathVariable("id") int id) {
 		LoaiMon lm = lmService.getLoaiMon(id);

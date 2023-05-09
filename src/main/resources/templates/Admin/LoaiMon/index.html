@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/admin/loaimon/create">Thêm Loại món</a>
+	<a href="/admin/loaimon/create">ThÃªm Loáº¡i mÃ³n</a>
 	<form action="/admin/loaimon">
 		<input type="text" name="searchValue"/>
-		<input type="submit" value="Tìm kiếm"/>
+		<input type="submit" value="TÃ¬m kiáº¿m"/>
 	</form>
 
 	<table>
 		<tr>
-			<th>Mã Loại món</th>
-			<th>Tên Loại món</th>
-			<th>Giảm giá</th>
+			<th>MÃ£ Loáº¡i mÃ³n</th>
+			<th>TÃªn Loáº¡i mÃ³n</th>
+			<th>Giáº£m giÃ¡</th>
 			<th></th>
 		</tr>
 		<th:block th:each="lm : ${list}">
@@ -23,8 +23,8 @@
 				<td th:text="${lm.IDLoai}"></td>
 				<td th:text="${lm.TenLoai}"></td>
 				<td th:text="${lm.GiamGia}"></td>
-				<td><a th:href="@{'loaimon/edit/' + ${lm.IDLoai}}">Sửa</a></td>
-				<td><a th:href="@{'loaimon/delete/' + ${lm.IDLoai}}">Xóa</a></td>
+				<td><a th:href="@{'loaimon/edit/' + ${lm.IDLoai}}">Sá»­a</a></td>
+				<td><a th:href="@{'loaimon/delete/' + ${lm.IDLoai}}">XÃ³a</a></td>
 			</tr>
 		</th:block>
 	</table>
