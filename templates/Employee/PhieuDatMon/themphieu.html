@@ -302,7 +302,14 @@
                     <div class="category">
                         <ul>
                         	<th:block th:each="c : ${listCategories}">
-                        		<li><a href="" th:text="${c.TenLoai}"></a></li>
+                        		<th:block th:switch="${c.IDLoai}">
+                        			<th:block th:case="${IDLoai}">
+                        				<li><a style="background: #007acc; color: #fff !important;" th:href="@{/home/themphieu/} + ${SoBan} + '/' + ${c.IDLoai}" th:text="${c.TenLoai}"></a></li>
+                        			</th:block>
+                        			<th:block th:case="*">
+                        				<li><a th:href="@{/home/themphieu/} + ${SoBan} + '/' + ${c.IDLoai}" th:text="${c.TenLoai}"></a></li>
+                        			</th:block>
+                        		</th:block>
                         	</th:block>
                         </ul>
                     </div>
