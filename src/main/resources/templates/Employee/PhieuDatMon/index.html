@@ -21,8 +21,8 @@
             <th:block th:each="b : ${listTable}">
             	
             	<th:block th:switch="${b.TrangThai}">
-            		<th:block th:case="'Trống'">
-	            		<a th:href="@{home/themphieu/} + ${b.SoBan}">
+            		<th:block th:case="'0'">
+	            		<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'">
 			                <div class="x-line"></div>
 			                <div class="box-table" style="background-color: #eee;">
 			                    <div class="y-line-1"></div>
@@ -32,8 +32,8 @@
 			                <div class="x-line"></div>
 			            </a>
             		</th:block>
-            		<th:block th:case="'Đang hoạt động'">
-            			<a th:href="@{home/themphieu/} + ${b.SoBan}">
+            		<th:block th:case="'1'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'">
 			                <div class="x-line"></div>
 			                <div class="box-table">
 			                    <div class="y-line-1"></div>
@@ -43,8 +43,8 @@
 			                <div class="x-line"></div>
 			            </a>
             		</th:block>
-            		<th:block th:case="'Đã đặt trước'">
-            			<a th:href="@{home/themphieu/} + ${b.SoBan}">
+            		<th:block th:case="'2'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'">
 			                <div class="x-line"></div>
 			                <div class="box-table" style="background-color: #0d99ff;">
 			                    <div class="y-line-1"></div>

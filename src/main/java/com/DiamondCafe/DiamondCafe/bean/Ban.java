@@ -2,14 +2,14 @@ package com.DiamondCafe.DiamondCafe.bean;
 
 public class Ban {
 	private int SoBan;
-	private String TrangThai;
+	private int TrangThai;
 	
 	public Ban() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ban(int soBan, String trangThai) {
+	public Ban(int soBan, int trangThai) {
 		super();
 		SoBan = soBan;
 		TrangThai = trangThai;
@@ -23,11 +23,11 @@ public class Ban {
 		SoBan = soBan;
 	}
 
-	public String getTrangThai() {
+	public int getTrangThai() {
 		return TrangThai;
 	}
 
-	public void setTrangThai(String trangThai) {
+	public void setTrangThai(int trangThai) {
 		TrangThai = trangThai;
 	}
 	

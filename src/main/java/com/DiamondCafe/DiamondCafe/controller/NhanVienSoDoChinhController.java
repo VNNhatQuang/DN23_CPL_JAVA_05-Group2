@@ -31,9 +31,11 @@ public class NhanVienSoDoChinhController {
 	}
 	
 	// Thêm phiếu đặt món
-	@GetMapping("themphieu/{id}")
-	public String Create(HttpServletRequest request, @PathVariable("id") int id) {
-		request.setAttribute("id", id);
-		return "Employee/DatCho/index";
+	@GetMapping("themphieu/{id}/{ID_LoaiMon}")
+	public String Create(HttpServletRequest request, @PathVariable("id") int id, @PathVariable("ID_LoaiMon") int id_loaimon) {
+		request.setAttribute("SoBan", id);
+		request.setAttribute("listCategories", sdcService.getAllCategories());
+		request.setAttribute("listProduct", sdcService.getListProduct(id_loaimon));
+		return "Employee/PhieuDatMon/themphieu";
 	}
 }

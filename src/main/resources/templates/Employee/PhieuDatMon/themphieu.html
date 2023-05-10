@@ -126,7 +126,7 @@
                 </a>
             </div>
             <div class="menu-bar bgr-yellow">
-                <a href="/hello">
+                <a href="/home">
                     <div class="contain">
                         <p>Quay lại</p>
                     </div>
@@ -138,7 +138,7 @@
     <div id="main">
         <div class="table-number">
             <p>Bàn: </p>&emsp;
-            <span>41</span>
+            <span th:text="${SoBan}"></span>
         </div>
         <div class="order-content">
             <div class="order">
@@ -301,46 +301,17 @@
                 <div class="menu-order">
                     <div class="category">
                         <ul>
-                            <li><a href="">Cà phê Việt Nam</a></li>
-                            <li>
-                                <a href="">Cà phê Ý</a>
-                            </li>
-                            <li>
-                                <a href="">Cà phê đặc biêt</a>
-                            </li>
-                            <li>
-                                <a href="">Trà sữa</a>
-                            </li>
-                            <li>
-                                <a href="">Trà trái cây</a>
-                            </li>
-                            <li>
-                                <a href="">Sinh tố</a>
-                            </li>
+                        	<th:block th:each="c : ${listCategories}">
+                        		<li><a href="" th:text="${c.TenLoai}"></a></li>
+                        	</th:block>
                         </ul>
                     </div>
                     <div class="list-product">
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
-                        <a href="" class="product">
-                            <p>Cà phê đen</p>
-                        </a>
+                    	<th:block th:each="p : ${listProduct}">
+                    		<a th:href="@{add?MaMon=} + ${p.MaMon}" class="product">
+	                            <p th:text="${p.TenMon}"></p>
+	                        </a>
+                    	</th:block>
                     </div>
                 </div>
             </div>
