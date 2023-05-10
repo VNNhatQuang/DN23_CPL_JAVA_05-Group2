@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/admin/loaimon/create">Thêm Loại món</a>
+	<form action="/admin/loaimon">
+		<input type="text" name="searchValue"/>
+		<input type="submit" value="Tìm kiếm"/>
+	</form>
+
+	<table>
+		<tr>
+			<th>Mã Loại món</th>
+			<th>Tên Loại món</th>
+			<th>Giảm giá</th>
+			<th></th>
+		</tr>
+		<th:block th:each="lm : ${list}">
+			<tr>
+				<td th:text="${lm.IDLoai}"></td>
+				<td th:text="${lm.TenLoai}"></td>
+				<td th:text="${lm.GiamGia}"></td>
+				<td><a th:href="@{'loaimon/edit/' + ${lm.IDLoai}}">Sửa</a></td>
+				<td><a th:href="@{'loaimon/delete/' + ${lm.IDLoai}}">Xóa</a></td>
+			</tr>
+		</th:block>
+	</table>
+	
+	<th:block th:each="i : ${#numbers.sequence(1, paging.pageCount)}">
+		   	<a th:if="${i==paging.pageIndex}" style="font-weight: bolder;" th:href="@{'/admin/loaimon?page=' + ${i}}" th:text="${i}"></a>
+		   	<a th:unless="${i==paging.pageIndex}" th:href="@{'/admin/loaimon?page=' + ${i}}" th:text="${i}"></a>
+	</th:block>
+</body>
+</html>

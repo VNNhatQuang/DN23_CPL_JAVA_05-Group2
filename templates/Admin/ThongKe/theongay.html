@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thống kê ngày</title>
+</head>
+<body>
+	<a href="ngay">Theo ngày</a>
+	<a href="thang">Theo tháng</a>
+	<a href="quy">Theo quý</a>
+	
+	<form action="/admin/thongke/ngay" method="get">
+		<select name="Day" onchange="this.form.submit()">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+		</select>
+	</form>
+	
+	<th:block th:each="tk : ${list}">
+		<p th:text="${tk.Money}"></p>
+		<br>
+	</th:block>
+	
+
+</body>
+</html>
