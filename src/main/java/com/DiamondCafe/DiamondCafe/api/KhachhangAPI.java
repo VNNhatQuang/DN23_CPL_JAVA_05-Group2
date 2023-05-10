@@ -25,7 +25,7 @@ public class KhachhangAPI {
 
     @GetMapping("/")
     public ResponseEntity<List<Khachhang>> getlistKhachang(){
-        var result = iKhachhangService.getlistKhachhang();
+        List<Khachhang> result = iKhachhangService.getlistKhachhang();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -61,7 +61,7 @@ public class KhachhangAPI {
 
     @GetMapping("/kh/{id}")
     public ResponseEntity<Khachhang> getNhanvien(@PathVariable(name = "id") int MaKH){
-        var result = iKhachhangService.getKhachhangbyID(MaKH);
+        Khachhang result = iKhachhangService.getKhachhangbyID(MaKH);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

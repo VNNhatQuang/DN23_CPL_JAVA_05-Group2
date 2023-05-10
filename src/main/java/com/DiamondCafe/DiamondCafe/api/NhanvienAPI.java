@@ -26,7 +26,7 @@ public class NhanvienAPI {
 
     @GetMapping("/")
     public ResponseEntity<List<Nhanvien>> getlistNhanvien(){
-        var result = iNhanvienService.getlistNV();
+        List<Nhanvien> result = iNhanvienService.getlistNV();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -62,7 +62,7 @@ public class NhanvienAPI {
 
     @GetMapping("/nv/{id}")
     public ResponseEntity<Nhanvien> getNhanvien(@PathVariable(name = "id") String MaNV){
-        var result = iNhanvienService.getNhanvienbyID(MaNV);
+        Nhanvien result = iNhanvienService.getNhanvienbyID(MaNV);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

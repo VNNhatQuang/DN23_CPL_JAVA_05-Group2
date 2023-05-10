@@ -21,11 +21,11 @@ import java.util.List;
 public class PhieudatbanController
 {
     @Autowired
-    IPhieudatbanService phieudatbanService;
+    IPhieudatbanService iphieudatbanService;
 
     @GetMapping("/")
     public String getlistphieu(Model model){
-        List<Phieudatban> listdh = phieudatbanService.getAlllistPhieu();
+        List<Phieudatban> listdh = iphieudatbanService.getAlllistPhieu();
         model.addAttribute("listNV", listdh);
         return "nhanvien/list";
     }
@@ -37,7 +37,7 @@ public class PhieudatbanController
     }
     @GetMapping("/update-form")
     public String getupdate(Model model,@RequestParam(name = "id") int MaPhieu){
-        Phieudatban temp = phieudatbanService.getPhieubyID(MaPhieu);
+        Phieudatban temp = iphieudatbanService.getPhieubyID(MaPhieu);
         model.addAttribute("pdbModel", temp);
         return "phiedatban/new";
     }
@@ -48,7 +48,7 @@ public class PhieudatbanController
             model.addAttribute("message","Thêm phiếu đặt bàn không thành. Vui lòng thử lại");
             return "phieudatban/new";
         }
-        phieudatbanService.save(pdb);
+        iphieudatbanService.save(pdb);
         model.addAttribute("message","Thêm phiếu đặt bàn thành công");
         return "redirect:/phieu-dat-ban/list";
     }
@@ -60,7 +60,7 @@ public class PhieudatbanController
         else
             model.addAttribute("message", "Xóa thành công mã phiếu " + MaPhieu);
 
-        phieudatbanService.delete(MaPhieu);
+        iphieudatbanService.delete(MaPhieu);
         return "redirect:/phieu-dat-ban/list";
     }
 
@@ -70,7 +70,7 @@ public class PhieudatbanController
             model.addAttribute("message" , "Cập nhật không thành. Vui lòng thử lại");
             return "phieudatban/new";
         }
-        phieudatbanService.update(pdb);
+        iphieudatbanService.update(pdb);
         model.addAttribute("message", "Cập nhật thành công mã phiếu " + pdb.getMaPhieu());
         return "redirect:/phieu-dat-ban/list";
     }

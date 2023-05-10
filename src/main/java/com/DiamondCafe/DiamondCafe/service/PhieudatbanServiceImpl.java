@@ -1,6 +1,8 @@
 package com.DiamondCafe.DiamondCafe.service;
 
 import com.DiamondCafe.DiamondCafe.model.Phieudatban;
+import com.DiamondCafe.DiamondCafe.repository.IKhachhangRepository;
+import com.DiamondCafe.DiamondCafe.repository.IPhieudatbanRepository;
 import com.DiamondCafe.DiamondCafe.repository.PhieudatbanImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,34 +17,34 @@ import java.util.List;
 @Service
 public class PhieudatbanServiceImpl implements IPhieudatbanService {
     @Autowired
-    IPhieudatbanService iPhieudatbanService;
+    IPhieudatbanRepository iPhieudatbanRepository;
     @Override
     public List<Phieudatban> getAlllistPhieu() {
-        return iPhieudatbanService.getAlllistPhieu();
+        return iPhieudatbanRepository.getAlllistPhieu();
     }
 
     @Override
     public List<Phieudatban> getListPhieubyStatus(int status) {
-        return iPhieudatbanService.getListPhieubyStatus(status);
+        return iPhieudatbanRepository.getListPhieubyStatus(status);
     }
 
     @Override
     public Phieudatban getPhieubyID(int id) {
-        return iPhieudatbanService.getPhieubyID(id);
+        return iPhieudatbanRepository.getPhieubyID(id);
     }
 
     @Override
     public int update(Phieudatban pbh) {
-        return iPhieudatbanService.update(pbh);
+        return iPhieudatbanRepository.update(pbh);
     }
 
     @Override
     public int save(Phieudatban pbh) {
-        return iPhieudatbanService.save(pbh);
+        return iPhieudatbanRepository.save(pbh);
     }
 
     @Override
     public int delete(int id) {
-        return iPhieudatbanService.delete(id);
+        return iPhieudatbanRepository.delete(id);
     }
 }
