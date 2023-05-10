@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doanh thu</title>
+    <link rel="stylesheet" th:href="@{/Employee/DoanhThu/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div id="header" th:replace="Employee/header :: header"></div>
+
+    <div id="main">
+        <div class="table-content">
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã hóa đơn</th>
+                    <th>Nhân viên lập hóa đơn</th>
+                    <th>Tổng trị giá hóa đơn</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>112</td>
+                    <td>Nguyễn Young Quí</td>
+                    <td>56,000 VND</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>112</td>
+                    <td>Nguyễn Young Quí</td>
+                    <td>56,000 VND</td>
+                </tr>
+            </table>
+        </div>
+        <div class="total-shift">
+            <h5>Tổng doanh thu ca: &ensp;<i>1,400,000 VND</i></h5>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

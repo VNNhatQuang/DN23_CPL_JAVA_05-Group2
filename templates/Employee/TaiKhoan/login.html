@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Nhân viên</title>
+    <link rel="stylesheet" th:href="@{/Employee/TaiKhoan/login.css}">
+</head>
+	
+<body>
+    <div id="main">
+        <div id="logo">
+            <img src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-6/259571876_253775240071036_2709358882684186504_n.png?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=d0WPONsLsZoAX_M7E5M&_nc_ht=scontent.fsgn2-4.fna&oh=00_AfD0mGDx9yeL-wFtVxNmqCb5ujsYUNzl_m6xvLSalFAQNA&oe=645DA3BD"
+                alt="">
+        </div>
+        <form action="/" method="post">
+            <label>Account</label>
+            <input type="text" name="MaTK" id="" autofocus>
+            <br>
+            <br>
+            <label>Password</label>
+            <input type="password" name="MatKhau" id="">
+            <br>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <input type="submit" value="Login">
+            <br>
+            <br>
+            <div class="redirect-admin">
+                <a href="/admin/loaimon">Trang Admin</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

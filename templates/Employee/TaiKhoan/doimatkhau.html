@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi mật khẩu</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/Employee/TaiKhoan/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<div id="header" th:replace="Employee/header :: header"></div>
+
+    <div id="main">
+        <form action="/doimatkhau" method="post">
+        	<input type="hidden" name="MaTK" th:value="${session.tk.MaTK}">
+            <div class="form-input">
+                <p>Họ tên nhân viên:</p>
+                <input type="text" name="TenNV" th:value="${session.tk.TenNV}" readonly="readonly">
+            </div>
+            <div class="form-input">
+                <p>Số điện thoại:</p>
+                <input type="text" name="SDT" th:value="${session.tk.SDT}" readonly="readonly">
+            </div>
+            <div class="form-input">
+                <p>Nhập mật khẩu cũ:</p>
+                <input type="password" name="MatKhau" id="" autofocus>
+            </div>
+            <div class="form-input">
+                <p>Nhập mật khẩu mới:</p>
+                <input type="password" name="MatKhauMoi" id="">
+            </div>
+            <div class="form-input">
+                <p>Xác nhận lại Mật khẩu mới:</p>
+                <input type="password" name="XacNhanMatKhau" id="">
+            </div>
+            <br>
+            <b><i><span th:text="${message}"></span></i></b>
+            <div class="submit">
+                <input type="submit" value="Đổi mật khẩu">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
