@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.DiamondCafe.DiamondCafe.bean.ThongKe;
-import com.DiamondCafe.DiamondCafe.dao.ThongKeDao;
+import com.DiamondCafe.DiamondCafe.dao.AdminThongKeDao;
 
 @Repository
-public class ThongKeDaoImpl implements ThongKeDao {
+public class AdminThongKeDaoImpl implements AdminThongKeDao {
 
 	@Autowired
 	private JdbcTemplate jdbc;

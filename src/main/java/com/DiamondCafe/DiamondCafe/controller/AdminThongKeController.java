@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.DiamondCafe.DiamondCafe.bean.ThongKe;
-import com.DiamondCafe.DiamondCafe.service.ThongKeService;
+import com.DiamondCafe.DiamondCafe.service.AdminThongKeService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AdminThongKeController {
 	
 	@Autowired
-	private ThongKeService tkService;
+	private AdminThongKeService tkService;
 	
 	
 	@GetMapping("ngay")

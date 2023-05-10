@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
-import com.DiamondCafe.DiamondCafe.dao.LoaiMonDao;
+import com.DiamondCafe.DiamondCafe.dao.AdminLoaiMonDao;
 
 @Repository
-public class LoaiMonDaoImpl implements LoaiMonDao {
+public class AdminLoaiMonDaoImpl implements AdminLoaiMonDao {
 
 	@Autowired
 	private JdbcTemplate jdbc;

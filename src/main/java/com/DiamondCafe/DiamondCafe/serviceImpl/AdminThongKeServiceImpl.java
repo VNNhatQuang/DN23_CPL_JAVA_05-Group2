@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.DiamondCafe.DiamondCafe.bean.ThongKe;
-import com.DiamondCafe.DiamondCafe.dao.ThongKeDao;
-import com.DiamondCafe.DiamondCafe.service.ThongKeService;
+import com.DiamondCafe.DiamondCafe.dao.AdminThongKeDao;
+import com.DiamondCafe.DiamondCafe.service.AdminThongKeService;
 
 @Service
-public class ThongKeServiceImpl implements ThongKeService {
+public class AdminThongKeServiceImpl implements AdminThongKeService {
 
 	@Autowired
-	private ThongKeDao tkDao;
+	private AdminThongKeDao tkDao;
 	
 	@Override
 	public ThongKe ThongKeNgay(int day) {

@@ -18,125 +18,47 @@
     <div id="main">
         <div id="table-contain">
 
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table" style="background-color: #eee;">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a href="">
-                <div class="x-line"></div>
-                <div class="box-table" style="background-color: #0d99ff;">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
+            <th:block th:each="b : ${listTable}">
+            	
+            	<th:block th:switch="${b.TrangThai}">
+            		<th:block th:case="'Trống'">
+	            		<a th:href="@{home/themphieu/} + ${b.SoBan}">
+			                <div class="x-line"></div>
+			                <div class="box-table" style="background-color: #eee;">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            		<th:block th:case="'Đang hoạt động'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan}">
+			                <div class="x-line"></div>
+			                <div class="box-table">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            		<th:block th:case="'Đã đặt trước'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan}">
+			                <div class="x-line"></div>
+			                <div class="box-table" style="background-color: #0d99ff;">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            	</th:block>
+            
+            </th:block>
+            
+			
 
         </div>
 

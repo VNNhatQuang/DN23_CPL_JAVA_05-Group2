@@ -18,14 +18,15 @@
 	<div id="header" th:replace="Employee/header :: header"></div>
 
     <div id="main">
-        <form action="" method="post">
+        <form action="/doimatkhau" method="post">
+        	<input type="hidden" name="MaTK" th:value="${session.tk.MaTK}">
             <div class="form-input">
                 <p>Họ tên nhân viên:</p>
-                <input type="text" disabled name="HoTen" value="Võ Ngọc Nhật Quang">
+                <input type="text" name="TenNV" th:value="${session.tk.TenNV}" readonly="readonly">
             </div>
             <div class="form-input">
                 <p>Số điện thoại:</p>
-                <input type="text" disabled name="SoDienThoai" value="0912345678">
+                <input type="text" name="SDT" th:value="${session.tk.SDT}" readonly="readonly">
             </div>
             <div class="form-input">
                 <p>Nhập mật khẩu cũ:</p>
@@ -33,12 +34,14 @@
             </div>
             <div class="form-input">
                 <p>Nhập mật khẩu mới:</p>
-                <input type="password" name="NhapLaiMatKhau" id="">
+                <input type="password" name="MatKhauMoi" id="">
             </div>
             <div class="form-input">
                 <p>Xác nhận lại Mật khẩu mới:</p>
                 <input type="password" name="XacNhanMatKhau" id="">
             </div>
+            <br>
+            <b><i><span th:text="${message}"></span></i></b>
             <div class="submit">
                 <input type="submit" value="Đổi mật khẩu">
             </div>

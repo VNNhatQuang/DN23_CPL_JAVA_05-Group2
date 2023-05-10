@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Paging;
-import com.DiamondCafe.DiamondCafe.service.LoaiMonService;
+import com.DiamondCafe.DiamondCafe.service.AdminLoaiMonService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AdminLoaiMonController {
 	
 	@Autowired
-	private LoaiMonService lmService;
+	private AdminLoaiMonService lmService;
 	private final int PAGE_SIZE = 5;
 	
 	@GetMapping
