@@ -33,8 +33,8 @@ public class KhachhangImpl implements IKhachhangRepository {
 
     @Override
     public int update(Khachhang kh) {
-        String SQL_SAVE = "UPDATE KHACH_HANG SET HOTEN = ? , SDT = ? , DIEMTICHLUY = ? WHERE MAKH = ?";
-        return jdbcTemplate.update(SQL_SAVE,
+        String SQL_UPDATE = "UPDATE KHACH_HANG SET HOTEN = ? , SDT = ? , DIEMTICHLUY = ? WHERE MAKH = ?";
+        return jdbcTemplate.update(SQL_UPDATE,
                 new Object[]{kh.getHoten(), kh.getSDT(), kh.getDiemTichLuy() , kh.getMaKH()});
     }
 

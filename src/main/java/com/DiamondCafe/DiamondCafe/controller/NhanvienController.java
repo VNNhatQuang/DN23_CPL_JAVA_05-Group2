@@ -49,10 +49,11 @@ public class NhanvienController {
         return "redirect:/nhanvien/list";
     }
 
-    @RequestMapping("/update/{id}")
+    @RequestMapping("/update")
     public String update(Model model, @RequestParam(name = "id") String MaNV){
         Nhanvien nv = iNhanvienService.getNhanvienbyID(MaNV);
         model.addAttribute("NhanvienForm", nv);
         return "/nhanvien/new";
     }
+
 }
