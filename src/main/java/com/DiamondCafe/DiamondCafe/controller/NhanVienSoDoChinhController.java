@@ -24,6 +24,7 @@ public class NhanVienSoDoChinhController {
 	@Autowired
 	private NhanVienSoDoChinhService sdcService;
 	private double TongTien=0;
+	private int giamGia=0;
 	
 	// Hiển thị màn hình sơ đồ chính
 	@GetMapping
@@ -54,10 +55,13 @@ public class NhanVienSoDoChinhController {
 				List<Order> order = new ArrayList<>();
 				request.setAttribute("total", TongTien);
 				session.setAttribute("order", order);
+				request.setAttribute("giamGia", giamGia);
 			}
 			else {
 				List<Order> order = (List<Order>) session.getAttribute("order");
-				TongTien = sdcService.TotalMoney(order);
+				if(giamGia==0)
+					TongTien = sdcService.TotalMoney(order);
+				request.setAttribute("giamGia", giamGia);
 				request.setAttribute("total", TongTien);
 			}
 			return "Employee/PhieuDatMon/themphieu";
@@ -116,7 +120,8 @@ public class NhanVienSoDoChinhController {
 			List<Order> list = (List<Order>) session.getAttribute("order");
 			double total = Double.parseDouble(request.getParameter("total"));
 			total -= (total*0.1);
-			session.setAttribute("total", total);
+			TongTien = total;
+			giamGia=10;
 			return "redirect:/home/themphieu/" + id_ban + "/" + id_loai;
 		}
 		else
@@ -132,6 +137,35 @@ public class NhanVienSoDoChinhController {
 			List<Order> list = (List<Order>) session.getAttribute("order");
 			
 			return "redirect:/home";
+		}
+		else
+			return "redirect:/";
+	}
+	
+	// Xóa toàn bộ món 
+	@GetMapping("themphieu/{id}/deleteAll")
+	public String DeleteAll(HttpServletRequest request, @PathVariable("id") int id_ban) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			session.removeAttribute("order");
+			TongTien=0;
+			giamGia=0;
+			return "redirect:/home/themphieu/" + id_ban + "/1";
+		}
+		else
+			return "redirect:/";
+	}
+	
+	// Xóa món
+	@GetMapping("themphieu/{id}/{id_loai}/delete")
+	public String Delete(HttpServletRequest request, @PathVariable("id") int id_ban, @PathVariable("id_loai") int id_loai) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			int id_mon = Integer.parseInt(request.getParameter("IDMon"));
+			List<Order> list = (List<Order>) session.getAttribute("order");
+			List<Order> newlist = sdcService.DeleteProductFromOrder(id_mon, list);
+			session.setAttribute("order", newlist);
+			return "redirect:/home/themphieu/" + id_ban + "/" + id_loai;
 		}
 		else
 			return "redirect:/";

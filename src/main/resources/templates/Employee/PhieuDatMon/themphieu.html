@@ -64,7 +64,7 @@
             </div>
             <div class="sale">
                 <p>Giảm giá toàn hóa đơn</p>
-                <input type="number" min="0" max="100" value="0" readonly="readonly">
+                <input type="text" min="0" max="100" th:value="${giamGia} + '%'" readonly="readonly">
             </div>
         </div>
         <div id="menu-r">
@@ -103,6 +103,7 @@
                             <th>Ghi chú</th>
                             <th>Thành tiền</th>
                             <th></th>
+                            <th></th>
                         </tr>
 
 						<th:block th:each="o,i : ${session.order}">
@@ -117,6 +118,7 @@
 	                                <td><input type="text" name="GhiChu" th:value="${o.GhiChu}"></td>
 	                                <td th:text="${o.ThanhTien} + ' VND'"></td>
 	                                <td><input type="submit" value="Cập nhật"></td>
+	                                <td><a th:href="${IDLoai} + '/delete?IDMon=' + ${o.MaMon}">Xóa</a></td>
 	                            </form>
 	                        </tr>
 	                  	</th:block>
@@ -161,9 +163,7 @@
                 </div>
                 <div class="order-function-child">
                     <hr>
-                    <button class="btn btn-light">Bỏ món</button>
-                    <button class="btn btn-danger">Bỏ hết món</button>
-                    <button class="btn btn-light">Tổng tiền</button>
+                    <button class="btn btn-danger" onclick="window.location.href='deleteAll'">Bỏ hết món</button>
                 </div>
             </div>
         </div>

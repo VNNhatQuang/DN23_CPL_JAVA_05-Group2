@@ -1,5 +1,6 @@
 package com.DiamondCafe.DiamondCafe.serviceImpl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,17 @@ public class NhanVienSoDoChinhServiceImpl implements NhanVienSoDoChinhService {
 	public List<KhachHang> getListCustomer() {
 		// TODO Auto-generated method stub
 		return sdcDao.getListCustomer();
+	}
+
+	@Override
+	public List<Order> DeleteProductFromOrder(int id, List<Order> list) {
+		int length = list.size();
+		for(int i=length-1; i>=0; i--) {
+			if(list.get(i).getMaMon()==id) {
+				list.remove(i);
+			}
+		}
+		return list;
 	}
 	
 }
