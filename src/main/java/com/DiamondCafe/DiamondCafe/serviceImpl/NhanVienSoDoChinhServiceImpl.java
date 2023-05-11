@@ -78,5 +78,21 @@ public class NhanVienSoDoChinhServiceImpl implements NhanVienSoDoChinhService {
 		}
 		return list;
 	}
+
+	@Override
+	public int AddOrder(int soBan, int GiamGiaHD, int ID_KhachHang, String ID_NhanVien) {
+		return sdcDao.AddOrder(soBan, GiamGiaHD, ID_KhachHang, ID_NhanVien);
+	}
+
+	@Override
+	public void AddOrderDetail(List<Order> list, int ID_HoaDon) {
+		sdcDao.AddOrderDetail(list, ID_HoaDon);
+	}
+
+	@Override
+	public void EmptyTable(int SoBan) {
+		// TODO Auto-generated method stub
+		sdcDao.EmptyTable(SoBan);
+	}
 	
 }

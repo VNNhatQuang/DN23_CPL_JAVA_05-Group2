@@ -47,7 +47,7 @@ public class AdminLoaiMonDaoImpl implements AdminLoaiMonDao {
 
 	@Override
 	public void Add(LoaiMon lm) {
-		String query = "INSERT INTO LOAI_MON VALUES(?,?)";
+		String query = "INSERT INTO LOAI_MON VALUES(?)";
 		jdbc.update(query, new Object[] {
 				lm.getTenLoai()
 		});

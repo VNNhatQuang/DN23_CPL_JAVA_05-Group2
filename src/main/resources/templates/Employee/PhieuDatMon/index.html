@@ -33,7 +33,7 @@
 			            </a>
             		</th:block>
             		<th:block th:case="'1'">
-            			<a>
+            			<a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
 			                <div class="x-line"></div>
 			                <div class="box-table">
 			                    <div class="y-line-1"></div>
@@ -44,7 +44,7 @@
 			            </a>
             		</th:block>
             		<th:block th:case="'2'">
-            			<a>
+            			<a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
 			                <div class="x-line"></div>
 			                <div class="box-table" style="background-color: #0d99ff;">
 			                    <div class="y-line-1"></div>
@@ -79,6 +79,15 @@
         </div>
 
     </div>
+    
+	<script>
+		function confirmEmpltyTable(url) {
+			let text = "Xác nhận chuyển thành bàn trống?";
+		  	if (confirm(text) == true) {
+		    	window.location=url;
+		  	}
+		}
+	</script>
 
 
 </body>

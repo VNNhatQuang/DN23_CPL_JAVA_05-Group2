@@ -2,6 +2,9 @@ package com.DiamondCafe.DiamondCafe.daoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import com.DiamondCafe.DiamondCafe.bean.Ban;
 import com.DiamondCafe.DiamondCafe.bean.KhachHang;
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.Order;
 import com.DiamondCafe.DiamondCafe.dao.NhanVienSoDoChinhDao;
 
 @Repository
@@ -54,6 +58,53 @@ public class NhanVienSoDoChinhImpl implements NhanVienSoDoChinhDao {
 	public List<KhachHang> getListCustomer() {
 		String query = "SELECT * FROM KHACH_HANG WHERE MaKH>1";
 		return jdbc.query(query, new KhachHangRowMapper());
+	}
+
+	@Override
+	public int AddOrder(int soBan, int GiamGiaHD, int ID_KhachHang, String ID_NhanVien) {
+		// Set bàn đang hoạt động
+		String query = "UPDATE BAN SET TrangThai=1 WHERE SoBan=?";
+		jdbc.update(query, new Object[] {soBan});
+		// Thêm thông tin order vào hóa đơn
+		query = "INSERT INTO HOA_DON VALUES(?, ?, ?, ?, ?, ?)";
+		String Ca = "";
+		if(new Date().getHours()>=6 && new Date().getHours()<=11)
+			Ca="Sáng";
+		if(new Date().getHours()>=13 && new Date().getHours()<=17)
+			Ca="Chiều";
+		if(new Date().getHours()>17 && new Date().getHours()<=22)
+			Ca="Tối";
+		jdbc.update(query, new Object[] {
+				soBan
+				, new java.sql.Date(new Date().getTime())
+				, Ca
+				, GiamGiaHD
+				, ID_KhachHang
+				, ID_NhanVien
+		});
+		// Lấy mã hóa đơn vừa thêm
+		query = "SELECT MAX(SoHD) FROM HOA_DON";
+		return jdbc.queryForObject(query, Integer.class);
+	}
+
+	@Override
+	public void AddOrderDetail(List<Order> list, int ID_HoaDon) {
+		String query = "INSERT INTO CT_HOA_DON VALUES(?, ?, ?, ?, ?)";
+		for (Order o : list) {
+			jdbc.update(query, new Object[] {
+					o.getMaMon()
+					, o.getSoLuong()
+					, o.getDonGia()
+					, o.getGhiChu()
+					, ID_HoaDon
+			});
+		}
+	}
+
+	@Override
+	public void EmptyTable(int SoBan) {
+		String query = "UPDATE BAN SET TrangThai=0 WHERE SoBan=?";
+		jdbc.update(query, new Object[] {SoBan});
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.DiamondCafe.DiamondCafe.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.NhanVien;
 import com.DiamondCafe.DiamondCafe.bean.Order;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 
@@ -128,20 +130,6 @@ public class NhanVienSoDoChinhController {
 			return "redirect:/";
 	}
 	
-	
-	// Thêm phiếu order vào csdl
-	@GetMapping("themphieu/{id}/{id_loai}/saveOrder")
-	public String SaveOrder(HttpServletRequest request, @PathVariable("id") int id_ban, @PathVariable("id_loai") int id_loai) {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("tk")!=null) {
-			List<Order> list = (List<Order>) session.getAttribute("order");
-			
-			return "redirect:/home";
-		}
-		else
-			return "redirect:/";
-	}
-	
 	// Xóa toàn bộ món 
 	@GetMapping("themphieu/{id}/deleteAll")
 	public String DeleteAll(HttpServletRequest request, @PathVariable("id") int id_ban) {
@@ -169,5 +157,29 @@ public class NhanVienSoDoChinhController {
 		}
 		else
 			return "redirect:/";
+	}
+	
+	// Thêm phiếu order vào csdl
+	@GetMapping("themphieu/{id}/{id_loai}/saveOrder")
+	public String SaveOrder(HttpServletRequest request, @PathVariable("id") int id_ban, @PathVariable("id_loai") int id_loai) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			List<Order> list = (List<Order>) session.getAttribute("order");
+			if(list!=null) {
+				NhanVien nv = (NhanVien) session.getAttribute("tk");
+				int id_hoadon = sdcService.AddOrder(id_ban, giamGia, 1, nv.getMaTK());
+				sdcService.AddOrderDetail(list, id_hoadon);
+			}
+			return "redirect:/home";
+		}
+		else
+			return "redirect:/";
+	}
+	
+	// Làm trống bàn khi khách đi
+	@GetMapping("emptyTable/{id}")
+	public String EmptyTable(HttpServletRequest request, @PathVariable("id") int SoBan) {
+		sdcService.EmptyTable(SoBan);
+		return "redirect:/home";
 	}
 }

@@ -21,6 +21,12 @@ public interface NhanVienSoDoChinhService {
 	
 	List<KhachHang> getListCustomer();
 	
+	int AddOrder(int soBan, int GiamGiaHD, int ID_KhachHang, String ID_NhanVien);
+	
+	void AddOrderDetail(List<Order> list, int ID_HoaDon);
+	
+	void EmptyTable(int SoBan);
+	
 	
 	
 	void AddToOrder(Order mon, List<Order> list);
