@@ -8,36 +8,44 @@
     <title>Insert title here</title>
 </head>
 <body>
-	<form action="#">
+	<form action="update" method="post">
 			<div class="form-group" >
               <label for="exampleInputEmail1">Họ tên: </label>
-              <input type="text" th:value="${Account.TenNV}" class="form-control" id="exampleInputEmail1" placeholder="Nhập Họ tên">
+              <input type="text" th:value="${Account.TenNV}" name="hoten" required="required">
             </div>
 
             <div class="form-group" >
               <label for="exampleInputPassword1">Ngày sinh:</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập Ngày sinh">
+              <input type="text" th:value="${Account.NgaySinh}" name="ngaysinh">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Địa chỉ: </label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Địa chỉ">
+              <input type="text" th:value="${Account.DiaChi}" name="diachi">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Số điện thoại: </label>
-              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Nhập Số điện thoại">
+              <input type="number"  th:value="${Account.SDT}" name="sdt">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">CMT: </label>
-              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Nhập CMT">
+              <input type="number"  th:value="${Account.CMT}" name="cmt">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Chức vụ: </label>
-              <input type="text" value="Thu ngân" class="form-control" id="exampleInputEmail1" readonly>
+              <input type="text" th:value="${Account.TenChucVu}" readonly>
             </div>
+            
+             <div class="form-group">
+              <button type="submit">Cập nhật</button>
+              <a href="home-page">Quay lại</a>
+            </div>
+            
 	</form>
+	
+		<div><a href="change-pass">Đổi mật khẩu</a></div>
 </body>
 </html>

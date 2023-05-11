@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="create">Thêm món</a>
+	<form action="/admin/mon/list">
+		<input type="text" name="searchValue"/>
+		<input type="submit" value="Tìm kiếm"/>
+	</form>
+
+	<table>
+		<tr>
+			<th>Mã món</th>
+			<th>Tên món</th>
+ 			<th>Tên loại</th> 
+			<th>Đơn vị tính</th>
+			<th>Đơn giá</th>
+			<th>Giảm giá</th>
+			<th></th>
+		</tr>
+		<th:block th:each="l : ${list}">
+			<tr>
+				<td th:text="${l.MaMon}"></td>
+				<td th:text="${l.TenMon}"></td>
+				<td th:text="${l.TenLoai}"></td> 
+				<td th:text="${l.DonViTinh}"></td>
+				<td th:text="${l.GiaBan}"></td>
+				<td th:text="${l.GiamGia}"></td>
+ 				<td>
+ 					<a th:href="@{'update/' + ${l.MaMon}}">Sửa</a>
+					<a th:href="@{'delete/' + ${l.MaMon}}">Xóa</a>
+				</td> 
+			</tr>
+		</th:block>
+	</table>
+	
+	<th:block th:each="i : ${#numbers.sequence(1, paging.pageCount)}">
+		   	<a th:if="${i==paging.pageIndex}" style="font-weight: bolder;" th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a>
+		   	<a th:unless="${i==paging.pageIndex}" th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a>
+	</th:block>
+</body>
+</html>

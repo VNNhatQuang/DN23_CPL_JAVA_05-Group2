@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/admin/mon/list">Quay lại</a>
+	<br>
+	<label>Mã món</label><p th:text="${mon.MaMon}"></p>
+	<label>Tên món</label><p th:text="${mon.TenMon}"></p><br>
+	<label>Loại món</label><p th:text="${mon.TenLoai}"></p>
+	<label>Đơn vị tính</label><p th:text="${mon.DonViTinh}"></p>
+	<label>Đơn giá</label><p th:text="${mon.GiaBan}"></p><br>
+	<label>Giảm giá</label><p th:text="${mon.GiamGia}"></p>
+	<br>
+	<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}">Xóa</a>
+</body>
+</html>

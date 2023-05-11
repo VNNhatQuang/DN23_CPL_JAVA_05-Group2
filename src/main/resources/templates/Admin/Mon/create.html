@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4>Thêm món</h4>
+	
+	 <form action="create" method="post">
+		Tên món: <input type="text" name="TenMon" autofocus/> <br>
+		
+		<label class="control-label col-sm-2">Tên loại</label>
+                <select name="ID_LoaiMon" >
+				  <option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+				</select>
+				<br>
+				
+		Đơn vị tính: <input type="text" name="DonViTinh" /><br>
+		Đơn giá: <input type="number" name="GiaBan" min="0" /><br>
+		Giảm giá: <input type="number" name="GiamGia" min="0" /><br>
+		<input type="submit" value="Thêm"/>
+		<a href="list">Quay lại</a>
+	</form>
+</body>
+</html>

@@ -10,10 +10,14 @@ public class TaiKhoan {
 	private String DiaChi;
 	private String SDT;
 	private String CMT;
-	private int ID_ChucVu;
+	private String TenChucVu;
 	
+	public TaiKhoan() {
+		super();
+	}
+
 	public TaiKhoan(String maTK, String matKhau, String tenNV, Date ngaySinh, String diaChi, String sDT, String cMT,
-			int iD_ChucVu) {
+			String tenChucVu) {
 		super();
 		MaTK = maTK;
 		MatKhau = matKhau;
@@ -22,11 +26,7 @@ public class TaiKhoan {
 		DiaChi = diaChi;
 		SDT = sDT;
 		CMT = cMT;
-		ID_ChucVu = iD_ChucVu;
-	}
-
-	public TaiKhoan() {
-		super();
+		TenChucVu = tenChucVu;
 	}
 
 	public String getMaTK() {
@@ -85,13 +85,14 @@ public class TaiKhoan {
 		CMT = cMT;
 	}
 
-	public int getID_ChucVu() {
-		return ID_ChucVu;
+	public String getTenChucVu() {
+		return TenChucVu;
 	}
 
-	public void setID_ChucVu(int iD_ChucVu) {
-		ID_ChucVu = iD_ChucVu;
+	public void setTenChucVu(String tenChucVu) {
+		TenChucVu = tenChucVu;
 	}
+	
 	
 	
 }

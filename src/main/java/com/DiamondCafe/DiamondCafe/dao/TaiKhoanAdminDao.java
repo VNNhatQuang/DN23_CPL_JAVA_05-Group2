@@ -8,7 +8,7 @@ public interface TaiKhoanAdminDao {
 	
 	TaiKhoan dangNhap(String account, String pass );
 	
-	void doiMatKhau(String account, String oldPass, String newPass);
+	void doiMatKhau(String account, String newPass);
 	
-	void chinhSuaThongTinCaNhan(String tenNV, Date ngaySinh, String diaChi, String sDT, String cMT);
+	void capNhat(String maTK, String tenNV, String ngaySinh, String diaChi, String sDT, String cMT);
 }
