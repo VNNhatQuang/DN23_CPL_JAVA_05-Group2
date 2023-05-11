@@ -26,4 +26,6 @@ public interface NhanVienSoDoChinhService {
 	void AddToOrder(Order mon, List<Order> list);
 	
 	double TotalMoney(List<Order> list);
+	
+	List<Order> DeleteProductFromOrder(int id, List<Order> list);
 }
