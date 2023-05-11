@@ -24,26 +24,33 @@
                 <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
             </div>
             <div class="box">
-                <form action="" method="get" class="form-search">
+                <form action=""  th:action="@{/nhan-vien/phieu-dat-ban/}"
+                      th:object="${pdbModel}"
+                      method="post"
+                      class="form-search">
                     <h5>Thêm phiếu đặt bàn</h5>
                     <div class="container">
                         <div class="row">
                             <div class="col-2">Tên KH:</div>
-                            <div class="col-10"><input type="text" name="TenKH"></div>
+                            <div class="col-10"><input type="text" name="TenKH"
+                            th:field="*{getTenNguoiDat()}"></div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-2">SĐT:</div>
-                            <div class="col-10"><input type="text" name="SoDienThoai"></div>
+                            <div class="col-10"><input type="text" name="SoDienThoai"
+                            th:field="*{getSDT()}"></div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-2">Ngày đặt:</div>
-                            <div class="col-4"><input type="date" name="NgayDat"></div>
+                            <div class="col-4"><input type="date" name="NgayDat"
+                            th:field="*{getNgayDat()}"></div>
                             <div class="col-2">Giờ đặt:</div>
-                            <div class="col-4"><input type="time" name="ThoiGian"></div>
+                            <div class="col-4"><input type="time" name="ThoiGian"
+                            th:field="*{getGioBatdau()}">></div>
                         </div>
                     </div>
                     <div class="container">
@@ -87,13 +94,13 @@
                         <tr th:each="item :${listPDC}">
                             <td> <input type="radio" name="1"></td>
 <!--                            <id><input type="hidden" value=th:text="${listPDC.MaPhieu}"></id>-->
-                            <td th:text="${listPDC.TenNguoiDat}"></td>
-                            <td th:text="${listPDC.SDT}"></td>
-                            <td th:text="${listPDC.NgayDat}"></td>
-                            <td th:text="${listPDC.GioBatDau}"></td>
-                            <td th:text="${listPDC.SoBan}"></td>
+                            <td th:text="${item.getTenNguoiDat()}"></td>
+                            <td th:text="${item.getSDT()}"></td>
+                            <td th:text="${item.getNgayDat()}"></td>
+                            <td th:text="${item.getGioBatdau()}"></td>
+                            <td th:text="${item.getSoBan()}"></td>
                             <td >
-                                <a>
+                                <a th:href="@{'/'}">
                                     <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                                 </a>
                                 <a href="">
@@ -119,12 +126,12 @@
 
         <div class="list-orderTable">
             <button class="btn btn-warning" >Danh sách phiếu đặt bàn</button>
-            <button class="btn btn-primary">Thêm phiếu đặt</button>
+            <button class="btn btn-primary" >Thêm phiếu đặt</button>
         </div>
 
         <div id="table-contain">
 
-            <a href="">
+            <a th:href="">
                 <div class="x-line"></div>
                 <div class="box-table">
                     <div class="y-line-1"></div>

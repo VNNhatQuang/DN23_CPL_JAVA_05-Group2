@@ -23,9 +23,10 @@ public class PhieudatbanController
     @Autowired
     IPhieudatbanService iphieudatbanService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getMainDatCho(Model model){
         List<Phieudatban> listdc = iphieudatbanService.getAlllistPhieu();
+        model.addAttribute("pdbModel", new Phieudatban());
         model.addAttribute("listPDC", listdc);
         return "Employee/DatCho/index";
     }
