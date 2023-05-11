@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial';
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eee;
+        }
+        
+        #title {
+            color: #fff;
+            background: #367fa8;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        #title {
+            text-transform: uppercase;
+        }
+        
+        span {
+            text-transform: lowercase !important;
+        }
+        
+        form {
+            color: #fff;
+            padding: 30px;
+            background: #222d31;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input {
+            width: 400px;
+            padding: 8px 20px;
+            margin-top: 10px;
+        }
+        
+        input[type="submit"] {
+            padding: 15px;
+            color: #fff;
+            margin: 40px 0 30px 0;
+            background: #367fa8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background: #3ac8f3;
+        }
+        
+        .redirect-employee {
+            text-align: end;
+        }
+        
+        a {
+            color: #fff;
+            text-align: end;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="form-login">
+            <div id="title">
+                Diamond <b>Cafe</b> <span>for</span> <b>Admin</b>
+            </div>
+            <form action="login" method="post">
+                <label>Mã tài khoản</label>
+                <input type="text" name="MaTK" id="">
+                <br>
+                <label>Mật khẩu</label>
+                <input type="password" name="MatKhau" id="">
+                <input type="submit" value="Đăng nhập">
+                <div class="redirect-employee">
+                    <a href="login.jsp">Trang Nhân viên</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
