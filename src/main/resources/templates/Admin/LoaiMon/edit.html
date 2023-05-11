@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -9,7 +9,6 @@
 	<form action="/admin/loaimon/update" method="post">
 		<input type="hidden" name="IDLoai" th:value="${lm.IDLoai}"/>
 		Tên loại món: <input type="text" name="TenLoai" th:value="${lm.TenLoai}"/>
-		Giảm giá: <input type="number" name="GiamGia" th:value="${lm.GiamGia}"/>
 		<input type="submit" value="Cập nhật"/>
 	</form>
 </body>

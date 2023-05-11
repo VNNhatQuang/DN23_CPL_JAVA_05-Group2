@@ -31,95 +31,45 @@
                 <form action="" method="post" class="form-member">
                     <table>
                         <tr>
-                            <th></th>
                             <th>Họ tên thành viên</th>
                             <th>Số điện thoại</th>
-                            <th>Điểm tích lũy</th>
+                            <th></th>
                         </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Họ tên thành viên</td>
-                            <td>Số điện thoại</td>
-                            <td>Điểm tích lũy</td>
-                        </tr>
+                        
+                        <th:block th:each="kh : ${listCustomer}">
+	                        <tr>
+	                            <td th:text="${kh.HoTen}"></td>
+	                            <td th:text="${kh.SDT}"></td>
+	                            <td><a th:href="${IDLoai} + @{/applyMember?total=} + ${total}">Áp dụng</a></td>
+	                        </tr>
+                        </th:block>
+                        
                     </table>
-                    <div class="btn-ApDung">
-                        <input class="btn btn-primary" type="submit" value="Áp dụng">
-
-                    </div>
                 </form>
             </div>
         </div>
     </div>
-
+	
     <div id="header">
         <div id="menu-l">
             <div class="money-total">
                 <b>Tổng tiền</b>
-                <input type="number" value="0" disabled/>
+                <th:block th:if="${total==0}">
+                	<input type="text" th:value="${total} + ' VND'" readonly="readonly"/>
+                </th:block>
+                <th:block th:unless="${total==0}">
+                	<input type="text" th:value="${#numbers.formatInteger(total,3,'COMMA')} + ' VND'" readonly="readonly"/>
+                </th:block>
+                
             </div>
             <div class="sale">
                 <p>Giảm giá toàn hóa đơn</p>
-                <input type="number" min="0" max="100" value="0">
+                <input type="number" min="0" max="100" value="0" readonly="readonly">
             </div>
         </div>
         <div id="menu-r">
             <div class="menu-bar bgr-blue">
-                <a href="/holla">
+                <a th:href="${IDLoai} + @{/saveOrder}">
                     <div class="contain">
                         <p>Thêm PĐM</p>
                     </div>
@@ -150,151 +100,26 @@
                             <th>Tên món</th>
                             <th>Số lượng</th>
                             <th>Giá bán</th>
-                            <th>Giảm giá</th>
                             <th>Ghi chú</th>
                             <th>Thành tiền</th>
                             <th></th>
                         </tr>
 
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
-
-                        <tr>
-                            <form action="" method="post">
-                                <td><input type="checkbox" name="MaMon"></td>
-                                <td>1</td>
-                                <td>Cà phê đen</td>
-                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
-                                <td>12,000</td>
-                                <td>0</td>
-                                <td><input type="text" name="GhiChu"></td>
-                                <td>12,000</td>
-                                <td><input type="submit" value="Cập nhật"></td>
-                            </form>
-                        </tr>
+						<th:block th:each="o,i : ${session.order}">
+	                        <tr>
+	                            <form th:action="${IDLoai} + @{/save}" method="post">
+	                            	<input type="hidden" name="MaMon" th:value="${o.MaMon}" >
+	                                <td><input type="checkbox" name=""></td>
+	                                <td th:text="${i.index+1}"></td>
+	                                <td th:text="${o.TenMon}"></td>
+	                                <td><input name="SoLuong" type="number" th:value="${o.SoLuong}" min="1"></td>
+	                                <td th:text="${o.DonGia}"></td>
+	                                <td><input type="text" name="GhiChu" th:value="${o.GhiChu}"></td>
+	                                <td th:text="${o.ThanhTien} + ' VND'"></td>
+	                                <td><input type="submit" value="Cập nhật"></td>
+	                            </form>
+	                        </tr>
+	                  	</th:block>
 
                     </table>
                 </div>
@@ -302,13 +127,18 @@
                     <div class="category">
                         <ul>
                         	<th:block th:each="c : ${listCategories}">
-                        		<li><a href="" th:text="${c.TenLoai}"></a></li>
+                       			<th:block th:if="${c.IDLoai==IDLoai}">
+                       				<li><a style="background: #007acc; color: #fff !important;" th:href="@{/home/themphieu/} + ${SoBan} + '/' + ${c.IDLoai}" th:text="${c.TenLoai}"></a></li>
+                       			</th:block>
+                       			<th:block th:unless="${c.IDLoai==IDLoai}">
+                       				<li><a th:href="@{/home/themphieu/} + ${SoBan} + '/' + ${c.IDLoai}" th:text="${c.TenLoai}"></a></li>
+                       			</th:block>
                         	</th:block>
                         </ul>
                     </div>
                     <div class="list-product">
                     	<th:block th:each="p : ${listProduct}">
-                    		<a th:href="@{add?MaMon=} + ${p.MaMon}" class="product">
+                    		<a th:href="${IDLoai} +  @{/add?MaMon=} + ${p.MaMon}" class="product">
 	                            <p th:text="${p.TenMon}"></p>
 	                        </a>
                     	</th:block>

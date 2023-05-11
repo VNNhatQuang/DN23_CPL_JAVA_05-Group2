@@ -5,7 +5,6 @@ public class Mon {
 	private String TenMon;
 	private String DonViTinh;
 	private double GiaBan;
-	private int GiamGia;
 	private int ID_LoaiMon;
 	
 	public Mon() {
@@ -13,13 +12,12 @@ public class Mon {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Mon(int maMon, String tenMon, String donViTinh, double giaBan, int giamGia, int iD_LoaiMon) {
+	public Mon(int maMon, String tenMon, String donViTinh, double giaBan, int iD_LoaiMon) {
 		super();
 		MaMon = maMon;
 		TenMon = tenMon;
 		DonViTinh = donViTinh;
 		GiaBan = giaBan;
-		GiamGia = giamGia;
 		ID_LoaiMon = iD_LoaiMon;
 	}
 
@@ -53,14 +51,6 @@ public class Mon {
 
 	public void setGiaBan(double giaBan) {
 		GiaBan = giaBan;
-	}
-
-	public int getGiamGia() {
-		return GiamGia;
-	}
-
-	public void setGiamGia(int giamGia) {
-		GiamGia = giamGia;
 	}
 
 	public int getID_LoaiMon() {

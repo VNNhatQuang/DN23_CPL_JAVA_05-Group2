@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.DiamondCafe.DiamondCafe.bean.Ban;
+import com.DiamondCafe.DiamondCafe.bean.KhachHang;
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
 import com.DiamondCafe.DiamondCafe.dao.NhanVienSoDoChinhDao;
@@ -40,6 +41,21 @@ public class NhanVienSoDoChinhImpl implements NhanVienSoDoChinhDao {
 		}, new MonRowMapper());
 	}
 
+	@Override
+	public Mon getProduct(int id) {
+		String query = "SELECT * FROM MON WHERE MaMon=?";
+		List<Mon> list = jdbc.query(query, new Object[] {
+				id
+		}, new MonRowMapper());
+		return list.get(0);
+	}
+
+	@Override
+	public List<KhachHang> getListCustomer() {
+		String query = "SELECT * FROM KHACH_HANG WHERE MaKH>1";
+		return jdbc.query(query, new KhachHangRowMapper());
+	}
+
 }
 
 
@@ -64,9 +80,21 @@ class MonRowMapper implements RowMapper<Mon> {
 		m.setTenMon(rs.getString("TenMon"));
 		m.setDonViTinh(rs.getString("DonViTinh"));
 		m.setGiaBan(rs.getDouble("GiaBan"));
-		m.setGiamGia(rs.getInt("GiamGia"));
 		m.setID_LoaiMon(rs.getInt("ID_LoaiMon"));
 		return m;
+	}
+	
+}
+
+class KhachHangRowMapper implements RowMapper<KhachHang> {
+
+	@Override
+	public KhachHang mapRow(ResultSet rs, int rowNum) throws SQLException {
+		KhachHang kh = new KhachHang();
+		kh.setMaKH(rs.getInt("MaKH"));
+		kh.setHoTen(rs.getString("HoTen"));
+		kh.setSDT(rs.getString("SDT"));
+		return kh;
 	}
 	
 }
