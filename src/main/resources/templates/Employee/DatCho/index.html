@@ -15,7 +15,7 @@
 
 <body>
 
-    <div id="header" th:replace="Employee/header :: header"></div>
+    <div id="header" th:replace="~{Employee/header :: header}"></div>
 
     <!-- Form Thêm phiếu đặt bàn -->
     <div id="form-createOrderTable">
@@ -84,14 +84,15 @@
                             <th>Bàn</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <td><input type="radio" name="1"></td>
-                            <td>Nguyễn Văn A</td>
-                            <td>0912345678</td>
-                            <td>26/11/2023</td>
-                            <td>20:00</td>
-                            <td>14</td>
-                            <td>
+                        <tr th:each="item :${listPDC}">
+                            <td> <input type="radio" name="1"></td>
+<!--                            <id><input type="hidden" value=th:text="${listPDC.MaPhieu}"></id>-->
+                            <td th:text="${listPDC.TenNguoiDat}"></td>
+                            <td th:text="${listPDC.SDT}"></td>
+                            <td th:text="${listPDC.NgayDat}"></td>
+                            <td th:text="${listPDC.GioBatDau}"></td>
+                            <td th:text="${listPDC.SoBan}"></td>
+                            <td >
                                 <a>
                                     <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                                 </a>
@@ -117,7 +118,7 @@
     <div id="main">
 
         <div class="list-orderTable">
-            <button class="btn btn-warning">Danh sách phiếu đặt bàn</button>
+            <button class="btn btn-warning" >Danh sách phiếu đặt bàn</button>
             <button class="btn btn-primary">Thêm phiếu đặt</button>
         </div>
 

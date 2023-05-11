@@ -17,17 +17,24 @@ import java.util.List;
  * @AUTHOR Kiel
  */
 @Controller
-@RequestMapping("/nhanvien/phieu-dat-ban")
+@RequestMapping("/nhan-vien/phieu-dat-ban")
 public class PhieudatbanController
 {
     @Autowired
     IPhieudatbanService iphieudatbanService;
 
     @GetMapping("/")
+    public String getMainDatCho(Model model){
+        List<Phieudatban> listdc = iphieudatbanService.getAlllistPhieu();
+        model.addAttribute("listPDC", listdc);
+        return "Employee/DatCho/index";
+    }
+
+    @GetMapping("/ds-dat-cho")
     public String getlistphieu(Model model){
-        List<Phieudatban> listdh = iphieudatbanService.getAlllistPhieu();
-        model.addAttribute("listNV", listdh);
-        return "nhanvien/list";
+        List<Phieudatban> listdc = iphieudatbanService.getAlllistPhieu();
+        model.addAttribute("listPDC", listdc);
+        return "Employee/DatCho/index";
     }
 
     @GetMapping("/add-form")
