@@ -456,6 +456,13 @@ td>a>.fa-check {
     border-radius: 5px;
 }
 
+td>a>.fa-trash {
+    font-size: 10px;
+    background: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 td>a {
     cursor: pointer;
 }

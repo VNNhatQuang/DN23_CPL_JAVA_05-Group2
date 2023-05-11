@@ -301,7 +301,7 @@ li>a:hover {
     width: 100%;
     background: #fff;
     overflow: scroll;
-    text-align: justify;
+    text-align: center;
 }
 
 .product {

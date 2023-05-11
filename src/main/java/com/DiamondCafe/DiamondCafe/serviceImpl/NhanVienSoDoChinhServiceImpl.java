@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.DiamondCafe.DiamondCafe.bean.Ban;
+import com.DiamondCafe.DiamondCafe.bean.KhachHang;
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.Order;
 import com.DiamondCafe.DiamondCafe.dao.NhanVienSoDoChinhDao;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 
@@ -35,6 +37,34 @@ public class NhanVienSoDoChinhServiceImpl implements NhanVienSoDoChinhService {
 		return sdcDao.getListProduct(id);
 	}
 
-	
+	@Override
+	public Mon getProduct(int id) {
+		// TODO Auto-generated method stub
+		return sdcDao.getProduct(id);
+	}
+
+	@Override
+	public void AddToOrder(Order mon, List<Order> list)	{	   
+		for(Order o : list)
+			if(o.getMaMon() == mon.getMaMon()) {
+				o.setSoLuong(o.getSoLuong()+1);
+				return;
+			}
+		list.add(mon);
+	}
+
+	@Override
+	public double TotalMoney(List<Order> list) {
+		double sum = 0;
+		for (Order o : list)
+			sum+=o.getThanhTien();
+		return sum;
+	}
+
+	@Override
+	public List<KhachHang> getListCustomer() {
+		// TODO Auto-generated method stub
+		return sdcDao.getListCustomer();
+	}
 	
 }
