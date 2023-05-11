@@ -50,16 +50,14 @@ public class LoaiMonDaoImpl implements LoaiMonDao {
 		String query = "INSERT INTO LOAI_MON VALUES(?,?)";
 		jdbc.update(query, new Object[] {
 				lm.getTenLoai()
-				, lm.getGiamGia()
 		});
 	}
 
 	@Override
 	public void Update(LoaiMon lm) {
-		String query = "UPDATE LOAI_MON SET TenLoai=?, GiamGia=? WHERE IDLoai=?";
+		String query = "UPDATE LOAI_MON SET TenLoai=? WHERE IDLoai=?";
 		jdbc.update(query, new Object[] {
 				lm.getTenLoai()
-				, lm.getGiamGia()
 				, lm.getIDLoai()
 		});
 	}
@@ -111,7 +109,6 @@ class LoaiMonRowMapper implements RowMapper<LoaiMon> {
 		LoaiMon lm = new LoaiMon();
 		lm.setIDLoai(rs.getInt("IDLoai"));
 		lm.setTenLoai(rs.getString("TenLoai"));
-		lm.setGiamGia(rs.getInt("GiamGia"));
 		return lm;
 	}
 	

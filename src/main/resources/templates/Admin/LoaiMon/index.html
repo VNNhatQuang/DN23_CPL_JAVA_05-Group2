@@ -15,14 +15,14 @@
 		<tr>
 			<th>MÃ£ Loáº¡i mÃ³n</th>
 			<th>TÃªn Loáº¡i mÃ³n</th>
-			<th>Giáº£m giÃ¡</th>
+			
 			<th></th>
 		</tr>
 		<th:block th:each="lm : ${mon}">
 			<tr>
 				<td th:text="${lm.IDLoai}"></td>
 				<td th:text="${lm.TenLoai}"></td>
-				<td th:text="${lm.GiamGia}"></td>
+			
 				<td><a th:href="@{'loaimon/edit/' + ${lm.IDLoai}}">Sá»­a</a></td>
 				<td><a th:href="@{'loaimon/delete/' + ${lm.IDLoai}}">XÃ³a</a></td>
 			</tr>

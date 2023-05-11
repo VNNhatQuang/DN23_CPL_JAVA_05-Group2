@@ -59,12 +59,11 @@ public class MonDaoImpl implements MonDao {
 	@Override
 	public void CreateMon(Mon m) {
 		// TODO Auto-generated method stub
-		String query="insert into Mon(TenMon, DonViTinh, GiaBan, GiamGia, ID_LoaiMon) values(?,?,?,?,?)";
+		String query="insert into Mon(TenMon, DonViTinh, GiaBan, ID_LoaiMon) values(?,?,?,?)";
 		jdbc.update(query, new Object[] {
 			m.getTenMon(),
 			m.getDonViTinh(),
 			m.getGiaBan(),
-			m.getGiamGia(),
 			m.getID_LoaiMon(),
 		});
 	}
@@ -72,12 +71,11 @@ public class MonDaoImpl implements MonDao {
 	@Override
 	public void UpdateMon(Mon m) {
 		// TODO Auto-generated method stub
-		String query = "UPDATE MON SET TenMon=?, DonViTinh=?, GiaBan=?, GiamGia=?, ID_LoaiMon=? WHERE MaMon=?";
+		String query = "UPDATE MON SET TenMon=?, DonViTinh=?, GiaBan=?, ID_LoaiMon=? WHERE MaMon=?";
 		jdbc.update(query, new Object[] {
 				m.getTenMon()
 				, m.getDonViTinh()
 				, m.getGiaBan()
-				, m.getGiamGia()
 				, m.getID_LoaiMon()
 				, m.getMaMon()
 		});
@@ -99,7 +97,6 @@ public class MonDaoImpl implements MonDao {
 			m.setTenLoai(rs.getString("TenLoai"));
 			m.setDonViTinh(rs.getString("DonViTinh"));
 			m.setGiaBan(rs.getFloat("GiaBan"));
-			m.setGiamGia(rs.getInt("GiamGia"));
 			m.setID_LoaiMon(rs.getInt("ID_LoaiMon"));
 			
 			return m;

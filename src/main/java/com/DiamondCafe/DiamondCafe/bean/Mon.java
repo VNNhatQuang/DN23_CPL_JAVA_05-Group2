@@ -7,17 +7,15 @@ public class Mon {
 	private int ID_LoaiMon;
 	private String DonViTinh;
 	private float GiaBan;
-	private int GiamGia;
 	
 	
-	public Mon(int maMon, String tenMon, String tenLoai, String donViTinh, float giaBan, int giamGia, int iD_LoaiMon) {
+	public Mon(int maMon, String tenMon, String tenLoai, String donViTinh, float giaBan, int iD_LoaiMon) {
 		super();
 		MaMon = maMon;
 		TenMon = tenMon;
 		TenLoai = tenLoai;
 		DonViTinh = donViTinh;
 		GiaBan = giaBan;
-		GiamGia = giamGia;
 		ID_LoaiMon = iD_LoaiMon;
 	}
 
@@ -63,14 +61,6 @@ public class Mon {
 
 	public void setGiaBan(float giaBan) {
 		GiaBan = giaBan;
-	}
-
-	public int getGiamGia() {
-		return GiamGia;
-	}
-
-	public void setGiamGia(int giamGia) {
-		GiamGia = giamGia;
 	}
 
 	public int getID_LoaiMon() {

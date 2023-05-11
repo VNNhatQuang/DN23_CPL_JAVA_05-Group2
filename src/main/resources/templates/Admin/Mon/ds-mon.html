@@ -18,7 +18,6 @@
  			<th>Tên loại</th> 
 			<th>Đơn vị tính</th>
 			<th>Đơn giá</th>
-			<th>Giảm giá</th>
 			<th></th>
 		</tr>
 		<th:block th:each="l : ${list}">
@@ -28,7 +27,6 @@
 				<td th:text="${l.TenLoai}"></td> 
 				<td th:text="${l.DonViTinh}"></td>
 				<td th:text="${l.GiaBan}"></td>
-				<td th:text="${l.GiamGia}"></td>
  				<td>
  					<a th:href="@{'update/' + ${l.MaMon}}">Sửa</a>
 					<a th:href="@{'delete/' + ${l.MaMon}}">Xóa</a>

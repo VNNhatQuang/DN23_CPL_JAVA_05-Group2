@@ -12,7 +12,6 @@
 	<label>Loại món</label><p th:text="${mon.TenLoai}"></p>
 	<label>Đơn vị tính</label><p th:text="${mon.DonViTinh}"></p>
 	<label>Đơn giá</label><p th:text="${mon.GiaBan}"></p><br>
-	<label>Giảm giá</label><p th:text="${mon.GiamGia}"></p>
 	<br>
 	<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}">Xóa</a>
 </body>
