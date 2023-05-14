@@ -29,13 +29,6 @@ public class LoaiMon {
 
 	public void setTenLoai(String tenLoai) {
 		TenLoai = tenLoai;
-	}
-
-	@Override
-	public String toString() {
-		return "LoaiMon [IDLoai=" + IDLoai + ", TenLoai=" + TenLoai + "]";
-	}
-	
-	
+	}	
 	
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In lại hóa đơn</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/Employee/InLaiHoaDon/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+	<div id="header" th:replace="Employee/header :: header"></div>
+
+
+    <div id="main">
+        <div id="form-search">
+            <form action="" method="get">
+                <input type="text" name="searchValue" placeholder="Tìm kiếm hóa đơn theo số điện thoại" autofocus>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+            </form>
+        </div>
+        <div id="list-bill">
+            <table>
+	            <thead>
+	                <tr>
+	                    <th>Mã hóa đơn</th>
+	                    <th>Khách hàng</th>
+	                    <th>Ngày lập hóa đơn</th>
+	                    <th>Tổng trị giá hóa đơn</th>
+	                    <th></th>
+	                </tr>
+	              </thead>
+	              
+	              <tbody th:each="l : ${listHD}">
+	                <tr >
+	                    <td th:text="${l.SoHD}"></td>
+	                    <td th:text="${l.HoTen}"></td>
+						<td th:text="${l.Ngay}"></td> 
+						<td th:text="${l.TongTien}"></td>
+	                    <td>
+	                        <a th:href="@{'/home/xemchitiet/' + ${l.SoHD}}">
+	                            <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+	                        </a>
+	                        <a href="#">
+	                            <i class="fa-solid fa-print" style="color: #ffffff;"></i>
+	                        </a>
+	                    </td>
+	                </tr>
+				</tbody>
+
+
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

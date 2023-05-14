@@ -2,7 +2,7 @@ package com.DiamondCafe.DiamondCafe.dao;
 
 import com.DiamondCafe.DiamondCafe.bean.ThongKe;
 
-public interface ThongKeDao {
+public interface AdminThongKeDao {
 	
 	ThongKe ThongKeNgay(int day);
 	

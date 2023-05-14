@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán mang về</title>
+    <link rel="stylesheet" th:href="@{/Employee/BanMangVe/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="header" th:replace="Employee/header :: header"></div>
+
+    <div id="member">
+        <div class="member-list">
+            <div class="form-close">
+                <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
+            </div>
+            <div class="box">
+                <form action="" method="get" class="form-search">
+                    <h5>Danh sách khách hàng</h5>
+                    <input type="text" name="searchValue" placeholder="Tìm kiếm theo Số điện thoại" autofocus>
+                    <input type="submit" value="Tìm kiếm">
+                </form>
+                <form action="" method="post" class="form-member">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Họ tên thành viên</th>
+                            <th>Số điện thoại</th>
+                            <th>Điểm tích lũy</th>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="1"></td>
+                            <td>Họ tên thành viên</td>
+                            <td>Số điện thoại</td>
+                            <td>Điểm tích lũy</td>
+                        </tr>
+                    </table>
+                    <div class="btn-ApDung">
+                        <input class="btn btn-primary" type="submit" value="Áp dụng">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="header-order">
+        <div id="menu-l">
+            <div class="money-total">
+                <b>Tổng tiền</b>
+                <input type="number" value="0" disabled/>
+            </div>
+            <div class="sale">
+                <p>Giảm giá toàn hóa đơn</p>
+                <input type="number" min="0" max="100" value="0">
+            </div>
+        </div>
+        <div id="menu-r">
+            <div class="menu-bar bgr-blue">
+                <a href="/holla">
+                    <div class="contain">
+                        <p>Thêm PĐM</p>
+                    </div>
+                </a>
+            </div>
+            <div class="menu-bar bgr-yellow">
+                <a href="/hello">
+                    <div class="contain">
+                        <p>Quay lại</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="order-content">
+            <div class="order">
+                <div class="order-detail">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>STT</th>
+                            <th>Tên món</th>
+                            <th>Số lượng</th>
+                            <th>Giá bán</th>
+                            <th>Giảm giá</th>
+                            <th>Ghi chú</th>
+                            <th>Thành tiền</th>
+                            <th></th>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                        <tr>
+                            <form action="" method="post">
+                                <td><input type="checkbox" name="MaMon"></td>
+                                <td>1</td>
+                                <td>Cà phê đen</td>
+                                <td><input name="SoLuong" type="number" value="1" min="1"></td>
+                                <td>12,000</td>
+                                <td>0</td>
+                                <td><input type="text" name="GhiChu"></td>
+                                <td>12,000</td>
+                                <td><input type="submit" value="Cập nhật"></td>
+                            </form>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="menu-order">
+                    <div class="category">
+                        <ul>
+                            <li><a href="">Cà phê Việt Nam</a></li>
+                            <li>
+                                <a href="">Cà phê Ý</a>
+                            </li>
+                            <li>
+                                <a href="">Cà phê đặc biêt</a>
+                            </li>
+                            <li>
+                                <a href="">Trà sữa</a>
+                            </li>
+                            <li>
+                                <a href="">Trà trái cây</a>
+                            </li>
+                            <li>
+                                <a href="">Sinh tố</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-product">
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                        <a href="" class="product">
+                            <p>Cà phê đen</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="order-function">
+                <button class="btn btn-light btn-HoiVien">Hội viên</button>
+                <button class="btn btn-light">Chuyển ngồi tại bàn</button>
+                <div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                <div class="order-function-child">
+                    <hr>
+                    <button class="btn btn-light">Bỏ món</button>
+                    <button class="btn btn-danger">Bỏ hết món</button>
+                    <button class="btn btn-light">Tổng tiền</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script th:src="@{Employee/assets/js/app.js}"></script>
+
+</body>
+
+</html>

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
 import com.DiamondCafe.DiamondCafe.bean.Paging;
-import com.DiamondCafe.DiamondCafe.service.LoaiMonService;
+import com.DiamondCafe.DiamondCafe.bean.TaiKhoan;
+import com.DiamondCafe.DiamondCafe.service.AdminLoaiMonService;
 import com.DiamondCafe.DiamondCafe.service.MonService;
+import com.DiamondCafe.DiamondCafe.service.TaiKhoanAdminService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -27,14 +29,19 @@ public class AdminMonController {
 	@Autowired
 	private MonService monSV;
 	@Autowired
-	private LoaiMonService loaiMonSV;
+	private TaiKhoanAdminService taiKhoanSV;
+	@Autowired
+	private AdminLoaiMonService loaiMonSV;
 	private final int PAGE_SIZE = 5;
+	
 	
 	@GetMapping("list")
 	public String index(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
 		
 		String MaTK=(String)session.getAttribute("MaTK");
-		if(MaTK==null || MaTK=="") {
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
 			return "redirect:/admin/login";
 		}
 		else {
@@ -45,22 +52,34 @@ public class AdminMonController {
 			String searchValue = "";
 			if(request.getParameter("searchValue")!=null)
 				searchValue = request.getParameter("searchValue");
+//				String searchValue=tmp+"%";
+				
 			int rowCount = monSV.Count(searchValue);
 			Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
 			request.setAttribute("paging", p);
 			request.setAttribute("list", monSV.GetList(page, PAGE_SIZE, searchValue));
+			request.setAttribute("Account", tk);
 			
 //			List<Mon> m=monSV.GetAllMon();
 //			modelMap.addAttribute("mon", m);
+			
 			return "Admin/Mon/ds-mon";
 		}	
 	}
 	
 	@GetMapping("create")
-	public String create(@ModelAttribute Mon mon, ModelMap modelMap) {
-		List<LoaiMon> lm=loaiMonSV.getAll();
-		modelMap.addAttribute("loaiMon", lm);
-		return "Admin/Mon/create";
+	public String create(@ModelAttribute Mon mon, ModelMap modelMap, HttpSession session, HttpServletRequest request) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}else {
+			request.setAttribute("Account", tk);
+			List<LoaiMon> lm=loaiMonSV.getAll();
+			modelMap.addAttribute("loaiMon", lm);
+			return "Admin/Mon/create";
+		}
 	}
 	
 	@PostMapping("create")
@@ -70,10 +89,18 @@ public class AdminMonController {
 	}
 	
 	@GetMapping("delete/{id}")
-	public String delete(HttpServletRequest request, @PathVariable("id") int id) {
-		Mon m=monSV.getMon(id);
-		request.setAttribute("mon", m);
-		return "Admin/Mon/delete";
+	public String delete(HttpServletRequest request, @PathVariable("id") int id, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}else {
+			request.setAttribute("Account", tk);
+			Mon m=monSV.getMon(id);
+			request.setAttribute("mon", m);
+			return "Admin/Mon/delete";
+		}
 	}
 	
 	@GetMapping("delete/confirm/{id}")
@@ -83,12 +110,20 @@ public class AdminMonController {
 	}
 	
 	@GetMapping("update/{id}")
-	public String showFormEdit(HttpServletRequest request, @PathVariable("id") int id) {
-		Mon m = monSV.getMon(id);
-		List<LoaiMon> lm=loaiMonSV.getAll();
-		request.setAttribute("loaiMon", lm);
-		request.setAttribute("mon", m);
-		return "Admin/Mon/update";
+	public String showFormEdit(HttpServletRequest request, @PathVariable("id") int id, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}else {
+			request.setAttribute("Account", tk);
+			Mon m = monSV.getMon(id);
+			List<LoaiMon> lm=loaiMonSV.getAll();
+			request.setAttribute("loaiMon", lm);
+			request.setAttribute("mon", m);
+			return "Admin/Mon/update";
+		}
 	}
 	
 	@PostMapping("update")

@@ -2,7 +2,7 @@ package com.DiamondCafe.DiamondCafe.service;
 
 import com.DiamondCafe.DiamondCafe.bean.ThongKe;
 
-public interface ThongKeService {
+public interface AdminThongKeService {
 
 	ThongKe ThongKeNgay(int day);
 	

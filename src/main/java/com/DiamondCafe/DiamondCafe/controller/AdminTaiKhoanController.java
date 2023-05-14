@@ -84,7 +84,16 @@ public class AdminTaiKhoanController {
 	
 	@GetMapping("change-pass")
 	public String changePass (HttpServletRequest request, HttpSession session) {
-        return "Admin/TaiKhoan/change-pass";
+		String MaTK = (String) session.getAttribute("MaTK");
+        String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= tkService.taiKhoan(MaTK, Pass);
+        
+        if(tk!=null) {
+        	request.setAttribute("Account", tk);
+        	return "Admin/TaiKhoan/change-pass";
+        }else {
+        	return "redirect:/admin/login";
+        }
 	}
 	
 	@PostMapping("change-pass")
@@ -100,7 +109,7 @@ public class AdminTaiKhoanController {
 		}else {
 			if(newPass==null || newPass=="" || oldPass==null || oldPass=="" || reNewPass==null || reNewPass==""
 					|| !newPass.equals(reNewPass) || !oldPass.equals(Pass)) {
-				return "Admin/TaiKhoan/change-pass";
+				return "redirect:/admin/change-pass";
 			}else {
 				tkService.doiMatKhau(MaTK, newPass);
 				return "redirect:/admin/login";

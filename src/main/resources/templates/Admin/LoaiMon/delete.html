@@ -1,16 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Admin | XoaMon</title>
+</head>
+<div th:replace="Admin/header"></div>
+<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h2>XÓA LOẠI MÓN</h2>
+
+				<!-- PHAN BODY -->
+				<div class="box box-primary">
+
+					<!-- form start -->
+					<form role="form">
+						<div class="box-body">
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Mã loại:</label>
+								<p th:text="${lm.IDLoai}"></p>
+							</div>
+
+							<br>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Tên loại:</label>
+								<p th:text="${lm.TenLoai}"></p><br>
+							</div>
+
+							<br>
+
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<!-- <button type="submit" class="btn btn-primary"
+										style="background-color: red">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Xoá
+									</button> -->
+									<a th:href="@{'/admin/loaimon/delete/confirm/' + ${lm.IDLoai}}" class="btn btn-primary">Xóa</a>
+									<a href="/admin/loaimon" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+<div th:replace="Admin/footer"></div>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/admin/loaimon">Quay lại</a>
+	<a href="/admin/loaimon">Quay láº¡i</a>
 	<br>
-	<label>Mã Loại món:</label><p th:text="${lm.IDLoai}"></p>
-	<label>Tên loại món:</label><p th:text="${lm.TenLoai}"></p><br>
+	<label>MÃ£ Loáº¡i mÃ³n:</label><p th:text="${lm.IDLoai}"></p>
+	<label>TÃªn loáº¡i mÃ³n:</label><p th:text="${lm.TenLoai}"></p><br>
 	
 	<br>
-	<a th:href="@{'/admin/loaimon/delete/confirm/' + ${lm.IDLoai}}">Xóa</a>
+	<a th:href="@{'/admin/loaimon/delete/confirm/' + ${lm.IDLoai}}">XÃ³a</a>
 </body>
-</html>
+</html> -->

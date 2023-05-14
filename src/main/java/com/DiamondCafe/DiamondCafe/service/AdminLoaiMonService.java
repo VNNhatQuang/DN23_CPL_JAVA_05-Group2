@@ -1,10 +1,10 @@
-package com.DiamondCafe.DiamondCafe.dao;
+package com.DiamondCafe.DiamondCafe.service;
 
 import java.util.List;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 
-public interface LoaiMonDao {
+public interface AdminLoaiMonService {
 	
 	/**
 	 * Hàm lấy danh sách Loại món - Tìm kiếm và Phân trang
@@ -51,4 +51,5 @@ public interface LoaiMonDao {
 	 * @return
 	 */
 	List<LoaiMon> getAll();
+	
 }

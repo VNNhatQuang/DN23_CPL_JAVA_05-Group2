@@ -1,6 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Quản lý món</title>
+</head>
+<div th:replace="Admin/header"></div>
+<!-- =============================================== -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>THU CHI THEO QUÝ</h1>
+
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div style="padding: 15px">
+					<div style="text-align: center;">
+						<a href="ngay" class="btn btn-warning"> Theo ngày </a> <a
+							href="thang" class="btn btn-warning"> Theo tháng </a> <a
+							href="quy" class="btn btn-warning"> Theo quý </a>
+					</div>
+					<div style="padding: 15px">
+						<label>Chọn quý: </label> 
+						<select name="Day" onchange="this.form.submit()">
+							<option th:each="day : ${#numbers.sequence(1,4)}" th:value="${day}" th:text="${day}"></option>
+						</select>
+					</div>
+				</div>
+				<div style="padding: 20px 200px;">
+					<canvas id="myChart"></canvas>
+
+					<script>
+						// Dữ liệu thống kê theo tháng
+						var xValues = ["Quý 1", "Quý 2", "Quý 3", "Quý 4"];
+						var yValues = [ 50, 40, 60, 70];
+
+						new Chart(
+								"myChart",
+								{
+									type : "bar",
+									data : {
+										labels : xValues,
+										datasets : [ {
+											backgroundColor : "blue",
+											data : yValues
+										} ]
+									},
+									options : {
+										legend : {
+											display : false
+										},
+										title : {
+											display : true,
+											text : "Số lượng sản phẩm bán ra theo từng quý"
+										},
+										scales : {
+											yAxes : [ {
+												ticks : {
+													beginAtZero : true
+												}
+											} ]
+										}
+									}
+								});
+					</script>
+					<label>Tiền thu <span class="material-symbols-outlined"
+						style="padding: 2px 10px 10px 20px; background: blue; color: blue; margin: 15px 10px 0px 15px;">rectangle</span>
+					</label>
+					
+				</div>
+
+		</section>
+
+		<!-- /.content -->
+	</div>
+
+<div th:replace="Admin/footer"></div>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <title>Thống kê quý</title>
 </head>
@@ -17,4 +102,4 @@
 	
 	
 </body>
-</html>
+</html> -->

@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Trang chủ</title>
 </head>
-<body>
-	<p><lable th:text="'WELCOME '+${Account.TenNV}"></lable></p>
-	<a href="show-info">Tài khoản</a>
-	<a href="logout">Đăng xuất</a>
-	<a href="mon/list">DS Món</a>
-</body>
-</html>
+	<div th:replace="Admin/header"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h3 style="color: #3C8DBC";>Website Adminstrator</h3>
+				<h1 style="font-size: 50px; color: #3C8DBC">
+					<b>Welcome <span th:text="${Account.TenNV}"></span></b>
+				</h1>
+			</section>
+		</div>
+	<div th:replace="Admin/footer"></div>

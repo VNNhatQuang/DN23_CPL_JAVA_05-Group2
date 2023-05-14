@@ -1,6 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Quản lý món</title>
+</head>
+<div th:replace="Admin/header"></div>
+<!-- =============================================== -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>THU CHI THEO NGÀY</h1>
+
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div style="padding: 15px">
+					<div style="text-align: center;">
+						<a href="ngay" class="btn btn-warning"> Theo ngày </a> <a
+							href="thang" class="btn btn-warning"> Theo tháng </a> <a
+							href="quy" class="btn btn-warning"> Theo quý </a>
+					</div>
+					<div style="padding: 15px">
+						<label>Chọn ngày: </label> 
+						<select name="Day" onchange="this.form.submit()">
+							<option th:each="day : ${#numbers.sequence(1,31)}" th:value="${day}" th:text="${day}"></option>
+						</select>
+					</div>
+				</div>
+				<div style="padding: 20px 200px;">
+					<canvas id="myChart"></canvas>
+
+					<script>
+						// Dữ liệu thống kê theo tháng
+						var xValues = [ ];
+						for (var i = 1; i <= 31; i++) {
+						    xValues.push(i.toString());
+						}
+						var yValues = [ 10, 20, 40, 45, 50, 55, 65, 70, 80, 90,
+								93, 100, 30, 20, 40, 45, 50, 55, 65, 70, 80, 90,
+								93, 100, 30, 20, 40, 45, 50, 55, 65, 70, 80, 90];
+
+						new Chart(
+								"myChart",
+								{
+									type : "bar",
+									data : {
+										labels : xValues,
+										datasets : [ {
+											backgroundColor : "blue",
+											data : yValues
+										} ]
+									},
+									options : {
+										legend : {
+											display : false
+										},
+										title : {
+											display : true,
+											text : "Số lượng sản phẩm bán ra theo ngày"
+										},
+										scales : {
+											yAxes : [ {
+												ticks : {
+													beginAtZero : true
+												}
+											} ]
+										}
+									}
+								});
+					</script>
+					<label>Tiền thu <span class="material-symbols-outlined"
+						style="padding: 2px 10px 10px 20px; background: blue; color: blue; margin: 15px 10px 0px 15px;">rectangle</span>
+					</label>
+				</div>
+		</div>
+
+		</section>
+
+		<!-- /.content -->
+	</div>
+
+<div th:replace="Admin/footer"></div>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <title>Thống kê ngày</title>
 </head>
@@ -28,4 +115,4 @@
 	
 
 </body>
-</html>
+</html> -->

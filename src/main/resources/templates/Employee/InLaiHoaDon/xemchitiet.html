@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In lại hóa đơn</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/Employee/InLaiHoaDon/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div id="header" th:replace="Employee/header :: header"></div>
+
+
+    <div id="main">
+        <div class="back">
+            <a href="/home/inlaihoadon" class="btn btn-warning">
+                <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+                <p>Quay lại</p>
+            </a>
+        </div>
+
+        <div id="view-detail">
+            <div class="info">
+                <table>
+                    <tr>
+                        <td><b>Mã hóa đơn: <span th:text="${listCTHD[0].SoHD}"></span></b></td>
+                        <td>Bàn: <span th:text="${listCTHD[0].SoBan}"></span></td>
+                        <td><span></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nhân viên lập hóa đơn: <span th:text="${listCTHD[0].TenNV}"></span></td>
+                        <td>Khách hàng: <span th:text="${listCTHD[0].HoTen}"></span></td>
+                        <td>Ngày lập hóa đơn: <span th:text="${listCTHD[0].Ngay}"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="list-order" id="list-bill" style="height: 230px;">
+                <table>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên món</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Ghi chú</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                   <tbody th:each="l : ${listCTHD}">
+                    <tr>
+                        <td ></td>
+                        <td th:text="${l.TenMon}"></td>
+                        <td th:text="${l.SoLuong}"></td>
+                        <td th:text="${l.DonGia}"></td>
+                        <td th:text="${l.GhiChu}"></td>
+                        <td th:text="${l.ThanhTien}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h5>Tổng tiền <span th:text="${TongTien}"></span></h5>
+
+        </div>
+        <div class="print">
+            <a href="print" class="btn btn-warning">
+                <i class="fa-solid fa-print" style="color: #ffffff;"></i>
+                <p>In hóa đơn</p>
+            </a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
-import com.DiamondCafe.DiamondCafe.dao.LoaiMonDao;
-import com.DiamondCafe.DiamondCafe.service.LoaiMonService;
+import com.DiamondCafe.DiamondCafe.dao.AdminLoaiMonDao;
+import com.DiamondCafe.DiamondCafe.service.AdminLoaiMonService;
 
 @Service
-public class LoaiMonServiceImpl implements LoaiMonService {
+public class AdminLoaiMonServiceImpl implements AdminLoaiMonService {
 
 	@Autowired
-	private LoaiMonDao lmDao;
+	private AdminLoaiMonDao lmDao;
 	
 	@Override
 	public List<LoaiMon> getList(int page, int pageSize, String searchValue) {

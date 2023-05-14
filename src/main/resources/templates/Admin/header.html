@@ -1,0 +1,110 @@
+<head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+
+<!-- Google Font -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/font-awesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/Ionicons/css/ionicons.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/AdminLTE.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/skins/_all-skins.min.css}">
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<header class="main-header">
+			<!-- Logo -->
+			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>CAFE</b></span> <!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">DIAMOND <b>CAFE</b></span>
+			</a>
+			<!-- Header Navbar: style can be found in header.less -->
+			<nav class="navbar navbar-static-top">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="push-menu"
+					role="button"> <span class="sr-only">Toggle navigation</span>
+				</a>
+
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<!--User Account -->
+						<li class="dropdown user user-menu"><a href=""
+							class="dropdown-toggle" data-toggle="dropdown"> <img
+								src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="user-image"
+								alt="User Image"> <span class="hidden-xs" th:text="${Account.TenNV}"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<!-- User image -->
+								<li class="user-header"><img
+									src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="img-circle"
+									alt="User Image"></li>
+								<!-- Menu Footer-->
+								<li class="user-footer">
+									<div class="pull-left">
+										<a href="show-info" class="btn btn-default btn-flat">Tài khoản</a>
+									</div>
+									<div class="pull-right">
+										<a href="logout" class="btn btn-default btn-flat">Đăng xuất</a>
+									</div>
+								</li>
+							</ul></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		
+		<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="treeview active">
+						<ul class="treeview-menu">
+							<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
+										chủ</span>
+							</a></li>
+							<li><a href="/admin/mon/list"><span
+									class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
+							<li><a href="/admin/loaimon"><span
+									class="material-symbols-outlined"> food_bank </span> Quản lý
+									Loại món</a></li>
+							<li><a href="#"><i
+									class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
+									Khách hàng </a></li>
+							<li><a href="#"><i
+									class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
+									Viên</a></li>
+							<li><a href="/admin/thongke/ngay"><i
+									class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		

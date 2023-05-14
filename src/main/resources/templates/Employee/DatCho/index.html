@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt chỗ</title>
+    <link rel="stylesheet" th:href="@{/Employee/DatCho/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+
+    <div id="header" th:replace="Employee/header :: header"></div>
+
+    <!-- Form Thêm phiếu đặt bàn -->
+    <div id="form-createOrderTable">
+        <div class="member-list">
+            <div class="form-close">
+                <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
+            </div>
+            <div class="box">
+                <form action="" method="get" class="form-search">
+                    <h5>Thêm phiếu đặt bàn</h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">Tên KH:</div>
+                            <div class="col-10"><input type="text" name="TenKH"></div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">SĐT:</div>
+                            <div class="col-10"><input type="text" name="SoDienThoai"></div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">Ngày đặt:</div>
+                            <div class="col-4"><input type="date" name="NgayDat"></div>
+                            <div class="col-2">Giờ đặt:</div>
+                            <div class="col-4"><input type="time" name="ThoiGian"></div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8">
+                                <h4>Bàn <span>41</span></h4>
+                            </div>
+                            <div class="col-4">
+                                <input type="submit" class="btn btn-primary" value="Xác nhận đặt">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Danh sách phiếu đặt bàn -->
+    <div id="member" class="form-listOrderTable">
+        <div class="member-list">
+            <div class="form-close">
+                <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
+            </div>
+            <div class="box">
+                <form action="" method="get" class="form-search">
+                    <h5>Danh sách phiếu đặt chỗ</h5>
+                    <input type="text" name="searchValue" placeholder="Tìm kiếm theo Số điện thoại người đặt" autofocus>
+                    <input type="submit" value="Tìm kiếm">
+                </form>
+                <form action="" method="post" class="form-member">
+                    <table>
+                        <tr>
+                            <th>Người đặt</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày đặt</th>
+                            <th>Thời gian</th>
+                            <th>Bàn</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Nguyễn Văn A</td>
+                            <td>0912345678</td>
+                            <td>26/11/2023</td>
+                            <td>20:00</td>
+                            <td>14</td>
+                            <td>
+                                <a>
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-check" style="color: #ffffff;"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+<!--                     <div class="btn-ApDung"> -->
+<!--                         <input class="btn btn-danger" type="submit" value="Xóa"> -->
+<!--                     </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="header"></div>
+
+
+    <div id="main">
+
+        <div class="list-orderTable">
+            <button class="btn btn-warning">Danh sách phiếu đặt bàn</button>
+            <button class="btn btn-primary">Thêm phiếu đặt</button>
+        </div>
+
+        <div id="table-contain">
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table" style="background-color: #eee;">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+            <a href="">
+                <div class="x-line"></div>
+                <div class="box-table" style="background-color: #0d99ff;">
+                    <div class="y-line-1"></div>
+                    <p>1</p>
+                    <div class="y-line-2"></div>
+                </div>
+                <div class="x-line"></div>
+            </a>
+
+        </div>
+
+        <div id="table-description">
+            <div class="table-free">
+                <div class="box"></div>
+                <p>Bàn còn trống</p>
+            </div>
+            <div class="table-busy">
+                <div class="box"></div>
+                <p>Bàn đang hoạt động</p>
+            </div>
+            <div class="table-set-before">
+                <div class="box"></div>
+                <p>Bàn có đặt trước</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script th:src="@{/Employee/assets/js/app.js}"></script>
+
+
+</body>
+
+</html>

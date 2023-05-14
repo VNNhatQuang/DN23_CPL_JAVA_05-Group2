@@ -10,36 +10,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Paging;
-import com.DiamondCafe.DiamondCafe.service.LoaiMonService;
+import com.DiamondCafe.DiamondCafe.bean.TaiKhoan;
+import com.DiamondCafe.DiamondCafe.service.AdminLoaiMonService;
+import com.DiamondCafe.DiamondCafe.service.TaiKhoanAdminService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("admin/loaimon")
 public class AdminLoaiMonController {
 	
 	@Autowired
-	private LoaiMonService lmService;
+	private AdminLoaiMonService lmService;
 	private final int PAGE_SIZE = 5;
+	@Autowired
+	private TaiKhoanAdminService taiKhoanSV;
 	
 	@GetMapping
-	public String Index(HttpServletRequest request) {
-		int page = 1;
-		if(request.getParameter("page")!=null)
-			page = Integer.parseInt(request.getParameter("page"));
-		String searchValue = "";
-		if(request.getParameter("searchValue")!=null)
-			searchValue = request.getParameter("searchValue");
-		int rowCount = lmService.Count(searchValue);
-		Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
-		request.setAttribute("paging", p);
-		request.setAttribute("list", lmService.getList(page, PAGE_SIZE, searchValue));
-		return "Admin/LoaiMon/index";
+	public String Index(HttpServletRequest request, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}
+		else {
+			request.setAttribute("Account", tk);
+			int page = 1;
+			if(request.getParameter("page")!=null)
+				page = Integer.parseInt(request.getParameter("page"));
+			String searchValue = "";
+			if(request.getParameter("searchValue")!=null)
+				searchValue = request.getParameter("searchValue");
+			int rowCount = lmService.Count(searchValue);
+			Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
+			request.setAttribute("paging", p);
+			request.setAttribute("list", lmService.getList(page, PAGE_SIZE, searchValue));
+			return "Admin/LoaiMon/index";
+		}
 	}
 	
 	@GetMapping("create")
-	public String showFormCreate(HttpServletRequest request) {
-		return "Admin/LoaiMon/create";
+	public String showFormCreate(HttpServletRequest request, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}
+		else {
+			request.setAttribute("Account", tk);
+			return "Admin/LoaiMon/create";
+		}
 	}
 	
 	@PostMapping("add")
@@ -47,12 +70,21 @@ public class AdminLoaiMonController {
 		lmService.Add(loaimon);
 		return "redirect:/admin/loaimon";
 	}
-	 
+	
 	@GetMapping("edit/{id}")
-	public String showFormEdit(HttpServletRequest request, @PathVariable("id") int id) {
-		LoaiMon lm = lmService.getLoaiMon(id);
-		request.setAttribute("lm", lm);
-		return "Admin/LoaiMon/edit";
+	public String showFormEdit(HttpServletRequest request, @PathVariable("id") int id, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}
+		else {
+			request.setAttribute("Account", tk);
+			LoaiMon lm = lmService.getLoaiMon(id);
+			request.setAttribute("lm", lm);
+			return "Admin/LoaiMon/edit";
+		}
 	}
 	
 	@PostMapping("update")
@@ -62,9 +94,18 @@ public class AdminLoaiMonController {
 	}
 	
 	@GetMapping("delete/{id}")
-	public String showFormDelete(HttpServletRequest request, @PathVariable("id") int id) {
-		request.setAttribute("lm", lmService.getLoaiMon(id));
-		return "Admin/LoaiMon/delete";
+	public String showFormDelete(HttpServletRequest request, @PathVariable("id") int id, HttpSession session) {
+		String MaTK=(String)session.getAttribute("MaTK");
+		String Pass = (String) session.getAttribute("Pass");
+        TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
+		if(tk==null) {
+			return "redirect:/admin/login";
+		}
+		else {
+			request.setAttribute("Account", tk);
+			request.setAttribute("lm", lmService.getLoaiMon(id));
+			return "Admin/LoaiMon/delete";
+		}
 	}
 	
 	@GetMapping("delete/confirm/{id}")

@@ -1,51 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tài khoản</title>
 </head>
-<body>
-	<form action="update" method="post">
-			<div class="form-group" >
-              <label for="exampleInputEmail1">Họ tên: </label>
-              <input type="text" th:value="${Account.TenNV}" name="hoten" required="required">
-            </div>
+<div th:replace="Admin/header"></div>
 
-            <div class="form-group" >
-              <label for="exampleInputPassword1">Ngày sinh:</label>
-              <input type="text" th:value="${Account.NgaySinh}" name="ngaysinh">
-            </div>
+	<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h1 style="font-size: 30px">THÔNG TIN TÀI KHOẢN</h1>
+			</section>
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Địa chỉ: </label>
-              <input type="text" th:value="${Account.DiaChi}" name="diachi">
-            </div>
+			<!-- PHAN BODY -->
+			<section class="content">
+				<div class="box box-primary">
+					<div class="box-body">
+						<form class="form-horizontal" action="update" method="post">
+							<div class="form-group">
+								<label class="control-label col-sm-2">Họ tên:</label>
+								<div class="col-sm-10">
+									<input type="text" th:value="${Account.TenNV}" name="hoten" required="required">
+								</div>
+							</div>
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Số điện thoại: </label>
-              <input type="number"  th:value="${Account.SDT}" name="sdt">
-            </div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">Ngày sinh:</label>
+								<div class="col-sm-10">
+									 <input type="text" th:value="${Account.NgaySinh}" name="ngaysinh">
+								</div>
+							</div>
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">CMT: </label>
-              <input type="number"  th:value="${Account.CMT}" name="cmt">
-            </div>
+							<div class="form-group">
+								<label class="control-label col-sm-2">Địa chỉ</label>
+								<div class="col-sm-10">
+									<input type="text" th:value="${Account.DiaChi}" name="diachi">
+								</div>
+							</div>
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Chức vụ: </label>
-              <input type="text" th:value="${Account.TenChucVu}" readonly>
-            </div>
-            
-             <div class="form-group">
-              <button type="submit">Cập nhật</button>
-              <a href="home-page">Quay lại</a>
-            </div>
-            
-	</form>
-	
-		<div><a href="change-pass">Đổi mật khẩu</a></div>
-</body>
-</html>
+							<div class="form-group">
+								<label class="control-label col-sm-2">Số điện thoại:</label>
+								<div class="col-sm-10">
+									<input type="text"  th:value="${Account.SDT}" name="sdt">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">CMT:</label>
+								<div class="col-sm-10">
+									<input type="text"  th:value="${Account.CMT}" name="cmt">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Chức vụ:</label>
+								<div class="col-sm-10">
+									  <input type="text" th:value="${Account.TenChucVu}" readonly>
+								</div>
+
+							</div>
+
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
+									</button>
+									<a href="home-page" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+							<a href="change-pass"><ins style="color: blue">Đổi
+									mật khẩu</ins></a>
+						</form>
+
+					</div>
+				</div>
+			</section>
+		</div>
+		
+<div th:replace="Admin/footer"></div>

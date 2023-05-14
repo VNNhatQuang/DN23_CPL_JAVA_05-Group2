@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ đồ chính</title>
+    <link rel="stylesheet" th:href="@{/Employee/PhieuDatMon/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	
+    <div id="header" th:replace="Employee/header :: header"></div>
+
+    <div id="main">
+        <div id="table-contain">
+
+            <th:block th:each="b : ${listTable}">
+            	
+            	<th:block th:switch="${b.TrangThai}">
+            		<th:block th:case="'0'">
+	            		<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'">
+			                <div class="x-line"></div>
+			                <div class="box-table" style="background-color: #eee;">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            		<th:block th:case="'1'">
+            			<a>
+			                <div class="x-line"></div>
+			                <div class="box-table">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            		<th:block th:case="'2'">
+            			<a>
+			                <div class="x-line"></div>
+			                <div class="box-table" style="background-color: #0d99ff;">
+			                    <div class="y-line-1"></div>
+			                    <p th:text="${b.SoBan}"></p>
+			                    <div class="y-line-2"></div>
+			                </div>
+			                <div class="x-line"></div>
+			            </a>
+            		</th:block>
+            	</th:block>
+            
+            </th:block>
+            
+			
+
+        </div>
+
+        <div id="table-description">
+            <div class="table-free">
+                <div class="box"></div>
+                <p>Bàn còn trống</p>
+            </div>
+            <div class="table-busy">
+                <div class="box"></div>
+                <p>Bàn đang hoạt động</p>
+            </div>
+            <div class="table-set-before">
+                <div class="box"></div>
+                <p>Bàn có đặt trước</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
