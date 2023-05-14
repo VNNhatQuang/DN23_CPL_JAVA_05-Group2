@@ -21,39 +21,51 @@ public class NhanvienController {
     @Autowired
     private INhanvienService iNhanvienService;
 
-    @GetMapping("/")
+
+    @GetMapping("")
     public String getlistNhanvien(Model model){
         List<Nhanvien> listNV = iNhanvienService.getlistNV();
         model.addAttribute("listNV" , listNV);
-        return "nhanvien/list";
+        return "Admin/EmployeeAdmin/index";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/add-form")
     public String showAddForm(Model model){
-        model.addAttribute("NhanvienForm", new Nhanvien());
-        return "nhanvien/new";
+        model.addAttribute("NhanvienModel", new Nhanvien());
+        return "Admin/EmployeeAdmin/them";
+    }
+    @GetMapping("/update-form/{id}")
+    public String showEditForm(Model model, @PathVariable("id") String id){
+        Nhanvien nv = iNhanvienService.getNhanvienbyID(id);
+        model.addAttribute("NhanvienModel", nv);
+        return "Admin/EmployeeAdmin/edit";
     }
 
     @PostMapping("/save")
-    public String addNewNhanvien(@RequestBody Nhanvien nv, BindingResult result){
+    public String addNewNhanvien(Model model, @ModelAttribute(name = "NhanvienModel") Nhanvien nv, BindingResult result){
         if (result.hasErrors()){
-            return "nhanvien/new";
+            model.addAttribute("message","Thêm nhân viên không thành. Vui lòng thử lại");
+            return "Admin/EmployeeAdmin/them";
         }
         iNhanvienService.save(nv);
-        return "redirect:/nhanvien/list";
+        model.addAttribute("message","Thêm nhân viên thành công");
+        return "redirect:admin/nhanvien";
     }
 
-    @GetMapping("/delete")
-    public String delete(@RequestParam(name = "id") String MaNV){
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable(name = "id") String MaNV){
         iNhanvienService.delete(MaNV);
-        return "redirect:/nhanvien/list";
+        return "redirect:admin/nhanvien";
     }
 
-    @RequestMapping("/update")
-    public String update(Model model, @RequestParam(name = "id") String MaNV){
-        Nhanvien nv = iNhanvienService.getNhanvienbyID(MaNV);
-        model.addAttribute("NhanvienForm", nv);
-        return "/nhanvien/new";
+    @PostMapping("/update")
+    public String update(Model model, @ModelAttribute(name = "NhanvienModel") Nhanvien nv, BindingResult result){
+        if (result.hasErrors()){
+            model.addAttribute("message" , "Cập nhật không thành. Vui lòng thử lại");
+            return "Admin/EmployeeAdmin/edit";
+        }
+        iNhanvienService.update(nv);
+        return "redirect:admin/nhanvien";
     }
 
 }

@@ -16,6 +16,9 @@ public interface IPhieudatbanService {
 
     public Phieudatban getPhieubyID(int id);
 
+    public int updateTrangthai(int id, int status);
+    public List<Phieudatban> getTimkiemPhieubySDT(String key);
+
     public int update(Phieudatban pbh);
     public int save(Phieudatban pbh);
     public int delete(int id);

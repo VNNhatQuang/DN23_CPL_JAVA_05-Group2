@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt chỗ</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/Employee/PhieuDatMon/style.css}">
+    <link rel="stylesheet" th:href="@{/Employee/TaiKhoan/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<div id="header">
+        <div id="menu-l"></div>
+        <div id="menu-r">
+            <div class="menu-bar bgr-yellow">
+                <a href="/home/DatCho">
+                    <div class="contain">
+                        <p>Quay lại</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <form th:action="@{/nhan-vien/phieu-dat-ban/update}" method="post"
+            th:object="${pdbModel}" modelAttribute="pdbModel">
+            <div>
+                <input hidden="hidden" th:field="*{maPhieu}">
+            </div>
+            <div class="form-input">
+                <p>Tên khách hàng: </p>
+                <input type="text"
+                       th:field="*{tenNguoiDat}">
+            </div>
+            <div class="form-input">
+                <p>Số điện thoại:</p>
+                <input type="text"
+                       th:field="*{soDienThoai}">
+            </div>
+            <div class="form-input">
+                <p>Ngày đặt:</p>
+                <input type="date" name="" autofocus
+                       th:value="*{ngayDat}">
+            </div>
+            <div class="form-input">
+                <p>Thời gian:</p>
+                <input type="time" name=""
+                       th:value="*{setTime(gioBatdau)}">
+            </div>
+            <div class="form-input">
+                <p>Số bàn</p>
+                <input type="text" name="SoBan" th:field="*{soBan}" readonly="readonly">
+            </div>
+
+            <br>
+            <div class="submit-1">
+                <input type="submit" value="Xác nhận đặt">
+            </div>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>

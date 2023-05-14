@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/admin/loaimon/create">Thêm Loại món</a>
+	<a href="/admin/loaimon/create">Thêm loại món</a>
 	<form action="/admin/loaimon">
 		<input type="text" name="searchValue"/>
 		<input type="submit" value="Tìm kiếm"/>
@@ -13,16 +13,14 @@
 
 	<table>
 		<tr>
-			<th>Mã Loại món</th>
-			<th>Tên Loại món</th>
-			<th>Giảm giá</th>
+			<th>Mã loại món</th>
+			<th>Tên loại món</th>
 			<th></th>
 		</tr>
 		<th:block th:each="lm : ${list}">
 			<tr>
 				<td th:text="${lm.IDLoai}"></td>
 				<td th:text="${lm.TenLoai}"></td>
-				<td th:text="${lm.GiamGia}"></td>
 				<td><a th:href="@{'loaimon/edit/' + ${lm.IDLoai}}">Sửa</a></td>
 				<td><a th:href="@{'loaimon/delete/' + ${lm.IDLoai}}">Xóa</a></td>
 			</tr>

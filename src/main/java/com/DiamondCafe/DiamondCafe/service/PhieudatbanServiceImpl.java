@@ -34,6 +34,16 @@ public class PhieudatbanServiceImpl implements IPhieudatbanService {
     }
 
     @Override
+    public int updateTrangthai(int id, int status) {
+        return iPhieudatbanRepository.updateTrangthai(id, status);
+    }
+
+    @Override
+    public List<Phieudatban> getTimkiemPhieubySDT(String key) {
+        return iPhieudatbanRepository.getTimkiemPhieubySDT(key);
+    }
+
+    @Override
     public int update(Phieudatban pbh) {
         return iPhieudatbanRepository.update(pbh);
     }

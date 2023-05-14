@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="resultsTable">
+  <tr>
+    <th>Người đặt</th>
+    <th>SDT</th>
+    <th>Ngày đặt</th>
+    <th>Thời gian</th>
+    <th>Bàn</th>
+    <th>Trạng thái</th>
+    <th>Chức năng</th>
+  </tr>
+  <tr th:each="item : ${listPDC}">
+    <th:block th:switch="${item.trangthai}">
+      <th:case th:case="0">
+        <td th:text="${item.getTenNguoiDat()}"></td>
+        <td th:text="${item.soDienThoai}"></td>
+        <td th:text="*{#dates.format(item.ngayDat, 'dd-MM-yyyy')}"></td>
+        <td th:text="${item.getTime(item.gioBatdau)}"></td>
+        <td th:text="${item.soBan}"></td>
+        <td th:text="${item.convertTrangthaiString(item.getTrangthai())}"></td>
+
+        <td>
+          <a th:href="${'/nhan-vien/phieu-dat-ban/update-form/'} + ${item.getMaPhieu()}">
+            <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+          </a>
+          <a  th:attr="onclick=|confirmNhanban('/nhan-vien/phieu-dat-ban/nhan-ban/' + '${item.maPhieu}')|"
+              th:href="${'/nhan-vien/phieudatban/active/'} + ${item.maPhieu}">
+            <i class="fa-solid fa-check" style="color: #ffffff"></i>
+          </a>
+          <a th:attr="onclick=|confirmDeletePhieu('/nhan-vien/phieu-dat-ban/delete/' + '${item.maPhieu}')|" >
+            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+          </a>
+        </td>
+      </th:case>
+    </th:block>
+  </tr>
+</table>
+</body>
+</html>

@@ -30,34 +30,39 @@ public class KhachhangController {
     public String getlistNhanvien(Model model){
         List<Khachhang> listNV = iKhachhangService.getlistKhachhang();
         model.addAttribute("listNV" , listNV);
-        return "khachhang/list";
+        return "Admin/khachhang/index";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/add-form")
     public String showAddForm(Model model){
-        model.addAttribute("NhanvienForm", new Nhanvien());
-        return "khachhang/new";
+        model.addAttribute("KhachhangModel", new Nhanvien());
+        return "Admin/khachhang/them";
+    }
+    @GetMapping("/update-form")
+    public String showUpdateForm(Model model){
+        model.addAttribute("KhachhangModel", new Nhanvien());
+        return "Admin/khachhang/edit";
     }
 
     @PostMapping("/save")
-    public String addNewNhanvien(@RequestBody Khachhang nv, BindingResult result){
+    public String addNewNhanvien(@ModelAttribute (name = "KhachhangModel") Khachhang nv, BindingResult result){
         if (result.hasErrors()){
-            return "nhanvien/new";
+            return "Admin/khachhang/them";
         }
         iKhachhangService.save(nv);
-        return "redirect:/nhanvien/list";
+        return "redirect:admin/nhanvien";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@RequestParam(name = "id") int MaNV, BindingResult result){
         iKhachhangService.delete(MaNV);
-        return "redirect:/khachang/list";
+        return "redirect:admin/nhanvien";
     }
 
     @PostMapping ("/update")
-    public String update(Model model , @RequestBody Khachhang kh, BindingResult result){
+    public String update(Model model , @ModelAttribute (name = "KhachhangModel") Khachhang kh, BindingResult result){
         iKhachhangService.update(kh);
-        return "redirect:/khachhang/list";
+        return "redirect:admin/nhanvien";
     }
 
 }

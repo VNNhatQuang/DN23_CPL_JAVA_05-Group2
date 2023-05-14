@@ -40,18 +40,33 @@ public class PhieudatbanImpl implements IPhieudatbanRepository {
     }
 
     @Override
-    public int update(Phieudatban pbh) {
-        String SQL_UPDATE = "UPDATE PHIEU_DAT_BAN SET TENNGUOIDAT = ? , SODIENTHOAI = ? , NGAYDAT = ? , GIOBATDAU = ? , SO_BAN = ? , TRANGTHAI = ? WHERE MAPHIEU = ?";
+    public List<Phieudatban> getTimkiemPhieubySDT(String key) {
+        String SQL_SEARCH = "SELECT * FROM PHIEU_DAT_BAN WHERE SODIENTHOAI LIKE ?";
+        return jdbcTemplate.query(SQL_SEARCH,
+                BeanPropertyRowMapper.newInstance(Phieudatban.class),
+                new Object[]{key + "%"});
+    }
+
+    @Override
+    public int updateTrangthai(int id, int status) {
+        String SQL_UPDATE = "UPDATE PHIEU_DAT_BAN SET TRANG_THAI = ? WHERE MAPHIEU = ?";
         return jdbcTemplate.update(SQL_UPDATE,
-                new Object[]{pbh.getTenNguoiDat() , pbh.getSDT() , pbh.getNgayDat() , pbh.getGioBatdau() , pbh.getTrangthai()});
+                new Object[]{status,id});
+
+    }
+
+    @Override
+    public int update(Phieudatban pbh) {
+        String SQL_UPDATE = "UPDATE PHIEU_DAT_BAN SET TENNGUOIDAT = ? , SODIENTHOAI = ? , NGAYDAT = ? , GIOBATDAU = ? , SOBAN = ?  WHERE MAPHIEU = ?";
+        return jdbcTemplate.update(SQL_UPDATE,
+                new Object[]{pbh.getTenNguoiDat() , pbh.getSoDienThoai() , pbh.getNgayDat() , pbh.getGioBatdau() , pbh.getSoBan(), pbh.getMaPhieu()});
     }
 
     @Override
     public int save(Phieudatban pbh) {
         String SQL_SAVE= "INSERT INTO PHIEU_DAT_BAN VALUES (?,?,?,?,?,?)";
         return jdbcTemplate.update(SQL_SAVE,
-                new Object[]{pbh.getTenNguoiDat() , pbh.getSDT(), pbh.getNgayDat(), pbh.getGioBatdau(), pbh.getSoBan(), pbh.getTrangthai()});
-
+                new Object[]{pbh.getTenNguoiDat() , pbh.getSoDienThoai(), pbh.getNgayDat(), pbh.getGioBatdau(), pbh.getSoBan(), pbh.getTrangthai()});
     }
 
     @Override

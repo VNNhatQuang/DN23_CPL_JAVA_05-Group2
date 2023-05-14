@@ -1,1 +1,1 @@
-# Name project: DiamondCafe
+# ProjectName: DiamondCafe
