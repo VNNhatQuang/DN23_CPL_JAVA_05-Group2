@@ -17,10 +17,10 @@
 			<section class="content">
 				<div class="box box-primary">
 					<div class="box-body">
-						<form class="form-horizontal" action="create" method="post">
+						<form class="form-horizontal" action="create" method="post" onsubmit="return validateForm()">
 						
 							<div class="form-group">
-								<label class="control-label col-sm-2">Tên món:</label>
+								<label class="control-label col-sm-2">Tên món <span style="color: red;" id="errorMaKH"></label>
 								<div class="col-sm-10">
 									<input type="text" name="TenMon" autofocus/>
 									<span class="field-validation-valid"
@@ -29,10 +29,8 @@
 								</div>
 							</div>
 
-
-
 							<div class="form-group">
-								<label class="control-label col-sm-2">Loại món:</label>
+								<label class="control-label col-sm-2">Loại món</label>
 								<div class="col-sm-10">
 									
 									<select name="ID_LoaiMon" >
@@ -45,7 +43,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-2">Đơn vị tính:</label>
+								<label class="control-label col-sm-2">Đơn vị tính</label>
 								<div class="col-sm-10">
 									<input type="text" name="DonViTinh" />
 									<span class="field-validation-valid"
@@ -55,7 +53,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-2">Đơn giá:</label>
+								<label class="control-label col-sm-2">Đơn giá</label>
 								<div class="col-sm-10">
 									<input type="number" name="GiaBan" min="0" />
 									<span class="field-validation-valid"
@@ -74,6 +72,26 @@
 							</div>
 
 						</form>
+						
+						<script type="text/javascript">
+							function validateForm(){
+								var TenMon=document.getElementById('TenMon').value;
+								var errorTenMon=document.getElementById('errorTenMon');
+								
+								if(TenMon=='' || TenMon==null){
+									errorSDT.innerHTML = " * ";
+								}else{
+									errorSDT.innerHTML = '';
+								}
+								
+								if(TenMon!=null && TenMon!=''){
+									alert("Cập nhật tài khoản thành công!");
+									return true;
+								}
+								
+								return false;
+							}
+				</script>
 					</div>
 				</div>
 			</section>

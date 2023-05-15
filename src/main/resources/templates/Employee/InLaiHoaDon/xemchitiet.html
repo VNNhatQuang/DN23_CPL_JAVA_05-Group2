@@ -53,9 +53,9 @@
                         <th>Ghi chú</th>
                         <th>Thành tiền</th>
                     </tr>
-                   <tbody th:each="l : ${listCTHD}">
+                   <tbody th:each="l, i : ${listCTHD}">
                     <tr>
-                        <td ></td>
+                        <td th:text="${i.count}"></td>
                         <td th:text="${l.TenMon}"></td>
                         <td th:text="${l.SoLuong}"></td>
                         <td th:text="${l.DonGia}"></td>

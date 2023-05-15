@@ -21,7 +21,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-2">Họ tên:</label>
 								<div class="col-sm-10">
-									<input type="text" th:value="${Account.TenNV}" name="hoten" required="required">
+									<input type="text" th:value="${Account.TenNV}" name="hoten">
 								</div>
 							</div>
 
@@ -77,5 +77,54 @@
 				</div>
 			</section>
 		</div>
+		
+		<!-- <script type="text/javascript">
+			function ValidateTK(){
+				var hoten=document.getElementById('hoten').value;
+				var errorHoTen=document.getElementById('errorHoTen');
+				
+				var ngaysinh=document.getElementById('ngaysinh').value;
+				var errorNgaySinh=document.getElementById('errorNgaySinh');
+				
+				var diachi=document.getElementById('diachi').value;
+				var errorDiaChi=document.getElementById('errorDiaChi');
+				
+				var sdt=document.getElementById('sdt').value;
+				var errorSDT=document.getElementById('errorSDT');
+				
+				var regexSDT=/^(84)?(90|91)\d{7}$/;
+	
+				if(hoten=='' || hoten==null){
+					errorSDT.innerHTML = " * ";
+				}else{
+					errorSDT.innerHTML = '';
+				}
+				
+				if(ngaysinh=='' || ngaysinh==null){
+					errorNgaySinh.innerHTML = " * ";
+				}else{
+					errorNgaySinh.innerHTML = '';
+				}
+				
+				if(diachi=='' || diachi==null){
+					errorDiaChi.innerHTML = " * ";
+				}else{
+					errorDiaChi.innerHTML = '';
+				}
+				
+				if(sdt=='' || sdt==null || !regexSDT.test(sdt)){
+					errorSDT.innerHTML = " * ";
+				}else{
+					errorSDT.innerHTML = '';
+				}
+				
+				if(hoten && ngaysinh && diachi && sdt){
+					alert("Cập nhật tài khoản thành công!");
+					window.location.href = "update";
+				}
+				
+				return false;
+			}
+		</script> -->
 		
 <div th:replace="Admin/footer"></div>
