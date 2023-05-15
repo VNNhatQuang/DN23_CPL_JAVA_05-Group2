@@ -28,6 +28,7 @@ public interface NhanVienSoDoChinhService {
 	void EmptyTable(int SoBan);
 	
 	
+	List<KhachHang> searchCustomer(String search);
 	
 	void AddToOrder(Order mon, List<Order> list);
 	

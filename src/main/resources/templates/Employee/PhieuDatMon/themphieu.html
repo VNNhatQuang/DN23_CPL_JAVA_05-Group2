@@ -17,7 +17,12 @@
 
 <body>
 
-    <div id="member">
+<th:block th:if="${searchForm}">
+	<div id="member" style="display: flex !important;">
+</th:block>
+<th:block th:unless="${searchForm}">
+	<div id="member">
+</th:block>
         <div class="member-list">
             <div class="form-close">
                 <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
@@ -40,7 +45,7 @@
 	                        <tr>
 	                            <td th:text="${kh.HoTen}"></td>
 	                            <td th:text="${kh.SDT}"></td>
-	                            <td><a th:href="${IDLoai} + @{/applyMember?total=} + ${total}">Áp dụng</a></td>
+	                            <td><a th:href="${IDLoai} + '/' + ${kh.MaKH} + @{/applyMember?total=} + ${total}">Áp dụng</a></td>
 	                        </tr>
                         </th:block>
                         

@@ -5,15 +5,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.DiamondCafe.DiamondCafe.bean.HoaDon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
 import com.DiamondCafe.DiamondCafe.bean.NhanVien;
 import com.DiamondCafe.DiamondCafe.bean.Order;
+import com.DiamondCafe.DiamondCafe.service.HoaDonService;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,8 +26,13 @@ public class NhanVienSoDoChinhController {
 	
 	@Autowired
 	private NhanVienSoDoChinhService sdcService;
+	
+	@Autowired
+	private HoaDonService HoaDonSV;
+	
 	private double TongTien=0;
 	private int giamGia=0;
+	private int ID_KhachHang=1;
 	
 	// Hiển thị màn hình sơ đồ chính
 	@GetMapping
@@ -47,11 +53,18 @@ public class NhanVienSoDoChinhController {
 	public String Create(HttpServletRequest request, @PathVariable("id") int id, @PathVariable("ID_LoaiMon") int id_loaimon) {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("tk")!=null) {
+			if(request.getParameter("searchValue")!=null) {
+				String search = request.getParameter("searchValue");
+				request.setAttribute("listCustomer", sdcService.searchCustomer(search));
+				request.setAttribute("searchForm", true);
+			}
+			else
+				request.setAttribute("listCustomer", sdcService.getListCustomer());
 			request.setAttribute("SoBan", id);
 			request.setAttribute("listCategories", sdcService.getAllCategories());
 			request.setAttribute("IDLoai", id_loaimon);
 			request.setAttribute("listProduct", sdcService.getListProduct(id_loaimon));
-			request.setAttribute("listCustomer", sdcService.getListCustomer());
+			
 			// Nếu phiếu order trống | Tính tổng tiền
 			if(session.getAttribute("order")==null) {
 				List<Order> order = new ArrayList<>();
@@ -115,8 +128,8 @@ public class NhanVienSoDoChinhController {
 	}
 	
 	// Áp dụng thành viên
-	@GetMapping("themphieu/{id}/{id_loai}/applyMember")
-	public String ApplyMember(HttpServletRequest request, @PathVariable("id") int id_ban, @PathVariable("id_loai") int id_loai) {
+	@GetMapping("themphieu/{id}/{id_loai}/{id_khachhang}/applyMember")
+	public String ApplyMember(HttpServletRequest request, @PathVariable("id") int id_ban, @PathVariable("id_loai") int id_loai, @PathVariable("id_khachhang") int id_khachhang) {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("tk")!=null) {
 			List<Order> list = (List<Order>) session.getAttribute("order");
@@ -124,6 +137,7 @@ public class NhanVienSoDoChinhController {
 			total -= (total*0.1);
 			TongTien = total;
 			giamGia=10;
+			ID_KhachHang=id_khachhang;
 			return "redirect:/home/themphieu/" + id_ban + "/" + id_loai;
 		}
 		else
@@ -167,7 +181,9 @@ public class NhanVienSoDoChinhController {
 			List<Order> list = (List<Order>) session.getAttribute("order");
 			if(list!=null) {
 				NhanVien nv = (NhanVien) session.getAttribute("tk");
-				int id_hoadon = sdcService.AddOrder(id_ban, giamGia, 1, nv.getMaTK());
+				System.out.println(ID_KhachHang);
+				int id_hoadon = sdcService.AddOrder(id_ban, giamGia, ID_KhachHang, nv.getMaTK());
+				
 				sdcService.AddOrderDetail(list, id_hoadon);
 			}
 			return "redirect:/home";
@@ -181,6 +197,41 @@ public class NhanVienSoDoChinhController {
 	public String EmptyTable(HttpServletRequest request, @PathVariable("id") int SoBan) {
 		sdcService.EmptyTable(SoBan);
 		return "redirect:/home";
+	}
+	
+	@GetMapping("inlaihoadon")
+	public String InLaiHoaDon(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			List<HoaDon> list=HoaDonSV.GetHD();
+			request.setAttribute("listHD", list);
+			return "Employee/InLaiHoaDon/index";
+		}
+		else
+			return "redirect:/";
+		
+	}
+	
+	@GetMapping("xemchitiet/{sohd}")
+	public String XemChiTiet(HttpServletRequest request, @PathVariable("sohd") int sohd) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			List<HoaDon> list=HoaDonSV.GetCTHD(sohd);
+			double sum=0;
+			for(HoaDon hd : list) {
+				sum+=hd.getThanhTien();
+			}
+			request.setAttribute("listCTHD", list);
+			request.setAttribute("TongTien", sum);
+			return "Employee/InLaiHoaDon/xemchitiet";
+		}
+		else
+			return "redirect:/";
+	}
+	
+	@GetMapping("doanhthu")
+	public String DoanhThu(HttpServletRequest request) {
+		return "Employee/DoanhThu/index";
 	}
 
 }

@@ -22,7 +22,7 @@
 
     <div id="main">
         <div class="back">
-            <a href="" class="btn btn-warning">
+            <a href="/home/inlaihoadon" class="btn btn-warning">
                 <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
                 <p>Quay lại</p>
             </a>
@@ -32,14 +32,14 @@
             <div class="info">
                 <table>
                     <tr>
-                        <td><b>Mã hóa đơn: <span>112</span></b></td>
-                        <td>Bàn: <span>112</span></td>
-                        <td>Giảm giá toàn hóa đơn: <span></span></td>
+                        <td><b>Mã hóa đơn: <span th:text="${listCTHD[0].SoHD}"></span></b></td>
+                        <td>Bàn: <span th:text="${listCTHD[0].SoBan}"></span></td>
+                        <td><span></span></td>
                     </tr>
                     <tr>
-                        <td>Nhân viên lập hóa đơn: <span>Nguyễn Young Quí</span></td>
-                        <td>Khách hàng: <span></span></td>
-                        <td>Ngày lập hóa đơn: <span>14:33:56</span>&emsp;<span>1/3/2023</span></td>
+                        <td>Nhân viên lập hóa đơn: <span th:text="${listCTHD[0].TenNV}"></span></td>
+                        <td>Khách hàng: <span th:text="${listCTHD[0].HoTen}"></span></td>
+                        <td>Ngày lập hóa đơn: <span th:text="${listCTHD[0].Ngay}"></span></td>
                     </tr>
                 </table>
             </div>
@@ -49,198 +49,23 @@
                         <th>STT</th>
                         <th>Tên món</th>
                         <th>Số lượng</th>
-                        <th>Giảm giá</th>
                         <th>Đơn giá</th>
                         <th>Ghi chú</th>
                         <th>Thành tiền</th>
                     </tr>
+                   <tbody th:each="l, i : ${listCTHD}">
                     <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
+                        <td th:text="${i.count}"></td>
+                        <td th:text="${l.TenMon}"></td>
+                        <td th:text="${l.SoLuong}"></td>
+                        <td th:text="${l.DonGia}"></td>
+                        <td th:text="${l.GhiChu}"></td>
+                        <td th:text="${l.ThanhTien}"></td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cà phê đen</td>
-                        <td>1</td>
-                        <td>0%</td>
-                        <td>12,000</td>
-                        <td></td>
-                        <td>12,000 VND</td>
-                    </tr>
-
-
-
-
+                    </tbody>
                 </table>
             </div>
-            <h5>Tổng tiền <span>99,000 VND</span></h5>
+            <h5>Tổng tiền <span th:text="${TongTien}"></span></h5>
 
         </div>
         <div class="print">

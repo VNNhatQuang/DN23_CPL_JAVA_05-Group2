@@ -33,6 +33,7 @@
 			            </a>
             		</th:block>
             		<th:block th:case="'1'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'" style="color: #fff !important; position: absolute; top: 25px;">Thêm món</a>
             			<a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
 			                <div class="x-line"></div>
 			                <div class="box-table">
@@ -44,6 +45,7 @@
 			            </a>
             		</th:block>
             		<th:block th:case="'2'">
+            			<a th:href="@{home/themphieu/} + ${b.SoBan} + '/1'" style="color: #fff !important; position: absolute; top: 25px;">Thêm món</a>
             			<a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
 			                <div class="x-line"></div>
 			                <div class="box-table" style="background-color: #0d99ff;">

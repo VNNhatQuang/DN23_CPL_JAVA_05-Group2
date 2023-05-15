@@ -1,5 +1,6 @@
 package com.DiamondCafe.DiamondCafe.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -93,6 +94,16 @@ public class NhanVienSoDoChinhServiceImpl implements NhanVienSoDoChinhService {
 	public void EmptyTable(int SoBan) {
 		// TODO Auto-generated method stub
 		sdcDao.EmptyTable(SoBan);
+	}
+
+	@Override
+	public List<KhachHang> searchCustomer(String search) {
+		List<KhachHang> list = new ArrayList<>();
+		for(KhachHang kh : sdcDao.getListCustomer()) {
+			if(kh.getSDT().contains(search))
+				list.add(kh);
+		}
+		return list;
 	}
 	
 }
