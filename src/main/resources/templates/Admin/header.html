@@ -77,34 +77,6 @@
 			</nav>
 		</header>
 		
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="treeview active">
-						<ul class="treeview-menu">
-							<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
-										chủ</span>
-							</a></li>
-							<li><a href="/admin/mon/list"><span
-									class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
-							<li><a href="/admin/loaimon"><span
-									class="material-symbols-outlined"> food_bank </span> Quản lý
-									Loại món</a></li>
-							<li><a href="#"><i
-									class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
-									Khách hàng </a></li>
-							<li><a href="#"><i
-									class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
-									Viên</a></li>
-							<li><a href="/admin/thongke/ngay"><i
-									class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
-						</ul>
-					</li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
+		<aside class="main-sidebar" th:replace="Admin/mainsidebar :: mainSideBar"></aside>
 
 		

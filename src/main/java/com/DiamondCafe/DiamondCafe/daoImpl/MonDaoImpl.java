@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.Mon_Quy;
 import com.DiamondCafe.DiamondCafe.dao.MonDao;
 
 @Repository
@@ -20,7 +21,7 @@ public class MonDaoImpl implements MonDao {
 	private JdbcTemplate jdbc;
 	
 	@Override
-	public List<Mon> GetList(int page, int pageSize, String searchValue) {
+	public List<Mon_Quy> GetList(int page, int pageSize, String searchValue) {
 		String query = "SELECT *\r\n"
 				+ "FROM \r\n"
 				+ "(\r\n"
@@ -34,30 +35,30 @@ public class MonDaoImpl implements MonDao {
 				+ "			)\r\n"
 				+ ") AS t\r\n"
 				+ "WHERE (? = 0) OR (t.RowNumber BETWEEN (? - 1) * ? + 1 AND ? * ?)";
-		List<Mon> list = jdbc.query(query, new Object[] {
-				searchValue
-				, searchValue
-				, searchValue
+		List<Mon_Quy> list = jdbc.query(query, new Object[] {
+				"%"+searchValue+"%"
+				, "%"+searchValue+"%"
+				, "%"+searchValue+"%"
 				, pageSize
 				, page
 				, pageSize
 				, page
 				, pageSize
-		}, new MonRowMapper());
+		}, new Mon_QuyRowMapper());
 		return list;
 	}
 
 	@Override
-	public List<Mon> GetAllMon() {
+	public List<Mon_Quy> GetAllMon() {
 		// TODO Auto-generated method stub4
 		String query="select * from MON, LOAI_MON where MON.ID_LoaiMon=LOAI_MON.IDLoai";
-		List<Mon> list=jdbc.query(query, new MonRowMapper());
+		List<Mon_Quy> list=jdbc.query(query, new Mon_QuyRowMapper());
 		
 		return list;
 	}
 
 	@Override
-	public void CreateMon(Mon m) {
+	public void CreateMon(Mon_Quy m) {
 		// TODO Auto-generated method stub
 		String query="insert into Mon(TenMon, DonViTinh, GiaBan, ID_LoaiMon) values(?,?,?,?)";
 		jdbc.update(query, new Object[] {
@@ -69,7 +70,7 @@ public class MonDaoImpl implements MonDao {
 	}
 
 	@Override
-	public void UpdateMon(Mon m) {
+	public void UpdateMon(Mon_Quy m) {
 		// TODO Auto-generated method stub
 		String query = "UPDATE MON SET TenMon=?, DonViTinh=?, GiaBan=?, ID_LoaiMon=? WHERE MaMon=?";
 		jdbc.update(query, new Object[] {
@@ -88,12 +89,13 @@ public class MonDaoImpl implements MonDao {
 		jdbc.update(query, maMon);
 	}
 	
-	class MonRowMapper implements RowMapper<Mon>{
+	class Mon_QuyRowMapper implements RowMapper<Mon_Quy>{
 		@Override
-		public Mon mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Mon m=new Mon();
+		public Mon_Quy mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Mon_Quy m=new Mon_Quy();
 			m.setMaMon(rs.getInt("MaMon"));
 			m.setTenMon(rs.getString("TenMon"));
+			m.setTenLoai(rs.getString("TenLoai"));
 			m.setDonViTinh(rs.getString("DonViTinh"));
 			m.setGiaBan(rs.getFloat("GiaBan"));
 			m.setID_LoaiMon(rs.getInt("ID_LoaiMon"));
@@ -103,12 +105,12 @@ public class MonDaoImpl implements MonDao {
 	}
 
 	@Override
-	public Mon getMon(int id) {
+	public Mon_Quy getMon(int id) {
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM MON, LOAI_MON WHERE MaMon=? and LOAI_MON.IDLoai=MON.ID_LoaiMon";
-		Mon m = jdbc.queryForObject(query, new Object[] {
+		Mon_Quy m = jdbc.queryForObject(query, new Object[] {
 				id
-		}, new MonRowMapper());
+		}, new Mon_QuyRowMapper());
 		return m;
 	}
 
@@ -125,4 +127,5 @@ public class MonDaoImpl implements MonDao {
 		}, Integer.class);
 		return count;
 	}
+
 }

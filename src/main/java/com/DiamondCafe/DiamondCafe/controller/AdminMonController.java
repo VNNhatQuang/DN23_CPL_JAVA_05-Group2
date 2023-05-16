@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
-import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.Mon_Quy;
 import com.DiamondCafe.DiamondCafe.bean.Paging;
 import com.DiamondCafe.DiamondCafe.bean.TaiKhoan;
 import com.DiamondCafe.DiamondCafe.service.AdminLoaiMonService;
@@ -52,10 +52,10 @@ public class AdminMonController {
 			String searchValue = "";
 			if(request.getParameter("searchValue")!=null)
 				searchValue = request.getParameter("searchValue");
-//				String searchValue=tmp+"%";
 				
 			int rowCount = monSV.Count(searchValue);
 			Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
+			if(p.pageCount==0) p.pageCount=1;
 			request.setAttribute("paging", p);
 			request.setAttribute("list", monSV.GetList(page, PAGE_SIZE, searchValue));
 			request.setAttribute("Account", tk);
@@ -68,7 +68,7 @@ public class AdminMonController {
 	}
 	
 	@GetMapping("create")
-	public String create(@ModelAttribute Mon mon, ModelMap modelMap, HttpSession session, HttpServletRequest request) {
+	public String create(@ModelAttribute Mon_Quy mon, ModelMap modelMap, HttpSession session, HttpServletRequest request) {
 		String MaTK=(String)session.getAttribute("MaTK");
 		String Pass = (String) session.getAttribute("Pass");
         TaiKhoan tk= taiKhoanSV.taiKhoan(MaTK, Pass);
@@ -83,7 +83,7 @@ public class AdminMonController {
 	}
 	
 	@PostMapping("create")
-	public String confirmCreate(@ModelAttribute Mon mon) {
+	public String confirmCreate(@ModelAttribute Mon_Quy mon) {
 		monSV.CreateMon(mon);
 		return "redirect:/admin/mon/list";
 	}
@@ -97,7 +97,7 @@ public class AdminMonController {
 			return "redirect:/admin/login";
 		}else {
 			request.setAttribute("Account", tk);
-			Mon m=monSV.getMon(id);
+			Mon_Quy m=monSV.getMon(id);
 			request.setAttribute("mon", m);
 			return "Admin/Mon/delete";
 		}
@@ -118,7 +118,7 @@ public class AdminMonController {
 			return "redirect:/admin/login";
 		}else {
 			request.setAttribute("Account", tk);
-			Mon m = monSV.getMon(id);
+			Mon_Quy m = monSV.getMon(id);
 			List<LoaiMon> lm=loaiMonSV.getAll();
 			request.setAttribute("loaiMon", lm);
 			request.setAttribute("mon", m);
@@ -127,7 +127,7 @@ public class AdminMonController {
 	}
 	
 	@PostMapping("update")
-	public String Update(HttpServletRequest request, @ModelAttribute Mon mon) {
+	public String Update(HttpServletRequest request, @ModelAttribute Mon_Quy mon) {
 		monSV.UpdateMon(mon);
 		return "redirect:/admin/mon/list";
 	}

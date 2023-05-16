@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.DiamondCafe.DiamondCafe.bean.Mon;
+import com.DiamondCafe.DiamondCafe.bean.Mon_Quy;
 import com.DiamondCafe.DiamondCafe.dao.MonDao;
 import com.DiamondCafe.DiamondCafe.service.MonService;
 
@@ -16,24 +16,24 @@ public class MonServiceImpl implements MonService {
 	private MonDao monDao;
 	
 	@Override
-	public List<Mon> GetList(int page, int pageSize, String searchValue) {
+	public List<Mon_Quy> GetList(int page, int pageSize, String searchValue) {
 		return monDao.GetList(page, pageSize, searchValue);
 	}
 
 	@Override
-	public List<Mon> GetAllMon() {
+	public List<Mon_Quy> GetAllMon() {
 		// TODO Auto-generated method stub
 		return monDao.GetAllMon();
 	}
 
 	@Override
-	public void CreateMon(Mon m) {
+	public void CreateMon(Mon_Quy m) {
 		// TODO Auto-generated method stub
 		monDao.CreateMon(m);
 	}
 
 	@Override
-	public void UpdateMon(Mon m) {
+	public void UpdateMon(Mon_Quy m) {
 		// TODO Auto-generated method stub
 		monDao.UpdateMon(m);
 	}
@@ -45,7 +45,7 @@ public class MonServiceImpl implements MonService {
 	}
 
 	@Override
-	public Mon getMon(int id) {
+	public Mon_Quy getMon(int id) {
 		// TODO Auto-generated method stub
 		return monDao.getMon(id);
 	}
