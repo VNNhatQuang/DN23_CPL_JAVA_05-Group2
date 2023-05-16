@@ -53,7 +53,7 @@ public class NhanvienController {
     public String addNewNhanvien(Model model, @ModelAttribute(name = "NhanvienModel") Nhanvien nv, BindingResult result){
         if (result.hasErrors()){
             model.addAttribute("message","Thêm nhân viên không thành. Vui lòng thử lại");
-            return "edit";
+            return "Admin/EmployeeAdmin/EditEmployee";
         }
         iNhanvienService.save(nv);
         model.addAttribute("message","Thêm nhân viên thành công");
@@ -70,7 +70,7 @@ public class NhanvienController {
     public String update(Model model, @ModelAttribute(name = "NhanvienModel") Nhanvien nv, BindingResult result){
         if (result.hasErrors()){
             model.addAttribute("message" , "Cập nhật không thành. Vui lòng thử lại");
-            return "edit";
+            return "Admin/EmployeeAdmin/EditEmployee";
         }
         iNhanvienService.update(nv);
         return "redirect:/admin/nhanvien";
