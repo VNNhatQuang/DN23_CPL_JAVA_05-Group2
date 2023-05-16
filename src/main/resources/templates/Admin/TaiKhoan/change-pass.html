@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Đổi mật khẩu</title>
+</head>
+<div th:replace="Admin/header"></div>
+<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h2>ĐỔI MẬT KHẨU</h2>
+			</section>
+
+			<!-- PHAN BODY -->
+			<section class="content">
+				<div class="box box-primary">
+					<div class="box-body">
+						<form class="form-horizontal" action="change-pass" method="post">
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Nhập mật khẩu:</label>
+								<input type="password" required="required" name="oldPass" autofocus="autofocus">
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Nhập mật khẩu mới:</label>
+								 <input type="password"  required="required" name="newPass">
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Xác nhận mật khẩu:</label>
+								<input type="password" required="required" name="reNewPass">
+							</div>
+
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
+									</button>
+									<a href="show-info" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+<div th:replace="Admin/footer"></div>

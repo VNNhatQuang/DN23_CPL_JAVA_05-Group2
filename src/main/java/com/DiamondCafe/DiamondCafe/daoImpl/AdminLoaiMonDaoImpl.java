@@ -20,22 +20,22 @@ public class AdminLoaiMonDaoImpl implements AdminLoaiMonDao {
 	
 	@Override
 	public List<LoaiMon> getList(int page, int pageSize, String searchValue) {
-		String query = "SELECT *\r\n"
-				+ "FROM \r\n"
-				+ "(\r\n"
-				+ "	SELECT	*, ROW_NUMBER() OVER (ORDER BY IDLoai) AS RowNumber\r\n"
-				+ "	FROM	LOAI_MON \r\n"
-				+ "	WHERE	(? = N'')\r\n"
-				+ "		OR	(\r\n"
-				+ "				(IDLoai LIKE ?)\r\n"
-				+ "				OR (TenLoai LIKE ?)\r\n"
-				+ "			)\r\n"
-				+ ") AS t\r\n"
+		String query = "SELECT * "
+				+ "FROM  "
+				+ "( "
+				+ "	SELECT	*, ROW_NUMBER() OVER (ORDER BY IDLoai) AS RowNumber "
+				+ "	FROM	LOAI_MON "
+				+ "	WHERE	(? = N'') "
+				+ "		OR	( "
+				+ "				(IDLoai LIKE ?) "
+				+ "				OR (TenLoai LIKE ?) "
+				+ "			) "
+				+ ") AS t "
 				+ "WHERE (? = 0) OR (t.RowNumber BETWEEN (? - 1) * ? + 1 AND ? * ?)";
 		List<LoaiMon> list = jdbc.query(query, new Object[] {
-				searchValue
-				, searchValue
-				, searchValue
+				"%"+searchValue+"%"
+				, "%"+searchValue+"%"
+				, "%"+searchValue+"%"
 				, pageSize
 				, page
 				, pageSize

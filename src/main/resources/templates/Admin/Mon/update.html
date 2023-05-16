@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cập nhật món</title>
+</head>
+<div th:replace="Admin/header"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h2>CHỈNH SỬA MÓN</h2>
+			</section>
+
+			<!-- PHAN BODY -->
+			<section class="content">
+				<div class="box box-primary">
+					<div class="box-body">
+						<form class="form-horizontal" action="/admin/mon/update" method="post">
+						
+							<input type="hidden" name="MaMon" th:value="${mon.MaMon}"/>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-2">Tên món:</label>
+								<div class="col-sm-10">
+									<input type="text" name="TenMon" th:value="${mon.TenMon}"/>
+									<span class="field-validation-valid"
+										data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										style="color: #f00"></span>
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Loại món:</label>
+								<div class="col-sm-10">
+									<!-- <input class="form-control" id="ContactName" name="ContactName"
+										type="text" value="" / -->
+									 <select name="ID_LoaiMon" >
+					                	<option th:value="${mon.ID_LoaiMon}" th:text="${mon.TenLoai}"></option>
+									  	<option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+									</select>
+
+									</select> <span class="field-validation-valid"
+										data-valmsg-for="ContactName" data-valmsg-replace="true"
+										style="color: #f00"></span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Đơn vị tính:</label>
+								<div class="col-sm-10">
+									<input type="text" name="DonViTinh" th:value="${mon.DonViTinh}"/>
+									<span class="field-validation-valid"
+										data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										style="color: #f00"></span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Đơn giá:</label>
+								<div class="col-sm-10">
+									<input type="number" name="GiaBan" th:value="${mon.GiaBan}" min="0"/>
+									<span class="field-validation-valid"
+										data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										style="color: #f00"></span>
+								</div>
+							</div>
+							
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
+									</button>
+									<a href="/admin/mon/list" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+
+<div th:replace="Admin/footer"></div>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4>Cập nhật món</h4>
+	
+	 <form action="/admin/mon/update" method="post">
+	 	<input type="hidden" name="MaMon" th:value="${mon.MaMon}"/>
+		Tên món: <input type="text" name="TenMon" th:value="${mon.TenMon}"/> <br>
+		
+		<label class="control-label col-sm-2">Tên loại</label>
+                <select name="ID_LoaiMon" >
+                	<option th:value="${mon.ID_LoaiMon}" th:text="${mon.TenLoai}"></option>
+				  <option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+				</select>
+				<br>
+				
+		Đơn vị tính: <input type="text" name="DonViTinh" th:value="${mon.DonViTinh}"/><br>
+		Đơn giá: <input type="number" name="GiaBan" th:value="${mon.GiaBan}" min="0"/><br>
+		<input type="submit" value="Thêm"/>
+	</form>
+	<a href="/admin/mon/list">Quay lại</a>
+</body>
+</html> -->

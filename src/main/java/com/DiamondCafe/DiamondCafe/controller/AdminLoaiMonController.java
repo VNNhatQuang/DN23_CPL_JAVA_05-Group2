@@ -32,6 +32,7 @@ public class AdminLoaiMonController {
 			searchValue = request.getParameter("searchValue");
 		int rowCount = lmService.Count(searchValue);
 		Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
+		if(p.pageCount==0) p.pageCount=1;
 		request.setAttribute("paging", p);
 		request.setAttribute("list", lmService.getList(page, PAGE_SIZE, searchValue));
 		return "Admin/LoaiMon/index";

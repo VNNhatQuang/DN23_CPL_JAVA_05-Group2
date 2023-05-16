@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Xóa món</title>
+</head>
+<div th:replace="Admin/header"></div>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h1 style="font-size: 40px">XÓA MÓN</h1>
+
+
+				<!-- PHAN BODY -->
+				<div class="box box-primary">
+
+					<!-- form start -->
+					<form action="" method="get">
+						<div class="box-body">
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Mã món:</label>
+								<p th:text="${mon.MaMon}">
+							</div>
+
+							<br>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Tên món:</label>
+								<p th:text="${mon.TenMon}">
+							</div>
+
+							<br>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Loại món:</label>
+								<p th:text="${mon.TenLoai}">
+							</div>
+
+							<br>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Đơn vị tính:</label>
+								<p th:text="${mon.DonViTinh}">
+							</div>
+
+							<br>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Đơn giá:</label>
+								<p th:text="${mon.GiaBan}">
+							</div>
+
+							<br>
+
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<!-- <button type="submit" class="btn btn-primary"
+										style="background-color: red">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Xoá
+									</button>  -->
+									<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}" class="btn btn-primary">Xóa</a>
+									<a href="/admin/mon/list" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+
+<div th:replace="Admin/footer"></div>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/admin/mon/list">Quay lại</a>
+	<br>
+	<label>Mã món</label><p th:text="${mon.MaMon}"></p>
+	<label>Tên món</label><p th:text="${mon.TenMon}"></p><br>
+	<label>Loại món</label><p th:text="${mon.TenLoai}"></p>
+	<label>Đơn vị tính</label><p th:text="${mon.DonViTinh}"></p>
+	<label>Đơn giá</label><p th:text="${mon.GiaBan}"></p><br>
+	<br>
+	<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}">Xóa</a>
+</body>
+</html> -->

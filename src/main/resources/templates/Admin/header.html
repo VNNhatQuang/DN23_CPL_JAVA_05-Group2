@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Xóa món</title>
-
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -13,29 +7,29 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
+
 <!-- Google Font -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <link rel="stylesheet"
-	th:href="@{/Admin/assets/Themes/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <link rel="stylesheet"
-	th:href="@{/Admin/assets/Themes/bower_components/font-awesome/css/font-awesome.min.css}">
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet"
-	th:href="@{/Admin/assets/Themes/bower_components/Ionicons/css/ionicons.min.css}">
-<link rel="stylesheet"
-	th:href="@{/Admin/assets/Themes/dist/css/AdminLTE.min.css}">
-<link rel="stylesheet"
-	th:href="@{/Admin/assets/Themes/dist/css/skins/_all-skins.min.css}">
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/font-awesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/Ionicons/css/ionicons.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/AdminLTE.min.css}">
+<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/skins/_all-skins.min.css}">
 
 </head>
 
@@ -58,23 +52,23 @@
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<!--User Account -->
-						<li class="dropdown user user-menu"><a href="#"
+						<li class="dropdown user user-menu"><a href=""
 							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="../Themes/dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image"> <span class="hidden-xs">USER</span>
+								src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="user-image"
+								alt="User Image"> <span class="hidden-xs" th:text="${Account.TenNV}"></span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header"><img
-									src="../Themes/dist/img/user2-160x160.jpg" class="img-circle"
+									src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="img-circle"
 									alt="User Image"></li>
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Tài khoản</a>
+										<a href="show-info" class="btn btn-default btn-flat">Tài khoản</a>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Đăng xuất</a>
+										<a href="logout" class="btn btn-default btn-flat">Đăng xuất</a>
 									</div>
 								</li>
 							</ul></li>
@@ -82,51 +76,35 @@
 				</div>
 			</nav>
 		</header>
-
-		<aside class="main-sidebar" th:replace="Admin/mainsidebar :: mainSideBar"></aside>
-
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-
-			<section class="content-header">
-				<h2>XÓA LOẠI MÓN</h2>
-
-				<!-- PHAN BODY -->
-				<div class="box box-primary">
-
-					<!-- form start -->
-					<form role="form">
-						<div class="box-body">
-
-							<div class="form-group">
-								<label class="control-label col-sm-2">Mã loại món:</label>
-								<p th:text="${lm.IDLoai}" class="form-control-static"></p>
-							</div>
-
-							<br>
-
-							<div class="form-group">
-								<label class="control-label col-sm-2">Tên loại món:</label>
-								<p th:text="${lm.TenLoai}" class="form-control-static">Cà
-									phê đen</p>
-							</div>
-
-							<br>
-
-
-							<div class="form-group" style="text-align: end">
-								<div class="col-sm-offset-2 col-sm-10">
-									<a th:href="@{'/admin/loaimon/delete/confirm/' + ${lm.IDLoai}}"
-										class="btn btn-primary" style="background-color: red"> <i
-										class="glyphicon glyphicon-floppy-disk"></i> Xoá
-									</a> <a href="/admin/loaimon" class="btn btn-warning"> Quay lại
-									</a>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
+		
+		<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="treeview active">
+						<ul class="treeview-menu">
+							<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
+										chủ</span>
+							</a></li>
+							<li><a href="/admin/mon/list"><span
+									class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
+							<li><a href="/admin/loaimon"><span
+									class="material-symbols-outlined"> food_bank </span> Quản lý
+									Loại món</a></li>
+							<li><a href="#"><i
+									class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
+									Khách hàng </a></li>
+							<li><a href="#"><i
+									class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
+									Viên</a></li>
+							<li><a href="/admin/thongke/ngay"><i
+									class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
+						</ul>
+					</li>
+				</ul>
 			</section>
-		</div>
-</body>
-</html>
+			<!-- /.sidebar -->
+		</aside>
+
+		

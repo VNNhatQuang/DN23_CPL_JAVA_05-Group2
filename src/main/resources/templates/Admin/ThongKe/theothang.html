@@ -1,38 +1,9 @@
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <head> -->
-<!-- <meta charset="UTF-8"> -->
-<!-- <title>Thống kê tháng</title> -->
-<!-- </head> -->
-<!-- <body> -->
-<!-- 	<a href="ngay">Theo ngày</a> -->
-<!-- 	<a href="thang">Theo tháng</a> -->
-<!-- 	<a href="quy">Theo quý</a> -->
-
-<!-- 	<form action="/admin/thongke/thang" method="get"> -->
-<!-- 		<select name="Month" onchange="this.form.submit()"> -->
-<!-- 			<th:block th:each="m : ${#numbers.sequence(1, 12)}"> -->
-<!-- 				<option th:text="${m}"></option> -->
-<!-- 			</th:block> -->
-<!-- 		</select> -->
-<!-- 	</form> -->
-
-<!-- 	<th:block th:each="tk : ${list}"> -->
-<!-- 		<p th:text="${tk.Money}"></p> -->
-<!-- 		<br> -->
-<!-- 	</th:block> -->
-
-
-<!-- </body> -->
-<!-- </html> -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Thêm loại món</title>
+<title>Thống kê doanh thu</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -113,56 +84,7 @@
 			</nav>
 		</header>
 
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header"></li>
-					<!-- TRANG CHỦ -->
-					<li class="active"><a href="#"> <!-- <i class="fa fa-files-o"></i> -->
-							<i class="fa fa-home"></i> <span>TRANG CHỦ</span> <span
-							class="pull-right-container"> <span
-								class="label label-primary pull-right"></span>
-						</span>
-					</a></li>
-					<!-- QUAN LY MON -->
-					<li class="active"><a href="#"> <span
-							class="material-symbols-outlined"> fastfood </span> <span>
-								<span> Quản lý món</span> <span class="pull-right-container">
-									<span class="label label-primary pull-right"></span>
-							</span></a></li>
-					<!-- QUAN LY LOAI MON -->
-					<li class="active"><a href="#"> <span
-							class="material-symbols-outlined">food_bank</span> <span>Quản
-								lý loại món</span> <span class="pull-right-container"> <span
-								class="label label-primary pull-right"></span>
-						</span>
-					</a></li>
-					<!-- QUAN LY LOAI MON -->
-					<li class="active"><a href="#"> <i class="fa fa-user"></i>
-							<span>Quản lý khách hàng</span> <span
-							class="pull-right-container"> <span
-								class="label label-primary pull-right"></span>
-						</span>
-					</a></li>
-					<!-- QUAN LY NHAN VIEN -->
-					<li class="active"><a href="#"> <i class="fa fa-users"></i>
-							<span>Quản lý nhân viên</span> <span class="pull-right-container">
-								<span class="label label-primary pull-right"></span>
-						</span>
-					</a></li>
-					<!-- THONG KE DOANH THU -->
-					<li class="active"><a href="#"> <!-- <i class="fa-address-book"></i> -->
-							<i class="fa fa-line-chart"></i> <span>Thống kê Doanh thu</span>
-							<span class="pull-right-container"> <span
-								class="label label-primary pull-right"></span>
-						</span>
-					</a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
+		<aside class="main-sidebar" th:replace="Admin/mainsidebar :: mainSideBar"></aside>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tài khoản</title>
+</head>
+<div th:replace="Admin/header"></div>
+
+	<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h1 style="font-size: 30px">THÔNG TIN TÀI KHOẢN</h1>
+			</section>
+
+			<!-- PHAN BODY -->
+			<section class="content">
+				<div class="box box-primary">
+					<div class="box-body">
+						<form class="form-horizontal" action="update" method="post">
+							<div class="form-group">
+								<label class="control-label col-sm-2">Họ tên:</label>
+								<div class="col-sm-10">
+									<input type="text" th:value="${Account.TenNV}" name="hoten">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Ngày sinh:</label>
+								<div class="col-sm-10">
+									 <input type="text" th:value="${Account.NgaySinh}" name="ngaysinh">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Địa chỉ</label>
+								<div class="col-sm-10">
+									<input type="text" th:value="${Account.DiaChi}" name="diachi">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Số điện thoại:</label>
+								<div class="col-sm-10">
+									<input type="text"  th:value="${Account.SDT}" name="sdt">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">CMT:</label>
+								<div class="col-sm-10">
+									<input type="text"  th:value="${Account.CMT}" name="cmt">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-2">Chức vụ:</label>
+								<div class="col-sm-10">
+									  <input type="text" th:value="${Account.TenChucVu}" readonly>
+								</div>
+
+							</div>
+
+							<div class="form-group" style="text-align: end">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">
+										<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
+									</button>
+									<a href="home-page" class="btn btn-warning"> Quay lại </a>
+								</div>
+							</div>
+							<a href="change-pass"><ins style="color: blue">Đổi
+									mật khẩu</ins></a>
+						</form>
+
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<!-- <script type="text/javascript">
+			function ValidateTK(){
+				var hoten=document.getElementById('hoten').value;
+				var errorHoTen=document.getElementById('errorHoTen');
+				
+				var ngaysinh=document.getElementById('ngaysinh').value;
+				var errorNgaySinh=document.getElementById('errorNgaySinh');
+				
+				var diachi=document.getElementById('diachi').value;
+				var errorDiaChi=document.getElementById('errorDiaChi');
+				
+				var sdt=document.getElementById('sdt').value;
+				var errorSDT=document.getElementById('errorSDT');
+				
+				var regexSDT=/^(84)?(90|91)\d{7}$/;
+	
+				if(hoten=='' || hoten==null){
+					errorSDT.innerHTML = " * ";
+				}else{
+					errorSDT.innerHTML = '';
+				}
+				
+				if(ngaysinh=='' || ngaysinh==null){
+					errorNgaySinh.innerHTML = " * ";
+				}else{
+					errorNgaySinh.innerHTML = '';
+				}
+				
+				if(diachi=='' || diachi==null){
+					errorDiaChi.innerHTML = " * ";
+				}else{
+					errorDiaChi.innerHTML = '';
+				}
+				
+				if(sdt=='' || sdt==null || !regexSDT.test(sdt)){
+					errorSDT.innerHTML = " * ";
+				}else{
+					errorSDT.innerHTML = '';
+				}
+				
+				if(hoten && ngaysinh && diachi && sdt){
+					alert("Cập nhật tài khoản thành công!");
+					window.location.href = "update";
+				}
+				
+				return false;
+			}
+		</script> -->
+		
+<div th:replace="Admin/footer"></div>
