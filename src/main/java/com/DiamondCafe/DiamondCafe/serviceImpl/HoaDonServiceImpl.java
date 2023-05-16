@@ -1,5 +1,6 @@
 package com.DiamondCafe.DiamondCafe.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,14 @@ public class HoaDonServiceImpl implements HoaDonService{
 		// TODO Auto-generated method stub
 		return hdDao.getcthd(SoHD);
 	}
-
+	
+	public List<HoaDon> Tim(String key){
+	  	 List<HoaDon> tam= new ArrayList<HoaDon>();	 
+	  	 
+	  	 List<HoaDon> ds= hdDao.gethd();
+	  	 for(HoaDon s: ds)
+		   	if(s.getHoTen().toLowerCase().trim().contains(key.toLowerCase().trim()) )
+		   			tam.add(s);
+		 return tam;
+		}
 }

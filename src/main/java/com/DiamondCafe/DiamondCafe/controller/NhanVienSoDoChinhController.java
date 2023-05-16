@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.DiamondCafe.DiamondCafe.bean.DoanhThu;
 import com.DiamondCafe.DiamondCafe.bean.HoaDon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
 import com.DiamondCafe.DiamondCafe.bean.NhanVien;
 import com.DiamondCafe.DiamondCafe.bean.Order;
 import com.DiamondCafe.DiamondCafe.service.HoaDonService;
+import com.DiamondCafe.DiamondCafe.service.NhanVienDoanhThuService;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +31,9 @@ public class NhanVienSoDoChinhController {
 	
 	@Autowired
 	private HoaDonService HoaDonSV;
+	
+	@Autowired
+	private NhanVienDoanhThuService nvdtService;
 	
 	private double TongTien=0;
 	private int giamGia=0;
@@ -202,10 +207,19 @@ public class NhanVienSoDoChinhController {
 	@GetMapping("inlaihoadon")
 	public String InLaiHoaDon(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		String key=request.getParameter("key");
+		
 		if(session.getAttribute("tk")!=null) {
-			List<HoaDon> list=HoaDonSV.GetHD();
-			request.setAttribute("listHD", list);
-			return "Employee/InLaiHoaDon/index";
+			if(key!="" && key!=null) {
+				List<HoaDon> list=HoaDonSV.Tim(key);
+				request.setAttribute("listHD", list);
+				return "Employee/InLaiHoaDon/index";
+			}else {
+				List<HoaDon> list=HoaDonSV.GetHD();
+				request.setAttribute("listHD", list);
+				return "Employee/InLaiHoaDon/index";
+			}
+			
 		}
 		else
 			return "redirect:/";
@@ -231,7 +245,20 @@ public class NhanVienSoDoChinhController {
 	
 	@GetMapping("doanhthu")
 	public String DoanhThu(HttpServletRequest request) {
-		return "Employee/DoanhThu/index";
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			List<DoanhThu> DoanhThu = nvdtService.doanhthu();
+			double sum=0;
+			for( DoanhThu doanhthu: DoanhThu) {
+				sum = sum + doanhthu.getThanhTien();
+				
+			}
+			request.setAttribute("tongtien",sum );
+			request.setAttribute("listTable",nvdtService.doanhthu() );
+			return "Employee/DoanhThu/index";
+		}
+		else
+			return "redirect:/";
 	}
 
 }
