@@ -52,10 +52,10 @@ public class AdminMonController {
 			String searchValue = "";
 			if(request.getParameter("searchValue")!=null)
 				searchValue = request.getParameter("searchValue");
-//				String searchValue=tmp+"%";
 				
 			int rowCount = monSV.Count(searchValue);
 			Paging p = new Paging(page, PAGE_SIZE, rowCount, searchValue);
+			if(p.pageCount==0) p.pageCount=1;
 			request.setAttribute("paging", p);
 			request.setAttribute("list", monSV.GetList(page, PAGE_SIZE, searchValue));
 			request.setAttribute("Account", tk);

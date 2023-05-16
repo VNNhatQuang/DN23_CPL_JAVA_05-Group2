@@ -68,9 +68,12 @@
 
 							<div class="text-center">
 								<ul class="pagination">
-									<th:block th:each="i : ${#numbers.sequence(1, paging.pageCount)}">
-										<li th:if="${i==paging.pageIndex}" style="font-weight: bolder;" class="active"><a th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a></li>
-										<li th:unless="${i==paging.pageIndex}"><a th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a></li>
+									<th:block
+										th:each="i : ${#numbers.sequence(1, paging.pageCount)}">
+										<li th:if="${i==paging.pageIndex}" class="active"><a
+											th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a></li>
+										<li th:unless="${i==paging.pageIndex}"><a
+											th:href="@{'/admin/mon/list?page=' + ${i}}" th:text="${i}"></a></li>
 									</th:block>
 								</ul>
 							</div>		

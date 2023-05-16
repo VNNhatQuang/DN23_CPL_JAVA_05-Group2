@@ -35,9 +35,9 @@ public class MonDaoImpl implements MonDao {
 				+ ") AS t\r\n"
 				+ "WHERE (? = 0) OR (t.RowNumber BETWEEN (? - 1) * ? + 1 AND ? * ?)";
 		List<Mon> list = jdbc.query(query, new Object[] {
-				searchValue
-				, searchValue
-				, searchValue
+				"%"+searchValue+"%"
+				, "%"+searchValue+"%"
+				, "%"+searchValue+"%"
 				, pageSize
 				, page
 				, pageSize
