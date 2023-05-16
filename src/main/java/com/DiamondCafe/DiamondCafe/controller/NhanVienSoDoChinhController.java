@@ -1,5 +1,7 @@
 package com.DiamondCafe.DiamondCafe.controller;
 
+import java.io.IOException;
+import java.net.BindException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.DiamondCafe.DiamondCafe.bean.HoaDon;
 import com.DiamondCafe.DiamondCafe.bean.Mon;
 import com.DiamondCafe.DiamondCafe.bean.Order;
+import com.DiamondCafe.DiamondCafe.bean.DoanhThu;
 import com.DiamondCafe.DiamondCafe.service.HoaDonService;
+import com.DiamondCafe.DiamondCafe.service.NhanVienDoanhThuService;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import com.lowagie.text.DocumentException;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 
 @Controller
 @RequestMapping("/home")
@@ -29,6 +39,8 @@ public class NhanVienSoDoChinhController {
 	private int giamGia=0;
 	@Autowired
 	private HoaDonService HoaDonSV;
+	@Autowired
+	private NhanVienDoanhThuService nvdtService;
 	
 	// Hiển thị màn hình sơ đồ chính
 	@GetMapping
@@ -178,10 +190,19 @@ public class NhanVienSoDoChinhController {
 	@GetMapping("inlaihoadon")
 	public String InLaiHoaDon(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		String key=request.getParameter("key");
+		
 		if(session.getAttribute("tk")!=null) {
-			List<HoaDon> list=HoaDonSV.GetHD();
-			request.setAttribute("listHD", list);
-			return "Employee/InLaiHoaDon/index";
+			if(key!="" && key!=null) {
+				List<HoaDon> list=HoaDonSV.Tim(key);
+				request.setAttribute("listHD", list);
+				return "Employee/InLaiHoaDon/index";
+			}else {
+				List<HoaDon> list=HoaDonSV.GetHD();
+				request.setAttribute("listHD", list);
+				return "Employee/InLaiHoaDon/index";
+			}
+			
 		}
 		else
 			return "redirect:/";
@@ -207,6 +228,21 @@ public class NhanVienSoDoChinhController {
 	
 	@GetMapping("doanhthu")
 	public String DoanhThu(HttpServletRequest request) {
-		return "Employee/DoanhThu/index";
+		HttpSession session = request.getSession();
+		if(session.getAttribute("tk")!=null) {
+			List<DoanhThu> DoanhThu = nvdtService.doanhthu();
+			double sum=0;
+			for( DoanhThu doanhthu: DoanhThu) {
+				sum = sum + doanhthu.getThanhTien();
+				
+			}
+			request.setAttribute("tongtien",sum );
+			request.setAttribute("listTable",nvdtService.doanhthu() );
+			return "Employee/DoanhThu/index";
+		}
+		else
+			return "redirect:/";
 	}
+	
+	
 }

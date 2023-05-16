@@ -19,29 +19,25 @@
         <div class="table-content">
             <table>
                 <tr>
-                    <th>STT</th>
+                   <!--  <th>STT</th> -->
                     <th>Mã hóa đơn</th>
                     <th>Nhân viên lập hóa đơn</th>
                     <th>Tổng trị giá hóa đơn</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>112</td>
-                    <td>Nguyễn Young Quí</td>
-                    <td>56,000 VND</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>112</td>
-                    <td>Nguyễn Young Quí</td>
-                    <td>56,000 VND</td>
-                </tr>
+				<tbody th:each="l : ${listTable}">
+	                <tr >
+	                	<!-- <td th:text=""></td> -->
+	                    <td th:text="${l.SoHD}"></td>
+	                    <td th:text="${l.TenNV}"></td>
+						<td th:text="${l.ThanhTien}"></td> 
+						
+					</tr>
+				</tbody>
             </table>
         </div>
         <div class="total-shift">
-            <h5>Tổng doanh thu ca: &ensp;<i>1,400,000 VND</i></h5>
+            <h4>Tổng doanh thu : &ensp;<i th:text="${tongtien}"> </i> </h4>
         </div>
-
     </div>
 
 
