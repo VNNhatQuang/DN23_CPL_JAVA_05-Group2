@@ -35,7 +35,7 @@
 	th:href="@{/Admin/assets/Themes/dist/css/AdminLTE.min.css}">
 <link rel="stylesheet"
 	th:href="@{/Admin/assets/Themes/dist/css/skins/_all-skins.min.css}">
-
+<script th:src="@{/Employee/TaiKhoan/validate.js}"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -94,7 +94,7 @@
 			<section class="content">
 				<div class="box box-primary">
 					<div class="box-body">
-						<form class="form-horizontal" action="add" method="post">
+						<form class="form-horizontal" action="add" method="post" onsubmit="return CheckCategory()">
 
 							<input name="__RequestVerificationToken" type="hidden"
 								value="DCaFG_JzSP7HWUJo6Pbwm8nOjKYz7Rzf_bGi0L0S8qL14jX25MQDEdNauPxTEoCqt3t2gaa4j1IzW1PTnT8tN3MJf0eDev1p9JuK5DT6Uw0jS5jHJOq8XIMJtpJZuRQACOn_6HL2DJOKXlvThc6oxBcfaDq36VBa52ildDL4E-5ZT2By00bWe-f9tEmChFIZfvWT6ziA8_WAmXAvX61W55_hHZajjeSf_9MTSXs2K7AIZwJx1rwKfOkFSlS2iZis9EFi3eht1yOhh3XC-4sMTWuCyExP2T9mQv7Y59Pf5dcFOz0cK03nLN36oNlBS7uOMcnX85Gr6xfTwS-pcsBP6OyGiFjp7smjAKiWg-ULbME1" />
@@ -107,7 +107,7 @@
 								<label class="control-label col-sm-2">Tên loại món</label>
 								<div class="col-sm-10">
 									<input autofocus="autofocus" class="form-control"
-										name="TenLoai" type="text" /> <span
+										name="TenLoai" type="text" required="required"/> <span
 										class="field-validation-valid" data-valmsg-for="CustomerName"
 										data-valmsg-replace="true" style="color: #f00"></span>
 								</div>
