@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.DiamondCafe.DiamondCafe.bean.*;
+import com.DiamondCafe.DiamondCafe.model.Khachhang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -105,5 +107,5 @@ public class NhanVienSoDoChinhServiceImpl implements NhanVienSoDoChinhService {
 		}
 		return list;
 	}
-	
+
 }

@@ -40,7 +40,7 @@
                             <th>Số điện thoại</th>
                             <th></th>
                         </tr>
-                        
+
                         <th:block th:each="kh : ${listCustomer}">
 	                        <tr>
 	                            <td th:text="${kh.HoTen}"></td>
@@ -48,13 +48,13 @@
 	                            <td><a th:href="${IDLoai} + '/' + ${kh.MaKH} + @{/applyMember?total=} + ${total}">Áp dụng</a></td>
 	                        </tr>
                         </th:block>
-                        
+
                     </table>
                 </form>
             </div>
         </div>
     </div>
-	
+
     <div id="header">
         <div id="menu-l">
             <div class="money-total">
@@ -65,7 +65,7 @@
                 <th:block th:unless="${total==0}">
                 	<input type="text" th:value="${#numbers.formatInteger(total,3,'COMMA')} + ' VND'" readonly="readonly"/>
                 </th:block>
-                
+
             </div>
             <div class="sale">
                 <p>Giảm giá toàn hóa đơn</p>

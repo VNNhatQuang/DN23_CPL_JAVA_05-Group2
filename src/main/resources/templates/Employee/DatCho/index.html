@@ -68,43 +68,73 @@
                 <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
             </div>
             <div class="box">
-                <form action="" method="get" class="form-search">
+                <form   id="search-form" method="get" class="form-search">
                     <h5>Danh sách phiếu đặt chỗ</h5>
-                    <input type="text" name="searchValue" placeholder="Tìm kiếm theo Số điện thoại người đặt" autofocus>
+                    <input type="text" name="query" placeholder="Tìm kiếm theo Số điện thoại người đặt" autofocus>
                     <input type="submit" value="Tìm kiếm">
                 </form>
+                <script th:inline="javascript">
+                    $(function() {
+                        $('#search-form').on('submit', function(event) {
+                        event.preventDefault();
+                        var formData = $(this).serialize();
+                        $.ajax({
+                            type: 'GET',
+                            url: '/nhan-vien/phieu-dat-ban/search',
+                            data: formData,
+                            success: [
+                                function(response) {
+                                    $('#results-table').html(response);
+                                }
+                            ]
+                        });
+                        });
+                    });
+                </script>
                 <form action="" method="post" class="form-member">
-                    <table>
+                    <table th:fragment="resultsTable" id="resultsTable">
+                        <thead>
                         <tr>
                             <th>Người đặt</th>
-                            <th>Số điện thoại</th>
+                            <th>SDT</th>
                             <th>Ngày đặt</th>
                             <th>Thời gian</th>
                             <th>Bàn</th>
-                            <th></th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
                         </tr>
-                        <tr>
-                            <td>Nguyễn Văn A</td>
-                            <td>0912345678</td>
-                            <td>26/11/2023</td>
-                            <td>20:00</td>
-                            <td>14</td>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${listPDC}">
+                            <th:block th:switch="${item.trangthai}">
+                                <th:case th:case="0">
+                            <td th:text="${item.getTenNguoiDat()}"></td>
+                            <td th:text="${item.soDienThoai}"></td>
+                            <td th:text="*{#dates.format(item.ngayDat, 'dd-MM-yyyy')}"></td>
+                            <td th:text="${item.getTime(item.gioBatdau)}"></td>
+                            <td th:text="${item.soBan}"></td>
+                            <td th:text="${item.convertTrangthaiString(item.getTrangthai())}"></td>
+
                             <td>
-                                <a>
+                                <a th:href="${'/nhan-vien/phieu-dat-ban/update-form/'} + ${item.getMaPhieu()}">
                                     <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                                 </a>
-                                <a>
-                                    <i class="fa-solid fa-check" style="color: #ffffff;"></i>
+                                <a  th:attr="onclick=|confirmNhanban('/nhan-vien/phieu-dat-ban/nhan-ban/' + '${item.maPhieu}')|"
+                                        th:href="${'/nhan-vien/phieudatban/active/'} + ${item.maPhieu}">
+                                    <i class="fa-solid fa-check" style="color: #ffffff"></i>
                                 </a>
-                                <a>
+                                <a th:attr="onclick=|confirmDeletePhieu('/nhan-vien/phieu-dat-ban/delete/' + '${item.maPhieu}')|" >
                                     <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
                                 </a>
                             </td>
+                                </th:case>
+                            </th:block>
                         </tr>
+                        </tbody>
                     </table>
-<!--                     <div class="btn-ApDung"> -->
-<!--                         <input class="btn btn-danger" type="submit" value="Xóa"> -->
-<!--                     </div> -->
+<!--                     <div class="btn-ApDung">-->
+<!--                         <input class="btn btn-danger" type="submit" value="Xóa">-->
+<!--                     </div>-->
                 </form>
             </div>
         </div>
@@ -112,137 +142,55 @@
 
 
 
-    <div id="header"></div>
-
-
     <div id="main">
 
         <div class="list-orderTable">
             <button class="btn btn-warning">Danh sách phiếu đặt bàn</button>
-<!--             <button class="btn btn-primary">Thêm phiếu đặt</button> -->
         </div>
 
         <div id="table-contain">
 
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
+            <th:block th:each="b : ${listTable}">
 
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
+                <th:block th:switch="${b.getTrangThai()}">
+                    <th:block th:case="'0'">
+                        <a th:href="@{'/nhan-vien/phieu-dat-ban/new-form/' + ${b.getSoBan()}}">
+                            <div class="x-line"></div>
+                            <div class="box-table" style="background-color: #eee;">
+                                <div class="y-line-1"></div>
+                                <p th:text="${b.getSoBan()}"></p>
+                                <div class="y-line-2"></div>
+                            </div>
+                            <div class="x-line"></div>
+                        </a>
+                    </th:block>
+                    <th:block th:case="'1'">
+                        <a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
+                            <div class="x-line"></div>
+                            <div class="box-table">
+                                <div class="y-line-1"></div>
+                                <p th:text="${b.getSoBan()}"></p>
+                                <div class="y-line-2"></div>
+                            </div>
+                            <div class="x-line"></div>
+                        </a>
+                    </th:block>
+                    <th:block th:case="'2'">
+                        <a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
+                            <div class="x-line"></div>
+                            <div class="box-table" style="background-color: #0d99ff;">
+                                <div class="y-line-1"></div>
+                                <p th:text="${b.getSoBan()}"></p>
+                                <div class="y-line-2"></div>
+                            </div>
+                            <div class="x-line"></div>
+                        </a>
+                    </th:block>
+                </th:block>
 
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
+            </th:block>
 
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
 
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a th:href="@{DatCho/1/Create}">
-                <div class="x-line"></div>
-                <div class="box-table" style="background-color: #eee;">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
-
-            <a>
-                <div class="x-line"></div>
-                <div class="box-table" style="background-color: #0d99ff;">
-                    <div class="y-line-1"></div>
-                    <p>1</p>
-                    <div class="y-line-2"></div>
-                </div>
-                <div class="x-line"></div>
-            </a>
 
         </div>
 
@@ -263,6 +211,30 @@
         </div>
 
     </div>
+
+    <script>
+        function confirmEmpltyTable(url) {
+            let text = "Xác nhận chuyển thành bàn trống?";
+            if (confirm(text) == true) {
+                window.location=url;
+            }
+        }
+
+        function confirmDeletePhieu(url){
+            let text = 'Xác nhận thông tin phiếu đặt bàn ';
+            if (confirm(text) == true){
+                window.location = url
+            }
+        }
+        function confirmDeletePhieu(url){
+            let text = 'Xác nhận khách đã tới nhận bàn ';
+            if (confirm(text) == true){
+                window.location = url
+            }
+        }
+
+
+    </script>
 
     <script th:src="@{/Employee/assets/js/app.js}"></script>
 

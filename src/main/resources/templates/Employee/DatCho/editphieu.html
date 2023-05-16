@@ -30,11 +30,10 @@
     </div>
 
     <div id="main">
-        <form th:action="@{/nhan-vien/phieu-dat-ban/save}" method="post"
+        <form th:action="@{/nhan-vien/phieu-dat-ban/update}" method="post"
             th:object="${pdbModel}" modelAttribute="pdbModel">
-        	<div class="form-input">
-                <p>Số bàn:</p>
-                <input type="text" name="SoBan" th:value="${Maban}" readonly="readonly">
+            <div>
+                <input hidden="hidden" th:field="*{maPhieu}">
             </div>
             <div class="form-input">
                 <p>Tên khách hàng: </p>
@@ -48,7 +47,7 @@
             </div>
             <div class="form-input">
                 <p>Ngày đặt:</p>
-                <input type="date"
+                <input type="date" name="" autofocus
                        th:value="*{ngayDat}">
             </div>
             <div class="form-input">
@@ -56,8 +55,13 @@
                 <input type="time" name=""
                        th:value="*{setTime(gioBatdau)}">
             </div>
+            <div class="form-input">
+                <p>Số bàn</p>
+                <input type="text" name="SoBan" th:field="*{soBan}" readonly="readonly">
+            </div>
+
             <br>
-            <div class="submit">
+            <div class="submit-1">
                 <input type="submit" value="Xác nhận đặt">
             </div>
         </form>
