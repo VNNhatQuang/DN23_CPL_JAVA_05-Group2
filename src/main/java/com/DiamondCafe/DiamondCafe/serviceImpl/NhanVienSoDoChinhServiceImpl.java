@@ -1,16 +1,12 @@
 package com.DiamondCafe.DiamondCafe.serviceImpl;
 
-import java.util.Iterator;
 import java.util.List;
 
+import com.DiamondCafe.DiamondCafe.bean.*;
+import com.DiamondCafe.DiamondCafe.model.Khachhang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.DiamondCafe.DiamondCafe.bean.Ban;
-import com.DiamondCafe.DiamondCafe.bean.KhachHang;
-import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
-import com.DiamondCafe.DiamondCafe.bean.Mon;
-import com.DiamondCafe.DiamondCafe.bean.Order;
 import com.DiamondCafe.DiamondCafe.dao.NhanVienSoDoChinhDao;
 import com.DiamondCafe.DiamondCafe.service.NhanVienSoDoChinhService;
 

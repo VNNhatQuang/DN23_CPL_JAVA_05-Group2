@@ -20,49 +20,50 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("admin/khachhang")
+@RequestMapping("/admin/khachhang")
 public class KhachhangController {
 
     @Autowired
     private IKhachhangService iKhachhangService;
 
-    @GetMapping("/")
+    @GetMapping()
     public String getlistNhanvien(Model model){
         List<Khachhang> listNV = iKhachhangService.getlistKhachhang();
-        model.addAttribute("listNV" , listNV);
-        return "Admin/khachhang/index";
+        model.addAttribute("listKH" , listNV);
+        return "Admin/Customer/customer";
     }
 
     @GetMapping("/add-form")
     public String showAddForm(Model model){
-        model.addAttribute("KhachhangModel", new Nhanvien());
-        return "Admin/khachhang/them";
+        model.addAttribute("KhachhangModel", new Khachhang());
+        return "Admin/Customer/AddCustomer";
     }
-    @GetMapping("/update-form")
-    public String showUpdateForm(Model model){
-        model.addAttribute("KhachhangModel", new Nhanvien());
-        return "Admin/khachhang/edit";
+    @GetMapping("/update-form/{id}")
+    public String showUpdateForm(Model model, @PathVariable (name = "id") int maKH){
+        Khachhang kh = iKhachhangService.getKhachhangbyID(maKH);
+        model.addAttribute("KhachhangModel", kh);
+        return "Admin/Customer/EditCustomer";
     }
 
     @PostMapping("/save")
     public String addNewNhanvien(@ModelAttribute (name = "KhachhangModel") Khachhang nv, BindingResult result){
         if (result.hasErrors()){
-            return "Admin/khachhang/them";
+            return "Admin/Customer/AddCustomer";
         }
         iKhachhangService.save(nv);
-        return "redirect:admin/nhanvien";
+        return "redirect:/admin/khachhang";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@RequestParam(name = "id") int MaNV, BindingResult result){
+    public String delete(@PathVariable(name = "id") int MaNV){
         iKhachhangService.delete(MaNV);
-        return "redirect:admin/nhanvien";
+        return "redirect:/admin/khachhang";
     }
 
     @PostMapping ("/update")
     public String update(Model model , @ModelAttribute (name = "KhachhangModel") Khachhang kh, BindingResult result){
         iKhachhangService.update(kh);
-        return "redirect:admin/nhanvien";
+        return "redirect:/admin/khachhang";
     }
 
 }

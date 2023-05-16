@@ -26,4 +26,21 @@ public class Nhanvien {
     private String CMT;
     private String ID_ChucVu;
 
+    enum chucvu {
+        QUAN_LY,
+        THU_NGAN,
+        PHUC_VU
+    }
+
+    public static String getchucvybyNum(int chucvu){
+        switch (chucvu) {
+            case 0:
+                return "Quản lý";
+            case 1:
+                return "Thu ngân";
+            case 2:
+                return "Nhân viên";
+        }
+        return null;
+    }
 }

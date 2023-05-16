@@ -1,13 +1,9 @@
 package com.DiamondCafe.DiamondCafe.service;
 
-import java.util.Iterator;
 import java.util.List;
 
-import com.DiamondCafe.DiamondCafe.bean.Ban;
-import com.DiamondCafe.DiamondCafe.bean.KhachHang;
-import com.DiamondCafe.DiamondCafe.bean.LoaiMon;
-import com.DiamondCafe.DiamondCafe.bean.Mon;
-import com.DiamondCafe.DiamondCafe.bean.Order;
+import com.DiamondCafe.DiamondCafe.bean.*;
+import com.DiamondCafe.DiamondCafe.model.Khachhang;
 
 public interface NhanVienSoDoChinhService {
 

@@ -26,16 +26,16 @@ public class KhachhangImpl implements IKhachhangRepository {
     // Lúc tạo mới khách hàng thì điểm tích lũy nên = 0
     @Override
     public int save(Khachhang kh) {
-        String SQL_SAVE = "INSERT INTO KHACH_HANG VALUES (?,?,?)";
+        String SQL_SAVE = "INSERT INTO KHACH_HANG VALUES (?,?)";
         return jdbcTemplate.update(SQL_SAVE,
-                new Object[]{kh.getHoten(), kh.getSDT(), kh.getDiemTichLuy()});
+                new Object[]{kh.getHoten(), kh.getSDT()});
     }
 
     @Override
     public int update(Khachhang kh) {
-        String SQL_UPDATE = "UPDATE KHACH_HANG SET HOTEN = ? , SDT = ? , DIEMTICHLUY = ? WHERE MAKH = ?";
+        String SQL_UPDATE = "UPDATE KHACH_HANG SET HOTEN = ? , SDT = ? WHERE MAKH = ?";
         return jdbcTemplate.update(SQL_UPDATE,
-                new Object[]{kh.getHoten(), kh.getSDT(), kh.getDiemTichLuy() , kh.getMaKH()});
+                new Object[]{kh.getHoten(), kh.getSDT() , kh.getMaKH()});
     }
 
     @Override

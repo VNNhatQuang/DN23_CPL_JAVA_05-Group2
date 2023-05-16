@@ -2,11 +2,11 @@ package com.DiamondCafe.DiamondCafe.daoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
+
+import com.DiamondCafe.DiamondCafe.model.Khachhang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
