@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Thêm món</title>
-<head>
-<div th:replace="Admin/header"></div>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Thêm món</title>
+	<head>
+		<div th:replace="Admin/header"></div>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -18,27 +18,27 @@
 				<div class="box box-primary">
 					<div class="box-body">
 						<form class="form-horizontal" action="create" method="post" onsubmit="return validateMon();">
-						
+
 							<div class="form-group">
 								<label class="control-label col-sm-2">Tên món <span id="errorTenMon" style="color: red"></span></label>
 								<div class="col-sm-10">
 									<input type="text" id="TenMon" name="TenMon" autofocus/>
 									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
+										  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										  style="color: #f00"></span>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="control-label col-sm-2">Loại món</label>
 								<div class="col-sm-10">
-									
+
 									<select name="ID_LoaiMon" >
-									  <option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+										<option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
 									</select>
-									 <span class="field-validation-valid"
-										data-valmsg-for="ContactName" data-valmsg-replace="true"
-										style="color: #f00"></span>
+									<span class="field-validation-valid"
+										  data-valmsg-for="ContactName" data-valmsg-replace="true"
+										  style="color: #f00"></span>
 								</div>
 							</div>
 
@@ -47,8 +47,8 @@
 								<div class="col-sm-10">
 									<input type="text" name="DonViTinh" id="DonViTinh" />
 									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
+										  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										  style="color: #f00"></span>
 								</div>
 							</div>
 
@@ -57,11 +57,11 @@
 								<div class="col-sm-10">
 									<input type="text" name="GiaBan" value="0" id="DonGia"/>
 									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
+										  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+										  style="color: #f00"></span>
 								</div>
 							</div>
-							
+
 							<div class="form-group" style="text-align: end">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary">
@@ -75,70 +75,70 @@
 							function validateMon() {
 								var TenMon=document.getElementById('TenMon').value;
 								var errorTenMon=document.getElementById('errorTenMon');
-								
+
 								var DonViTinh=document.getElementById('DonViTinh').value;
 								var errorDVT=document.getElementById('errorDVT');
-								
+
 								var DonGia=document.getElementById('DonGia').value;
 								var errorDonGia=document.getElementById('errorDonGia');
-								
+
 								var checkWordTenMon = /[a-zA-Z]/.test(TenMon);
 								var checkWordDVT = /[a-zA-Z]/.test(DonViTinh);
-								
+
 								if (TenMon == null || TenMon=='' || !checkWordTenMon) {
 									errorTenMon.innerHTML = " * ";
 									return false;
 								}else{
 									errorTenMon.innerHTML = '';
 								}
-								
+
 								if (DonViTinh == null || DonViTinh=='' || !checkWordDVT) {
 									errorDVT.innerHTML = " * ";
 									return false;
 								}else{
 									errorDVT.innerHTML = '';
 								}
-								
-								if (isNaN(DonGia) || DonGia == null || DonGia == "") {
+
+								if (isNaN(DonGia)) {
 									errorDonGia.innerHTML = " * ";
 									return false;
 								}else{
 									errorDonGia.innerHTML = '';
 								}
-								
-								return true; 
+
+								return true;
 							}
-					</script>
+						</script>
 					</div>
 				</div>
 			</section>
 		</div>
 
-<div th:replace="Admin/footer"></div>
+		<div th:replace="Admin/footer"></div>
 
 
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h4>Thêm món</h4>
-	
-	 <form action="create" method="post">
-		Tên món: <input type="text" name="TenMon" autofocus/> <br>
-		
-		<label class="control-label col-sm-2">Tên loại</label>
-                <select name="ID_LoaiMon" >
-				  <option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
-				</select>
-				<br>
-				
-		Đơn vị tính: <input type="text" name="DonViTinh" /><br>
-		Đơn giá: <input type="number" name="GiaBan" min="0" /><br>
-		<input type="submit" value="Thêm"/>
-		<a href="list">Quay lại</a>
-	</form>
-</body>
-</html> -->
+		<!-- <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+        </head>
+        <body>
+            <h4>Thêm món</h4>
+
+             <form action="create" method="post">
+                Tên món: <input type="text" name="TenMon" autofocus/> <br>
+
+                <label class="control-label col-sm-2">Tên loại</label>
+                        <select name="ID_LoaiMon" >
+                          <option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+                        </select>
+                        <br>
+
+                Đơn vị tính: <input type="text" name="DonViTinh" /><br>
+                Đơn giá: <input type="number" name="GiaBan" min="0" /><br>
+                <input type="submit" value="Thêm"/>
+                <a href="list">Quay lại</a>
+            </form>
+        </body>
+        </html> -->

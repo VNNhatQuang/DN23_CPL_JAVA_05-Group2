@@ -34,11 +34,11 @@ public class Nhanvien {
 
     public static String getchucvybyNum(int chucvu){
         switch (chucvu) {
-            case 0:
-                return "Quản lý";
             case 1:
-                return "Thu ngân";
+                return "Quản lý";
             case 2:
+                return "Thu ngân";
+            case 3:
                 return "Nhân viên";
         }
         return null;

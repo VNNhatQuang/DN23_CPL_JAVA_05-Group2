@@ -102,12 +102,12 @@
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview active">
 						<ul class="treeview-menu">
-							<li><a href="../index.html"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
+							<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
 										chủ</span>
 							</a></li>
-							<li><a href="../Dish/dish.html"><span
+							<li><a href="/admin/mon/list"><span
 									class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
-							<li><a href="../Category/category.html"><span
+							<li><a href="/admin/loaimon"><span
 									class="material-symbols-outlined"> food_bank </span> Quản lý
 									Loại món</a></li>
 							<li><a th:href="${'khachhang'}"><i
@@ -116,7 +116,7 @@
 							<li><a th:href="${'nhanvien'}"><i
 									class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
 									Viên</a></li>
-							<li><a href="../Statistical/statistical.html"><i
+							<li><a href="/admin/thongke/ngay"><i
 									class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
 						</ul>
 					</li>
@@ -196,7 +196,7 @@
 										<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
 									</a>
 										<a th:attr="onclick=|confirmDeletenhanvien('/admin/nhanvien/delete/' + '${item.maTK}')|">
-										<i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+										<i class="fa-solid fa-trash" ></i>
 										</a>
 									</td>
 								</tr>
@@ -231,6 +231,7 @@
 			window.location = url
 		}
 	}
+	
 
 </script>
 

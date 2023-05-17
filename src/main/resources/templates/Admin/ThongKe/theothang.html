@@ -123,10 +123,17 @@
 								yValues.push(value["money"])
 							})
 							/*]]>*/
+							/*<![CDATA[*/
+							var xValues = []
+							var listMonth = /*[[${listMonth}]]*/'default';
+							listMonth.map((value) => {
+								xValues.push(value)
+							})
+							/*]]>*/
 							yValues.map((value) => {
 								console.log(value);
 							})
-							var xValues = [ "Tháng 1", "Tháng 2", "Tháng 3" ];
+// 							var xValues = [ "Tháng 1", "Tháng 2", "Tháng 3" ];
 							var barColors = [ "blue", "blue", "blue" ];
 
 							new Chart("myChart", {

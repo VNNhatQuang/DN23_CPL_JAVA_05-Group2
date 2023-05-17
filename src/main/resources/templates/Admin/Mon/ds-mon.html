@@ -4,8 +4,75 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Quản lý món</title>
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+			name="viewport">
+
+	<link rel="stylesheet"
+		  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<link rel="stylesheet"
+		  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<link rel="stylesheet"
+		  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		  rel="stylesheet">
+
+	<!-- Bootstrap 3.3.7 -->
+	<link rel="stylesheet"
+		  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/Ionicons/css/ionicons.min.css}">
+	<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/AdminLTE.min.css}">
+	<link rel="stylesheet" th:href="@{/Admin/assets/Themes/dist/css/skins/_all-skins.min.css}">
+
 </head>
-<div th:replace="Admin/header"></div>
+<aside class="main-sidebar">
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+		<!-- Sidebar user panel -->
+
+
+		<!-- search form -->
+
+
+		<!-- /.search form -->
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu" data-widget="tree">
+			<li class="treeview active">
+				<ul class="treeview-menu">
+					<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
+										chủ</span>
+					</a></li>
+					<li><a href="/admin/mon/list"><span
+							class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
+					<li><a href="/admin/loaimon"><span
+							class="material-symbols-outlined"> food_bank </span> Quản lý
+						Loại món</a></li>
+					<li><a href="/admin/khachhang"><i
+							class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
+						Khách hàng </a></li>
+					<li><a href="/admin/nhanvien"><i
+							class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
+						Viên</a></li>
+					<li><a href="/admin/thongke/ngay"><i
+							class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	<!-- /.sidebar -->
+</aside>
+
 		<!-- =============================================== -->
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">

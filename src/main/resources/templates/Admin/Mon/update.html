@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Cập nhật món</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cập nhật món</title>
 </head>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+	  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	  crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Tell the browser to be responsive to screen width -->
 <meta
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-	name="viewport">
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport">
 
 <!-- Google Font -->
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+	  rel="stylesheet">
 
 <!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/bootstrap/dist/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/Admin/assets/Themes/bower_components/font-awesome/css/font-awesome.min.css}">
@@ -40,232 +40,233 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
+<div class="wrapper">
 
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>CAFE</b></span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg">DIAMOND <b>CAFE</b></span>
+	<header class="main-header">
+		<!-- Logo -->
+		<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><b>CAFE</b></span> <!-- logo for regular state and mobile devices -->
+			<span class="logo-lg">DIAMOND <b>CAFE</b></span>
+		</a>
+		<!-- Header Navbar: style can be found in header.less -->
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="#" class="sidebar-toggle" data-toggle="push-menu"
+			   role="button"> <span class="sr-only">Toggle navigation</span>
 			</a>
-			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<a href="#" class="sidebar-toggle" data-toggle="push-menu"
-					role="button"> <span class="sr-only">Toggle navigation</span>
-				</a>
 
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-						<!--User Account -->
-						<li class="dropdown user user-menu"><a href=""
-							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="user-image"
-								alt="User Image"> <span class="hidden-xs" th:text="${Account.TenNV}"></span>
-						</a>
-							<ul class="dropdown-menu">
-								<!-- User image -->
-								<li class="user-header"><img
+			<div class="navbar-custom-menu">
+				<ul class="nav navbar-nav">
+					<!--User Account -->
+					<li class="dropdown user user-menu"><a href=""
+														   class="dropdown-toggle" data-toggle="dropdown"> <img
+							src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="user-image"
+							alt="User Image"> <span class="hidden-xs" th:text="${Account.TenNV}"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header"><img
 									src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="img-circle"
 									alt="User Image"></li>
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-left">
-										<a href="show-info" class="btn btn-default btn-flat">Tài khoản</a>
-									</div>
-									<div class="pull-right">
-										<a href="logout" class="btn btn-default btn-flat">Đăng xuất</a>
-									</div>
-								</li>
-							</ul></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-		
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="treeview active">
-						<ul class="treeview-menu">
-							<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
-										chủ</span>
-							</a></li>
-							<li><a href="/admin/mon/list"><span
-									class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
-							<li><a href="/admin/loaimon"><span
-									class="material-symbols-outlined"> food_bank </span> Quản lý
-									Loại món</a></li>
-							<li><a href="#"><i
-									class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
-									Khách hàng </a></li>
-							<li><a href="#"><i
-									class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
-									Viên</a></li>
-							<li><a href="/admin/thongke/ngay"><i
-									class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
-						</ul>
-					</li>
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="show-info" class="btn btn-default btn-flat">Tài khoản</a>
+								</div>
+								<div class="pull-right">
+									<a href="logout" class="btn btn-default btn-flat">Đăng xuất</a>
+								</div>
+							</li>
+						</ul></li>
 				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
-		
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<section class="content-header">
-				<h2>CHỈNH SỬA MÓN</h2>
-			</section>
+			</div>
+		</nav>
+	</header>
 
-			<!-- PHAN BODY -->
-			<section class="content">
-				<div class="box box-primary">
-					<div class="box-body">
-						<form class="form-horizontal" action="/admin/mon/update" method="post" onsubmit="return validateMon();">
-						
-							<input type="hidden" name="MaMon" th:value="${mon.MaMon}"/>
-							
-							<div class="form-group">
-								<label class="control-label col-sm-2">Tên món: <span id="errorTenMon" style="color: red"></span></label>
-								<div class="col-sm-10">
-									<input type="text" id="TenMon" name="TenMon" th:value="${mon.TenMon}"/>
-									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
-								</div>
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+			<!-- sidebar menu: : style can be found in sidebar.less -->
+			<ul class="sidebar-menu" data-widget="tree">
+				<li class="treeview active">
+					<ul class="treeview-menu">
+						<li><a href="/admin/home-page"> <i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Trang
+										chủ</span>
+						</a></li>
+						<li><a href="/admin/mon/list"><span
+								class="material-symbols-outlined"> fastfood </span> Quản lý món</a></li>
+						<li><a href="/admin/loaimon"><span
+								class="material-symbols-outlined"> food_bank </span> Quản lý
+							Loại món</a></li>
+						<li><a href="#"><i
+								class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý
+							Khách hàng </a></li>
+						<li><a href="#"><i
+								class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp; Quản lý Nhân
+							Viên</a></li>
+						<li><a href="/admin/thongke/ngay"><i
+								class="fa fa-line-chart"></i>&nbsp; Thống kê Doanh thu</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- /.sidebar -->
+	</aside>
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h2>CHỈNH SỬA MÓN</h2>
+		</section>
+
+		<!-- PHAN BODY -->
+		<section class="content">
+			<div class="box box-primary">
+				<div class="box-body">
+					<form class="form-horizontal" action="/admin/mon/update" method="post" onsubmit="return validateMon();">
+
+						<input type="hidden" name="MaMon" th:value="${mon.MaMon}"/>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2">Tên món: <span id="errorTenMon" style="color: red"></span></label>
+							<div class="col-sm-10">
+								<input type="text" id="TenMon" name="TenMon" th:value="${mon.TenMon}"/>
+								<span class="field-validation-valid"
+									  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+									  style="color: #f00"></span>
 							</div>
+						</div>
 
 
 
-							<div class="form-group">
-								<label class="control-label col-sm-2">Loại món:</label>
-								<div class="col-sm-10">
-									<!-- <input class="form-control" id="ContactName" name="ContactName"
-										type="text" value="" / -->
-									 <select name="ID_LoaiMon" >
-					                	<option th:value="${mon.ID_LoaiMon}" th:text="${mon.TenLoai}"></option>
-									  	<option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
-									</select>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Loại món:</label>
+							<div class="col-sm-10">
+								<!-- <input class="form-control" id="ContactName" name="ContactName"
+                                    type="text" value="" / -->
+								<select name="ID_LoaiMon" >
+									<option th:value="${mon.ID_LoaiMon}" th:text="${mon.TenLoai}"></option>
+									<option th:each="lm : ${loaiMon}"  th:value="${lm.IDLoai}" th:text="${lm.TenLoai}"></option>
+								</select>
 
-									</select> <span class="field-validation-valid"
-										data-valmsg-for="ContactName" data-valmsg-replace="true"
-										style="color: #f00"></span>
-								</div>
+								</select> <span class="field-validation-valid"
+												data-valmsg-for="ContactName" data-valmsg-replace="true"
+												style="color: #f00"></span>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label class="control-label col-sm-2">Đơn vị tính: <span id="errorDVT" style="color: red"></span></label>
-								<div class="col-sm-10">
-									<input type="text" id="DonViTinh" name="DonViTinh" th:value="${mon.DonViTinh}"/>
-									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
-								</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Đơn vị tính: <span id="errorDVT" style="color: red"></span></label>
+							<div class="col-sm-10">
+								<input type="text" id="DonViTinh" name="DonViTinh" th:value="${mon.DonViTinh}"/>
+								<span class="field-validation-valid"
+									  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+									  style="color: #f00"></span>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label class="control-label col-sm-2">Đơn giá: <span id="errorDonGia" style="color: red"></span></label>
-								<div class="col-sm-10">
-									<input type="text" id="DonGia" name="GiaBan" th:value="${mon.GiaBan}" min="0"/>
-									<span class="field-validation-valid"
-										data-valmsg-for="CustomerName" data-valmsg-replace="true"
-										style="color: #f00"></span>
-								</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Đơn giá: <span id="errorDonGia" style="color: red"></span></label>
+							<div class="col-sm-10">
+								<input type="text" id="DonGia" name="GiaBan" th:value="${mon.GiaBan}" min="0"/>
+								<span class="field-validation-valid"
+									  data-valmsg-for="CustomerName" data-valmsg-replace="true"
+									  style="color: #f00"></span>
 							</div>
-							
-							<div class="form-group" style="text-align: end">
-								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-primary">
-										<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
-									</button>
-									<a href="/admin/mon/list" class="btn btn-warning"> Quay lại </a>
-								</div>
-							</div>
+						</div>
 
-						</form>
-						
-						<script type="text/javascript">
-							function validateMon() {
-								var TenMon=document.getElementById('TenMon').value;
-								var errorTenMon=document.getElementById('errorTenMon');
-								
-								var DonViTinh=document.getElementById('DonViTinh').value;
-								var errorDVT=document.getElementById('errorDVT');
-								
-								var DonGia=document.getElementById('DonGia').value;
-								var errorDonGia=document.getElementById('errorDonGia');
-								
-								var checkWordTenMon = /[a-zA-Z]/.test(TenMon);
-								var checkWordDVT = /[a-zA-Z]/.test(DonViTinh);
-								
-								if (TenMon == null || TenMon=='' || !checkWordTenMon) {
-									errorTenMon.innerHTML = " * ";
-									return false;
-								}else{
-									errorTenMon.innerHTML = '';
-								}
-								
-								if (DonViTinh == null || DonViTinh=='' || !checkWordDVT) {
-									errorDVT.innerHTML = " * ";
-									return false;
-								}else{
-									errorDVT.innerHTML = '';
-								}
-								
-								if (isNaN(DonGia) || DonGia<0 || DonGia == null || DonGia == "") {
-									errorDonGia.innerHTML = " * ";
-									return false;
-								}else{
-									errorDonGia.innerHTML = '';
-								}
-								
-								return true; 
+						<div class="form-group" style="text-align: end">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary">
+									<i class="glyphicon glyphicon-floppy-disk"></i> Cập nhật
+								</button>
+								<a href="/admin/mon/list" class="btn btn-warning"> Quay lại </a>
+							</div>
+						</div>
+
+					</form>
+
+					<script type="text/javascript">
+						function validateMon() {
+							var TenMon=document.getElementById('TenMon').value;
+							var errorTenMon=document.getElementById('errorTenMon');
+
+							var DonViTinh=document.getElementById('DonViTinh').value;
+							var errorDVT=document.getElementById('errorDVT');
+
+							var DonGia=document.getElementById('DonGia').value;
+							var errorDonGia=document.getElementById('errorDonGia');
+
+							var checkWordTenMon = /[a-zA-Z]/.test(TenMon);
+							var checkWordDVT = /[a-zA-Z]/.test(DonViTinh);
+
+							if (TenMon == null || TenMon=='' || !checkWordTenMon) {
+								errorTenMon.innerHTML = " * ";
+								return false;
+							}else{
+								errorTenMon.innerHTML = '';
 							}
-						</script>
-					</div>
-				</div>
-			</section>
-		</div>
 
+							if (DonViTinh == null || DonViTinh=='' || !checkWordDVT) {
+								errorDVT.innerHTML = " * ";
+								return false;
+							}else{
+								errorDVT.innerHTML = '';
+							}
+
+							if (isNaN(DonGia) || DonGia<0) {
+								errorDonGia.innerHTML = " * ";
+								return false;
+							}else{
+								errorDonGia.innerHTML = '';
+							}
+
+							alert("Xác nhận cập nhật món!")
+							return true;
+						}
+					</script>
+				</div>
+			</div>
+		</section>
 	</div>
+
+</div>
 <!-- jQuery 3 -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/jquery/dist/jquery.min.js}"></script>
-	<!-- jQuery UI 1.11.4 -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/jquery-ui/jquery-ui.min.js}"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	<script>
-	  $.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<!-- Bootstrap 3.3.7 -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
-	<!-- Morris.js charts -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/raphael/raphael.min.js}"></script>
-	<script th:src="@{../Admin/assets/Themes/bower_components/morris.js/morris.min.js}"></script>
-	<!-- Sparkline -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js}"></script>
-	<!-- jvectormap -->
-	<script th:src="@{../Admin/assets/Themes/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js}"></script>
-	<script th:src="@{../Admin/assets/Themes/plugins/jvectormap/jquery-jvectormap-world-mill-en.js}"></script>
-	<!-- jQuery Knob Chart -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/jquery-knob/dist/jquery.knob.min.js}"></script>
-	<!-- daterangepicker -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/moment/min/moment.min.js}"></script>
-	<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap-daterangepicker/daterangepicker.js}"></script>
-	<!-- datepicker -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
-	<!-- Bootstrap WYSIHTML5 -->
-	<script th:src="@{../Admin/assets/Themes/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
-	<!-- Slimscroll -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
-	<!-- FastClick -->
-	<script th:src="@{../Admin/assets/Themes/bower_components/fastclick/lib/fastclick.js}"></script>
-	<!-- AdminLTE App -->
-	<script th:src="@{../Admin/assets/Themes/dist/js/adminlte.min.js}"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script th:src="@{../Admin/assets/Themes/dist/js/pages/dashboard.js}"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script th:src="@{../Admin/assets/Themes/dist/js/demo.js}"></script>
+<script th:src="@{../Admin/assets/Themes/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{../Admin/assets/Themes/bower_components/jquery-ui/jquery-ui.min.js}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- Morris.js charts -->
+<script th:src="@{../Admin/assets/Themes/bower_components/raphael/raphael.min.js}"></script>
+<script th:src="@{../Admin/assets/Themes/bower_components/morris.js/morris.min.js}"></script>
+<!-- Sparkline -->
+<script th:src="@{../Admin/assets/Themes/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js}"></script>
+<!-- jvectormap -->
+<script th:src="@{../Admin/assets/Themes/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js}"></script>
+<script th:src="@{../Admin/assets/Themes/plugins/jvectormap/jquery-jvectormap-world-mill-en.js}"></script>
+<!-- jQuery Knob Chart -->
+<script th:src="@{../Admin/assets/Themes/bower_components/jquery-knob/dist/jquery.knob.min.js}"></script>
+<!-- daterangepicker -->
+<script th:src="@{../Admin/assets/Themes/bower_components/moment/min/moment.min.js}"></script>
+<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap-daterangepicker/daterangepicker.js}"></script>
+<!-- datepicker -->
+<script th:src="@{../Admin/assets/Themes/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script th:src="@{../Admin/assets/Themes/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
+<!-- Slimscroll -->
+<script th:src="@{../Admin/assets/Themes/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{../Admin/assets/Themes/bower_components/fastclick/lib/fastclick.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{../Admin/assets/Themes/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script th:src="@{../Admin/assets/Themes/dist/js/pages/dashboard.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{../Admin/assets/Themes/dist/js/demo.js}"></script>
 </body>
 </html>

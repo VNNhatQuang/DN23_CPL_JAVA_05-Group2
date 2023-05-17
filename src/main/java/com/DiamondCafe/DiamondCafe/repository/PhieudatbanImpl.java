@@ -49,7 +49,7 @@ public class PhieudatbanImpl implements IPhieudatbanRepository {
 
     @Override
     public int updateTrangthai(int id, int status) {
-        String SQL_UPDATE = "UPDATE PHIEU_DAT_BAN SET TRANG_THAI = ? WHERE MAPHIEU = ?";
+        String SQL_UPDATE = "UPDATE PHIEU_DAT_BAN SET TRANGTHAI = ? WHERE MAPHIEU = ?";
         return jdbcTemplate.update(SQL_UPDATE,
                 new Object[]{status,id});
 

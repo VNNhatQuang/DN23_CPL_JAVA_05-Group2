@@ -152,7 +152,7 @@
 								<label class="control-label col-sm-2">Họ Tên:</label>
 								<div class="col-sm-10">
 									<input autofocus="autofocus" class="form-control"
-										   id="CustomerName" name="CustomerName" type="text"
+										   id="tenNV" name="CustomerName" type="text"
 										   th:field="*{tenNV}"/>
 									<span class="field-validation-valid"
 										  data-valmsg-for="CustomerName" data-valmsg-replace="true"
@@ -163,7 +163,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-2">Ngày sinh:</label>
 								<div class="col-sm-10">
-									<input class="form-control" id="ContactName" name="ContactName"
+									<input class="form-control" id="Ngaysinh" name="ContactName"
 										   type="date" value=""
 										   th:value="*{ngaySinh}"/> <span class="field-validation-valid"
 																		  data-valmsg-for="ContactName" data-valmsg-replace="true"
@@ -174,7 +174,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-2">Địa chỉ:</label>
 								<div class="col-sm-10">
-									<input class="form-control" id="Address" name="Address"
+									<input class="form-control" id="Diachi" name="Address"
 										   type="text" th:field="*{diaChi}" />
 								</div>
 							</div>
@@ -182,7 +182,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-2">Số điện thoại:</label>
 								<div class="col-sm-10">
-									<input class="form-control" id="" name="Address"
+									<input class="form-control" id="SDT" name="Address"
 										   type="number" th:field="*{SDT}" />
 								</div>
 							</div>
@@ -190,7 +190,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-2">CMT:</label>
 								<div class="col-sm-10">
-									<input class="form-control" name="Address"
+									<input class="form-control" name="CMT"
 										   type="text" th:field="*{CMT}" />
 								</div>
 							</div>
@@ -200,7 +200,7 @@
 								<div class="col-sm-2">
 									<select class="form-control"
 											style="width: fit-content; height: 34px; padding: 6px 12px">
-										<option value="">---Chọn chức vụ---</option>
+										<option value="-1">---Chọn chức vụ---</option>
 										<option th:each="item : ${ListChucvu}" th:value="${item.maChucVu}"
 										th:text="${item.tenChucVu}"></option>
 									</select>
@@ -227,7 +227,9 @@
 		<!-- Control Sidebar -->
 
 	</div>
+<script>
 
+</script>
 
 </body>
 </html>

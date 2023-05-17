@@ -32,7 +32,7 @@ public class PhieudatbanController
     @Autowired
     private IBanService iBanService;
 
-    @GetMapping("")
+    @GetMapping()
     public String getMainDatCho(Model model){
         List<Phieudatban> listdc = iphieudatbanService.getAlllistPhieu();
         List<Ban> listBan = isdcService.getAllTables();
@@ -98,7 +98,7 @@ public class PhieudatbanController
         return "redirect:/nhan-vien/phieu-dat-ban";
     }
 
-    @GetMapping("nhan-ban/{MaPhieu}-{SoBan}")
+    @GetMapping("nhan-ban/{MaPhieu}/{SoBan}")
     public String Nhanban(@PathVariable("MaPhieu") int Maphieu, @PathVariable("SoBan") int SoBan) {
         iBanService.updateTrangthai(
                 SoBan,

@@ -119,8 +119,7 @@
                                 <a th:href="${'/nhan-vien/phieu-dat-ban/update-form/'} + ${item.getMaPhieu()}">
                                     <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                                 </a>
-                                <a  th:attr="onclick=|confirmNhanban('/nhan-vien/phieu-dat-ban/nhan-ban/' + '${item.maPhieu}')|"
-                                        th:href="${'/nhan-vien/phieudatban/active/'} + ${item.maPhieu}">
+                                <a  th:attr="onclick=|confirmNhanban('/nhan-vien/phieu-dat-ban/nhan-ban/' + '${item.maPhieu}/${item.soBan}')|">
                                     <i class="fa-solid fa-check" style="color: #ffffff"></i>
                                 </a>
                                 <a th:attr="onclick=|confirmDeletePhieu('/nhan-vien/phieu-dat-ban/delete/' + '${item.maPhieu}')|" >
@@ -153,7 +152,7 @@
             <th:block th:each="b : ${listTable}">
 
                 <th:block th:switch="${b.getTrangThai()}">
-                    <th:block th:case="'0'">
+                    <th:block th:case="0">
                         <a th:href="@{'/nhan-vien/phieu-dat-ban/new-form/' + ${b.getSoBan()}}">
                             <div class="x-line"></div>
                             <div class="box-table" style="background-color: #eee;">
@@ -164,8 +163,8 @@
                             <div class="x-line"></div>
                         </a>
                     </th:block>
-                    <th:block th:case="'1'">
-                        <a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
+                    <th:block th:case="1">
+                        <a th:attr="onclick=|confirmEmpltyTable('/home/emptyTable/' + '${b.SoBan}')|">
                             <div class="x-line"></div>
                             <div class="box-table">
                                 <div class="y-line-1"></div>
@@ -175,8 +174,8 @@
                             <div class="x-line"></div>
                         </a>
                     </th:block>
-                    <th:block th:case="'2'">
-                        <a th:attr="onclick=|confirmEmpltyTable('home/emptyTable/' + '${b.SoBan}')|">
+                    <th:block th:case="2">
+                        <a th:attr="onclick=|confirmEmpltyTable('/home/emptyTable/' + '${b.SoBan}')|">
                             <div class="x-line"></div>
                             <div class="box-table" style="background-color: #0d99ff;">
                                 <div class="y-line-1"></div>
@@ -226,7 +225,7 @@
                 window.location = url
             }
         }
-        function confirmDeletePhieu(url){
+        function confirmNhanban(url){
             let text = 'Xác nhận khách đã tới nhận bàn ';
             if (confirm(text) == true){
                 window.location = url

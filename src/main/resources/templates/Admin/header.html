@@ -76,7 +76,55 @@
 				</div>
 			</nav>
 		</header>
-		
-		<aside class="main-sidebar" th:replace="Admin/mainsidebar :: mainSideBar"></aside>
 
-		
+		<aside class="main-sidebar" th:fragment="mainSideBar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="header"></li>
+					<!-- TRANG CHỦ -->
+					<li class="active"><a href="/admin/home-page"> <!-- <i class="fa fa-files-o"></i> -->
+						<i class="fa fa-home"></i> <span>TRANG CHỦ</span> <span
+								class="pull-right-container"> <span
+								class="label label-primary pull-right"></span>
+				</span>
+					</a></li>
+					<!-- QUAN LY MON -->
+					<li class="active"><a href="/admin/mon/list"> <span
+							class="material-symbols-outlined"> fastfood </span> <span> <span>
+							Quản lý món</span> <span class="pull-right-container"> <span
+							class="label label-primary pull-right"></span>
+					</span></a></li>
+					<!-- QUAN LY LOAI MON -->
+					<li class="active"><a href="/admin/loaimon"> <span
+							class="material-symbols-outlined">food_bank</span> <span>Quản
+						lý loại món</span> <span class="pull-right-container"> <span
+							class="label label-primary pull-right"></span>
+				</span>
+					</a></li>
+					<!-- QUAN LY LOAI MON -->
+					<li class="active"><a th:href="${'/admin/khachhang'}"> <i class="fa fa-user"></i> <span>Quản
+						lý khách hàng</span> <span class="pull-right-container"> <span
+							class="label label-primary pull-right"></span>
+				</span>
+					</a></li>
+					<!-- QUAN LY NHAN VIEN -->
+					<li class="active"><a th:href="${'/admin/nhanvien'}"> <i class="fa fa-users"></i>
+						<span>Quản lý nhân viên</span> <span class="pull-right-container">
+						<span class="label label-primary pull-right"></span>
+				</span>
+					</a></li>
+					<!-- THONG KE DOANH THU -->
+					<li class="active"><a href="/admin/thongke/ngay"> <!-- <i class="fa-address-book"></i> -->
+						<i class="fa fa-line-chart"></i> <span>Thống kê Doanh thu</span> <span
+								class="pull-right-container"> <span
+								class="label label-primary pull-right"></span>
+				</span>
+					</a></li>
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+	</div>

@@ -106,13 +106,9 @@
 						<form action="/admin/thongke/ngay" method="get">
 							Chọn ngày bắt đầu: <select name="Day" onchange="this.form.submit()"
 								style="padding: 5px;">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								<option>6</option>
-								<option>7</option>
+								<th:block th:each="day : ${listDate}">
+									<option th:text="${day}"></option>
+								</th:block>
 							</select>
 						</form>
 
@@ -127,10 +123,17 @@
 								yValues.push(value["money"])
 							})
 							/*]]>*/
+							/*<![CDATA[*/
+							var xValues = []
+							var listDate = /*[[${listDate}]]*/'default';
+							listDate.map((value) => {
+								xValues.push(value)
+							})
+							/*]]>*/
 							yValues.map((value) => {
 								console.log(value);
 							})
-							var xValues = [ "1", "2", "3", "4", "5", "6", "7" ];
+// 							var xValues = [ "1", "2", "3", "4", "5", "6", "7" ];
 							var barColors = [ "blue", "blue", "blue", "blue",
 									"blue", "blue", "blue", ];
 

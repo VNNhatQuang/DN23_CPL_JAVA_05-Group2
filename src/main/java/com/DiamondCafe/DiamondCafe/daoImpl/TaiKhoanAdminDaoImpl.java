@@ -20,7 +20,7 @@ public class TaiKhoanAdminDaoImpl implements TaiKhoanAdminDao {
 
 	@Override
 	public TaiKhoan dangNhap(String account, String pass) {
-		String query = "select * from NHAN_VIEN, CHUC_VU where NHAN_VIEN.ID_ChucVu=CHUC_VU.MaChucVu and MaTK=? and MatKhau=?";
+		String query = "select * from NHAN_VIEN, CHUC_VU where NHAN_VIEN.ID_ChucVu=CHUC_VU.MaChucVu and MaTK=? and MatKhau=? and ID_ChucVu =1 ";
 		try {
 			TaiKhoan tk = jdbc.queryForObject(query, new Object[] { account, pass }, new TaiKhoanRowMapper());
 //			jdbc.update(query);
@@ -29,8 +29,8 @@ public class TaiKhoanAdminDaoImpl implements TaiKhoanAdminDao {
 			// TODO: handle exception
 			return null;
 		}
-		
-}
+
+	}
 
 	@Override
 	public void doiMatKhau(String account, String newPass) {
@@ -49,17 +49,17 @@ public class TaiKhoanAdminDaoImpl implements TaiKhoanAdminDao {
 		@Override
 		public TaiKhoan mapRow(ResultSet rs, int rowNum) throws SQLException {
 //			if (rs.next()) {
-				TaiKhoan tk = new TaiKhoan();
-				tk.setMaTK(rs.getString("MaTK"));
-				tk.setMatKhau(rs.getString("MatKhau"));
-				tk.setTenNV(rs.getString("TenNV"));
-				tk.setNgaySinh(rs.getDate("NgaySinh"));
-				tk.setDiaChi(rs.getString("DiaChi"));
-				tk.setSDT(rs.getString("SDT"));
-				tk.setCMT(rs.getString("CMT"));
-				tk.setTenChucVu(rs.getString("TenChucVu"));
+			TaiKhoan tk = new TaiKhoan();
+			tk.setMaTK(rs.getString("MaTK"));
+			tk.setMatKhau(rs.getString("MatKhau"));
+			tk.setTenNV(rs.getString("TenNV"));
+			tk.setNgaySinh(rs.getDate("NgaySinh"));
+			tk.setDiaChi(rs.getString("DiaChi"));
+			tk.setSDT(rs.getString("SDT"));
+			tk.setCMT(rs.getString("CMT"));
+			tk.setTenChucVu(rs.getString("TenChucVu"));
 
-				return tk;
+			return tk;
 //			}
 //			return null;
 		}
