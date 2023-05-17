@@ -16,21 +16,24 @@
 			<section class="content">
 				<div class="box box-primary">
 					<div class="box-body">
-						<form class="form-horizontal" action="change-pass" method="post">
-
+						<form class="form-horizontal" action="change-pass" method="post" onsubmit="return validateChangePass();">
+					
+								<input type="hidden" name="Pass" id="Pass" th:value="${session.Pass}">
+						
+							
 							<div class="form-group">
-								<label class="control-label col-sm-2">Nhập mật khẩu:</label>
-								<input type="password" required="required" name="oldPass" autofocus="autofocus">
+								<label class="control-label col-sm-2">Nhập mật khẩu: <span id="errorOldPass" style="color: red"></span></label>
+								<input type="password" name="oldPass" id="oldPass" autofocus="autofocus">
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-2">Nhập mật khẩu mới:</label>
-								 <input type="password"  required="required" name="newPass">
+								<label class="control-label col-sm-2">Nhập mật khẩu mới: <span id="errorNewPass" style="color: red"></span></label>
+								 <input type="password" name="newPass" id="newPass">
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-sm-2">Xác nhận mật khẩu:</label>
-								<input type="password" required="required" name="reNewPass">
+								<label class="control-label col-sm-2">Xác nhận mật khẩu: <span id="errorReNewPass" style="color: red"></span></label>
+								<input type="password" name="reNewPass" id="reNewPass">
 							</div>
 
 							<div class="form-group" style="text-align: end">
@@ -42,6 +45,46 @@
 								</div>
 							</div>
 						</form>
+						
+						<script type="text/javascript">
+							function validateChangePass() {
+								var oldPass=document.getElementById('oldPass').value;
+								var errorOldPass=document.getElementById('errorOldPass');
+								 
+								var newPass=document.getElementById('newPass').value;
+								var errorNewPass=document.getElementById('errorNewPass');
+								
+								var reNewPass=document.getElementById('reNewPass').value;
+								var errorReNewPass=document.getElementById('errorReNewPass');						
+						
+								var Pass=document.getElementById('Pass').value;
+								
+								if (oldPass==Pass) {
+									errorOldPass.innerHTML = '';
+									
+								}else{
+									errorOldPass.innerHTML = " * ";
+									return false;
+								} 
+								
+								if (newPass=='' || newPass==null || newPass.length<6 || /\s/.test(newPass)) { // ktra space
+									errorNewPass.innerHTML = " * ";
+									return false;
+								}else{
+									errorNewPass.innerHTML = '';
+								}
+								
+								if (reNewPass=='' || reNewPass==null || reNewPass.length<6 || /\s/.test(newPass) || reNewPass!=newPass) {
+									errorReNewPass.innerHTML = " * ";
+									return false;
+								}else{
+									errorReNewPass.innerHTML = '';
+								}
+								alert("Xác nhận đổi mật khẩu!");
+								return true;
+							}
+						</script>
+						
 					</div>
 				</div>
 			</section>

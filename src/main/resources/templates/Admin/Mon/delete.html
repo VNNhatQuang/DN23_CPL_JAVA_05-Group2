@@ -18,7 +18,7 @@
 				<div class="box box-primary">
 
 					<!-- form start -->
-					<form action="" method="get">
+					<form action="" method="get" >
 						<div class="box-body">
 
 							<div class="form-group">
@@ -62,12 +62,17 @@
 										style="background-color: red">
 										<i class="glyphicon glyphicon-floppy-disk"></i> Xoá
 									</button>  -->
-									<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}" class="btn btn-primary">Xóa</a>
+									<a th:href="@{'/admin/mon/delete/confirm/' + ${mon.MaMon}}" onclick="return checkXoa();" class="btn btn-primary">Xóa</a>
 									<a href="/admin/mon/list" class="btn btn-warning"> Quay lại </a>
 								</div>
 							</div>
 						</div>
 					</form>
+					<script type="text/javascript">
+						function checkXoa() {
+							alert("Xác nhận xóa món!")
+						}
+					</script>
 				</div>
 			</section>
 		</div>
